@@ -1,0 +1,1 @@
+2025-05-21T12:28:17.302Z - {"sSignals":[],"aSignals":[4,4,9,38,38,42,50,58,75,94,94,99,101,125,139,150,158,158,171],"sWinCount":0,"sFalseCount":0,"aWinCOunt":4,"aFalseCount":15,"sCount":0,"aCount":15}
