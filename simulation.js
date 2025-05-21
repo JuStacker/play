@@ -3,7 +3,7 @@ const crypto  = require("crypto");
 
 function runSimulation() {
     const result = caractorSignal();
-    const appendText = `${new Date().toISOString()} - ${JSON.stringify(result)}\n`;
+    const appendText = `"${new Date().toISOString()}": ${JSON.stringify(result)}, \n`;
     console.log(appendText);
     fs.appendFileSync("results.txt", appendText);  // 파일에 추가
 }
