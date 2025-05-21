@@ -10,14 +10,14 @@ function runSimulation() {
 
 function caractorSignal(maxCount = 180) {
     const result = {
-        sSignals: [],
-        aSignals: [],
+        sCount: 0,
         sWinCount: 0,
         sFalseCount: 0,
+        aCount: 0,
         aWinCOunt: 0,
         aFalseCount: 0,
-        sCount: 0,
-        aCount: 0,
+        sSignals: [],
+        aSignals: [],
     }
 
     const sRankFullSize = 7;
@@ -36,10 +36,12 @@ function caractorSignal(maxCount = 180) {
             if(winOrFale <= winRate) {
                 result.sSignals.push(index);
                 ++result.sWinCount;
+                
+            } else {
+                // 패배
+                result.sSignals.push(index); 
+                ++result.sFalseCount;
             }
-            // 패배
-            result.sSignals.push(index); 
-            ++result.sFalseCount;
         }
 
         if(choice > sRankRate && choice <= aRankRate) {
@@ -48,10 +50,11 @@ function caractorSignal(maxCount = 180) {
             if(winOrFale <= winRate) {
                 result.aSignals.push(index);
                 ++result.aWinCOunt;
+            } else {
+                // 패배
+                result.aSignals.push(index); 
+                ++result.aFalseCount;
             }
-            // 패배
-            result.aSignals.push(index); 
-            ++result.aFalseCount;
         } 
     }
     return result;
