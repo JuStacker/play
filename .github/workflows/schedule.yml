@@ -2,8 +2,11 @@ name: Run simulation every 10 minutes
 
 on:
   schedule:
-    - cron: "*/10 * * * *"  # 10분마다
+    - cron: "*/5 * * * *"  # 5분마다
   workflow_dispatch:
+
+permissions:
+  contents: write 
 
 jobs:
   run-simulation:
