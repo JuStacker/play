@@ -1,4 +1,5 @@
 const fs = require("fs");
+const crypto  = require("crypto");
 
 function runSimulation() {
     const result = caractorSignal();
