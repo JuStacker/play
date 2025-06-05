@@ -38,3 +38,49 @@ const filePath = path.join('results.txt');
   });
 
 });
+
+/**
+ * @param {SignalStat[]} signalStats 
+ * @param {number} stepByHour 
+ * @param {number} stepByMinutes 
+ */
+function showLogbyTime(signalStats, stepByHour, stepByMinutes) {
+  for(signalStat of SignalStats) {
+
+  }
+}
+
+class SignalStat {
+  /**
+   * @param {string} date
+   * @param {Object} data
+   * @param {number} data.sCount
+   * @param {number} data.sWinCount
+   * @param {number} data.sFalseCount
+   * @param {number} data.aCount
+   * @param {number} data.aWinCOunt
+   * @param {number} data.aFalseCount
+   * @param {number[]} data.sSignals
+   * @param {number[]} data.aSignals
+   */
+  constructor(date, data) {
+    this.date = new Date(date)
+    this.sCount = data.sCount;
+    this.sWinCount = data.sWinCount;
+    this.sFalseCount = data.sFalseCount;
+    this.aCount = data.aCount;
+    this.aWinCOunt = data.aWinCOunt;
+    this.aFalseCount = data.aFalseCount;
+    this.sSignals = data.sSignals;
+    this.aSignals = data.aSignals;
+  }
+
+  // 예시: 승률 계산 메서드 추가
+  get sWinRate() {
+    return this.sCount > 0 ? this.sWinCount / this.sCount : 0;
+  }
+
+  get aWinRate() {
+    return this.aCount > 0 ? this.aWinCOunt / this.aCount : 0;
+  }
+}
