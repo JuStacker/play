@@ -1,70 +1,40 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-// 파일 경로 설정 (현재 파일 기준으로 같은 디렉토리의 example.txt)
-const filePath = path.join('results.txt');
-
-  fs.readFile(filePath, 'utf-8', (err, data) => {
-    if (err) {
-      console.error('파일 읽기 중 오류 발생:', err);
-      return;
-    }
-
-    const datas = data.replaceAll('\r', '').split('\n').reduce((prev, current) => {
-      const lastDem = current.lastIndexOf(',');
-
-      const jsonString = `{${current.slice(0, lastDem)}}`;
-      const object = JSON.parse(jsonString);
-      prev.push(object);
-      return prev;
-      // const [key ,value] = Object.entries(object)[0];    
-      // prev[key] = value;
-      return prev;
-    } , []);
-
-  const sortedb = datas.sort((a, b) => {
-    const aKey = Object.keys(a)[0];
-    const bKey = Object.keys(b)[0];
-
-    const sCountA = a[aKey].sCount;
-    const sCountB = b[bKey].sCount;
-
-    return  sCountA - sCountB; // 오름차순
-  });
-
-  sortedb.forEach(data => {
-    const [k, v] = Object.entries(data)[0]
-    console.log(`${new Date(k).toLocaleDateString()} ${new Date(k).getHours()}:${new Date(k).getMinutes()} : sCount: ${v.sCount}, winCount: ${v.sWinCount}`);
-  });
-
-});
-
-/**
- * @param {SignalStat[]} signalStats 
- * @param {number} stepByHour 
- * @param {number} stepByMinutes 
- */
-function showLogbyTime(signalStats, stepByHour, stepByMinutes) {
-  for(signalStat of SignalStats) {
-
-  }
+interface SignalStatsData {
+  sCount: number;
+  sWinCount: number;
+  sFalseCount: number;
+  aCount: number;
+  aWinCOunt: number;
+  aFalseCount: number;
+  sSignals: number[];
+  aSignals: number[];
 }
 
+interface SummaryResult {
+  time: string; // ISO string
+  sCountTotal: number;
+  sCountAvg: number;
+  sSignalCount: number;
+  sWinAvg: number;
+  sWinCount: number;
+}
+
+
 class SignalStat {
-  /**
-   * @param {string} date
-   * @param {Object} data
-   * @param {number} data.sCount
-   * @param {number} data.sWinCount
-   * @param {number} data.sFalseCount
-   * @param {number} data.aCount
-   * @param {number} data.aWinCOunt
-   * @param {number} data.aFalseCount
-   * @param {number[]} data.sSignals
-   * @param {number[]} data.aSignals
-   */
-  constructor(date, data) {
-    this.date = new Date(date)
+  date: Date;
+  sCount: number;
+  sWinCount: number;
+  sFalseCount: number;
+  aCount: number;
+  aWinCOunt: number;
+  aFalseCount: number;
+  sSignals: number[];
+  aSignals: number[];
+
+  constructor(date:Date, data: SignalStatsData) {
+    this.date = date;
     this.sCount = data.sCount;
     this.sWinCount = data.sWinCount;
     this.sFalseCount = data.sFalseCount;
@@ -75,12 +45,105 @@ class SignalStat {
     this.aSignals = data.aSignals;
   }
 
-  // 예시: 승률 계산 메서드 추가
-  get sWinRate() {
+  get sWinRate(): number {
     return this.sCount > 0 ? this.sWinCount / this.sCount : 0;
   }
 
-  get aWinRate() {
+  get aWinRate(): number {
     return this.aCount > 0 ? this.aWinCOunt / this.aCount : 0;
   }
+}
+
+// 파일 경로 설정 (현재 파일 기준으로 같은 디렉토리의 example.txt)
+const filePath = path.join('results.txt');
+
+showLog();
+
+function showLog() {
+  const signalStats = readFile(filePath);
+  const summary = summarizeByHourMinute(signalStats);
+  
+  for (const s of summary) {
+    console.log(`[${s.time}] 평균: ${s.sCountAvg.toFixed(2)}, sCount 합: ${s.sCountTotal},  Signals 개수: ${s.sSignalCount}, s승률: ${s.sWinAvg}, s승리수: ${s.sWinCount}`);
+  }
+}
+
+function showStepLog(signalStats: SignalStat[], stepByMin: number = 10) {
+  const sortedStats = signalStats.sort((a, b) => a.date.getHours() - b.date.getHours());
+
+  for(let hour = 0; hour < 24; hour++) {
+    for(let min = 0; min < 60; min += stepByMin) {
+      
+    }
+  }
+}
+
+function readFile(filePath: string): SignalStat[] {
+  const result: SignalStat[] = [];
+  const logString: string = fs.readFileSync(filePath, 'utf-8');
+  
+  logString.replaceAll('\r', '').split('\n').forEach((log) => {
+    const lastDem = log.lastIndexOf(',');
+
+    const jsonString = `{${log.slice(0, lastDem)}}`;
+    const[[dateString, signalData]] = Object.entries(JSON.parse(jsonString)) as any;
+
+    result.push(new SignalStat(new Date(dateString), signalData));
+  });
+
+
+  return result;
+}
+
+
+/**
+ * 시:분(10분 단위) 기준으로 SignalStat들을 그룹화하고 요약 통계 생성
+ */
+function summarizeByHourMinute(stats: SignalStat[]): SummaryResult[] {
+  const grouped = new Map<string, SignalStat[]>();
+
+  for (const stat of stats) {
+    const key = getHourMinuteKey(stat.date);
+    if (!grouped.has(key)) {
+      grouped.set(key, []);
+    }
+    grouped.get(key)!.push(stat);
+  }
+
+  const result: SummaryResult[] = [];
+
+  for (const [time, group] of grouped.entries()) {
+    const sCountTotal = group.reduce((sum, s) => sum + s.sCount, 0);
+    const sCountAvg = sCountTotal / group.length;
+    const sSignalCount = group.length;
+    const sWinCount = group.reduce((sum, s) => sum + s.sWinCount, 0);
+    result.push({
+      time,
+      sCountTotal,
+      sCountAvg,
+      sSignalCount,
+      sWinCount,
+      sWinAvg: (sWinCount / sCountTotal) * 100
+    });
+  }
+
+  // 시:분 문자열 기준 정렬
+  result.sort((a, b) => a.time.localeCompare(b.time));
+
+  return result;
+}
+
+/**
+ * 시:분 단위로 10분 내림한 문자열 반환 (UTC 기준)
+ * 예: 17:23 → "17:20"
+ */
+function getHourMinuteKey(date: Date): string {
+  const hours = date.getHours(); // ✅ 한국 시간 기준
+  const minutes = date.getMinutes();
+  const roundedMinutes = minutes - (minutes % 10);
+
+  const hh = String(hours).padStart(2, '0');
+  const mm = String(roundedMinutes).padStart(2, '0');
+
+  return `${hh}:${mm}`;
 }
