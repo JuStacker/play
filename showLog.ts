@@ -83,6 +83,10 @@ function readFile(filePath: string): SignalStat[] {
   const logString: string = fs.readFileSync(filePath, 'utf-8');
   
   logString.replaceAll('\r', '').split('\n').forEach((log) => {
+    if(log.length == 0) {
+      return;
+    }
+
     const lastDem = log.lastIndexOf(',');
 
     const jsonString = `{${log.slice(0, lastDem)}}`;
