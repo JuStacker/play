@@ -2030,3 +2030,4 @@
 "2025-06-28T21:13:35.317Z":{"sCount":2,"sWinCount":0,"sFalseCount":2,"aCount":12,"aWinCOunt":5,"aFalseCount":7,"sSignals":[51,64],"aSignals":[41,44,66,82,86,99,142,146,157,169,174,178]}, 
 "2025-06-28T21:31:51.359Z":{"sCount":1,"sWinCount":0,"sFalseCount":1,"aCount":13,"aWinCOunt":7,"aFalseCount":6,"sSignals":[120],"aSignals":[1,2,8,16,22,45,96,103,150,152,167,168,177]}, 
 "2025-06-28T21:45:00.409Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":14,"aWinCOunt":7,"aFalseCount":7,"sSignals":[],"aSignals":[6,23,24,26,40,43,44,56,64,86,97,132,148,158]}, 
+"2025-06-28T21:57:07.544Z":{"sCount":1,"sWinCount":0,"sFalseCount":1,"aCount":16,"aWinCOunt":5,"aFalseCount":11,"sSignals":[27],"aSignals":[2,13,20,52,56,90,113,118,119,125,132,133,138,150,162,169]}, 
