@@ -2856,3 +2856,4 @@
 "2025-07-13T10:31:28.688Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":14,"aWinCOunt":8,"aFalseCount":6,"sSignals":[],"aSignals":[6,9,17,32,44,61,64,65,80,93,101,122,151,178]}, 
 "2025-07-13T10:49:15.711Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":14,"aWinCOunt":7,"aFalseCount":7,"sSignals":[],"aSignals":[26,33,51,57,62,70,92,102,105,111,123,129,144,175]}, 
 "2025-07-13T11:07:58.174Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":19,"aWinCOunt":12,"aFalseCount":7,"sSignals":[],"aSignals":[1,18,34,37,39,63,69,73,76,93,107,140,146,155,156,158,159,168,176]}, 
+"2025-07-13T11:27:56.814Z":{"sCount":2,"sWinCount":1,"sFalseCount":1,"aCount":15,"aWinCOunt":9,"aFalseCount":6,"sSignals":[114,179],"aSignals":[9,11,44,52,54,61,83,93,105,111,112,142,147,149,163]}, 
