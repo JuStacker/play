@@ -62,10 +62,18 @@ showLog();
 function showLog() {
   const signalStats = readFile(filePath);
   const summary = summarizeByHourMinute(signalStats);
-  
+  console.log("시간대 목록:");
   for (const s of summary) {
+    /**
+     * 평균: 시뮬레이션 중 뽑은 평균 s 갯수
+     * sCount합: 시뮬레이션 총   
+    **/
     console.log(`[${s.time}] 평균: ${s.sCountAvg.toFixed(2)}, sCount 합: ${s.sCountTotal},  Signals 개수: ${s.sSignalCount}, s승률: ${s.sWinAvg}, s승리수: ${s.sWinCount}`);
   }
+
+  // 출력
+  console.log("🔥 종합 추천 시간대 목록:");
+  console.table(getRecommendation(summary));
 }
 
 function showStepLog(signalStats: SignalStat[], stepByMin: number = 10) {
@@ -150,4 +158,53 @@ function getHourMinuteKey(date: Date): string {
   const mm = String(roundedMinutes).padStart(2, '0');
 
   return `${hh}:${mm}`;
+}
+
+function rateTime(d: SummaryResult): string {
+  const avg = d.sCountAvg;
+  const sWinRate = d.sWinAvg;
+  const signals = d.sSignalCount;
+
+  if (avg >= 1.5 && sWinRate >= 60 && signals >= 20) {
+    return "S";
+  }
+  if (avg >= 1.3 && sWinRate >= 55 && signals >= 15) {
+    return "A";
+  }
+  if (avg >= 1.2 && sWinRate >= 50 && signals >= 10) {
+    return "B";
+  }
+  return "C";
+}
+
+// 점수 계산 함수
+function scoreTime(d: SummaryResult, {maxAvg, maxWinRate, maxSignals}): number {
+  const avg = d.sCountAvg;
+  const sWinRate = d.sWinAvg;
+  const signals = d.sSignalCount;
+
+  const normAvg = avg / maxAvg;             // 0~1 정규화
+  const normWinRate = sWinRate / maxWinRate;
+  const normSignals = signals / maxSignals;
+
+  // 가중합 (비율은 필요에 따라 조절 가능)
+  const score = normAvg * 0.2 + normWinRate * 0.3 + normSignals * 0.5;
+  return (score * 100);
+}
+
+
+function getRecommendation(data: SummaryResult[], maxCount: number = 10) {
+  const maxWinRate = Math.max(...data.map((d) => d.sWinAvg || 0));
+  const maxAvg = Math.max(...data.map((d) => d.sCountAvg || 0));
+  const maxSignals = Math.max(...data.map((d) => d.sSignalCount || 0));
+
+  return data
+    .map((d) => ({ ...d, score: scoreTime(d, {maxAvg, maxWinRate, maxSignals}) }))
+    .sort((a, b) => b.score - a.score)
+    .map(d => { return { 시간대: d.time, 시뮬레이션수: d.sSignalCount, "평균S갯수": fl(d.sCountAvg), '반천장 승률': fl(d.sWinAvg), '총S갯수': d.sCountTotal, '반천장 승리 수': d.sWinCount, '점수': Math.floor(d.score) } })
+    .slice(0, maxCount);
+}
+
+function fl(num: number): number {
+  return Math.floor(num * 100) / 100;
 }
