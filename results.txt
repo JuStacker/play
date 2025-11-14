@@ -10500,3 +10500,4 @@
 "2025-11-14T21:52:27.493Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":14,"aWinCOunt":4,"aFalseCount":10,"sSignals":[],"aSignals":[4,18,43,59,65,72,83,88,96,102,118,147,159,176]}, 
 "2025-11-14T22:16:22.043Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":11,"aWinCOunt":4,"aFalseCount":7,"sSignals":[],"aSignals":[26,28,44,65,70,87,137,149,154,159,178]}, 
 "2025-11-14T22:37:10.724Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":14,"aWinCOunt":9,"aFalseCount":5,"sSignals":[],"aSignals":[7,42,47,73,77,101,115,121,126,130,147,157,168,177]}, 
+"2025-11-14T22:49:31.755Z":{"sCount":2,"sWinCount":2,"sFalseCount":0,"aCount":9,"aWinCOunt":5,"aFalseCount":4,"sSignals":[52,65],"aSignals":[73,75,77,96,115,141,153,159,172]}, 
