@@ -12213,3 +12213,4 @@
 "2025-12-13T21:42:23.103Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":14,"aWinCOunt":8,"aFalseCount":6,"sSignals":[],"aSignals":[3,18,43,44,46,49,88,89,97,110,129,140,150,169]}, 
 "2025-12-13T21:54:35.279Z":{"sCount":1,"sWinCount":0,"sFalseCount":1,"aCount":14,"aWinCOunt":6,"aFalseCount":8,"sSignals":[171],"aSignals":[5,8,23,39,54,55,74,75,82,129,147,152,156,162]}, 
 "2025-12-13T22:21:11.913Z":{"sCount":1,"sWinCount":0,"sFalseCount":1,"aCount":14,"aWinCOunt":9,"aFalseCount":5,"sSignals":[44],"aSignals":[2,3,12,20,31,62,101,113,115,120,133,144,156,162]}, 
+"2025-12-13T22:39:40.694Z":{"sCount":4,"sWinCount":2,"sFalseCount":2,"aCount":16,"aWinCOunt":6,"aFalseCount":10,"sSignals":[35,57,142,144],"aSignals":[16,36,47,49,59,62,63,64,99,103,128,129,143,148,157,162]}, 
