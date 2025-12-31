@@ -13189,3 +13189,4 @@
 "2025-12-31T21:18:11.877Z":{"sCount":0,"sWinCount":0,"sFalseCount":0,"aCount":12,"aWinCOunt":7,"aFalseCount":5,"sSignals":[],"aSignals":[2,27,45,47,53,56,59,79,80,107,110,131]}, 
 "2025-12-31T21:36:12.583Z":{"sCount":1,"sWinCount":1,"sFalseCount":0,"aCount":10,"aWinCOunt":5,"aFalseCount":5,"sSignals":[115],"aSignals":[17,47,52,77,111,117,126,133,142,163]}, 
 "2025-12-31T21:48:25.181Z":{"sCount":3,"sWinCount":1,"sFalseCount":2,"aCount":17,"aWinCOunt":6,"aFalseCount":11,"sSignals":[24,174,178],"aSignals":[6,19,21,28,61,77,114,117,119,128,129,130,143,144,150,160,167]}, 
+"2025-12-31T22:00:54.543Z":{"sCount":1,"sWinCount":0,"sFalseCount":1,"aCount":6,"aWinCOunt":2,"aFalseCount":4,"sSignals":[44],"aSignals":[16,25,114,126,138,169]}, 
