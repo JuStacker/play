@@ -5,8 +5,6 @@ yarn.lock
 pnpm-lock.yaml
 
 # TypeScript 빌드 결과물
-dist/
-*.js
 *.js.map
 *.d.ts
 

@@ -1,3 +1,4 @@
+import { GachaResultLog } from "../log/dto/GachaResultLog";
 import { GachaResultType } from "./GachaResultType";
 import { RollResult } from "./RollResult";
 

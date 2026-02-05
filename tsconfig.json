@@ -5,7 +5,11 @@
     "module": "CommonJS",
     "types": ["node"],
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    
+    
 
     /* Projects */
     // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */

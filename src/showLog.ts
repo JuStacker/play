@@ -1,7 +1,7 @@
 import * as path from 'path';
-import { SignalStat } from './src/log/signalStat';
-import { readFile } from './src/log/readFile';
-import { SummaryResult } from './src/log/SummaryResult';
+import { SignalStat } from './log/signalStat';
+import { readFile } from './log/readFile';
+import { SummaryResult } from './log/SummaryResult';
 
 
 // 파일 경로 설정 (현재 파일 기준으로 같은 디렉토리의 example.txt)
