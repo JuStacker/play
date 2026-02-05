@@ -1,14 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
-
-interface SummaryResult {
-  time: string; // ISO string
-  sCountTotal: number;
-  sCountAvg: number;
-  sSignalCount: number;
-  sWinAvg: number;
-  sWinCount: number;
-}
+import { SignalStat } from './src/log/signalStat';
+import { readFile } from './src/log/readFile';
+import { SummaryResult } from './src/log/SummaryResult';
 
 
 // 파일 경로 설정 (현재 파일 기준으로 같은 디렉토리의 example.txt)
@@ -35,28 +29,6 @@ function showLog() {
   console.table(getRecommendation(summary, 20));
 
 
-}
-
-
-function readFile(filePath: string): SignalStat[] {
-  const result: SignalStat[] = [];
-  const logString: string = fs.readFileSync(filePath, 'utf-8');
-  
-  logString.replaceAll('\r', '').split('\n').forEach((log) => {
-    if(log.length == 0) {
-      return;
-    }
-
-    const lastDem = log.lastIndexOf(',');
-
-    const jsonString = `{${log.slice(0, lastDem)}}`;
-    const[[dateString, signalData]] = Object.entries(JSON.parse(jsonString)) as any;
-
-    result.push(new SignalStat(new Date(dateString), signalData));
-  });
-
-
-  return result;
 }
 
 
