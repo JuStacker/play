@@ -1,17 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-interface SignalStatsData {
-  sCount: number;
-  sWinCount: number;
-  sFalseCount: number;
-  aCount: number;
-  aWinCOunt: number;
-  aFalseCount: number;
-  sSignals: number[];
-  aSignals: number[];
-}
-
 interface SummaryResult {
   time: string; // ISO string
   sCountTotal: number;
@@ -22,38 +11,6 @@ interface SummaryResult {
 }
 
 
-class SignalStat {
-  date: Date;
-  sCount: number;
-  sWinCount: number;
-  sFalseCount: number;
-  aCount: number;
-  aWinCOunt: number;
-  aFalseCount: number;
-  sSignals: number[];
-  aSignals: number[];
-
-  constructor(date:Date, data: SignalStatsData) {
-    this.date = date;
-    this.sCount = data.sCount;
-    this.sWinCount = data.sWinCount;
-    this.sFalseCount = data.sFalseCount;
-    this.aCount = data.aCount;
-    this.aWinCOunt = data.aWinCOunt;
-    this.aFalseCount = data.aFalseCount;
-    this.sSignals = data.sSignals;
-    this.aSignals = data.aSignals;
-  }
-
-  get sWinRate(): number {
-    return this.sCount > 0 ? this.sWinCount / this.sCount : 0;
-  }
-
-  get aWinRate(): number {
-    return this.aCount > 0 ? this.aWinCOunt / this.aCount : 0;
-  }
-}
-
 // 파일 경로 설정 (현재 파일 기준으로 같은 디렉토리의 example.txt)
 const filePath = path.join('results.txt');
 
@@ -63,28 +20,23 @@ function showLog() {
   const signalStats = readFile(filePath);
   const summary = summarizeByHourMinute(signalStats);
   console.log("시간대 목록:");
-  for (const s of summary) {
-    /**
-     * 평균: 시뮬레이션 중 뽑은 평균 s 갯수
-     * sCount합: 시뮬레이션 총   
-    **/
-    console.log(`[${s.time}] 평균: ${s.sCountAvg.toFixed(2)}, sCount 합: ${s.sCountTotal},  Signals 개수: ${s.sSignalCount}, s승률: ${s.sWinAvg}, s승리수: ${s.sWinCount}`);
-  }
+  // for (const s of summary) {
+  //   /**
+  //    * 평균: 시뮬레이션 중 뽑은 평균 s 갯수
+  //    * sCount합: 시뮬레이션 총   
+  //   **/
+  //   console.log(`[${s.time}] 평균: ${s.sCountAvg.toFixed(2)}, sCount 합: ${s.sCountTotal},  Signals 개수: ${s.sSignalCount}, s승률: ${s.sWinAvg}, s승리수: ${s.sWinCount}`);
+  // }
+
+  console.table(summary);
 
   // 출력
   console.log("🔥 종합 추천 시간대 목록:");
-  console.table(getRecommendation(summary));
+  console.table(getRecommendation(summary, 20));
+
+
 }
 
-function showStepLog(signalStats: SignalStat[], stepByMin: number = 10) {
-  const sortedStats = signalStats.sort((a, b) => a.date.getHours() - b.date.getHours());
-
-  for(let hour = 0; hour < 24; hour++) {
-    for(let min = 0; min < 60; min += stepByMin) {
-      
-    }
-  }
-}
 
 function readFile(filePath: string): SignalStat[] {
   const result: SignalStat[] = [];
@@ -160,22 +112,6 @@ function getHourMinuteKey(date: Date): string {
   return `${hh}:${mm}`;
 }
 
-function rateTime(d: SummaryResult): string {
-  const avg = d.sCountAvg;
-  const sWinRate = d.sWinAvg;
-  const signals = d.sSignalCount;
-
-  if (avg >= 1.5 && sWinRate >= 60 && signals >= 20) {
-    return "S";
-  }
-  if (avg >= 1.3 && sWinRate >= 55 && signals >= 15) {
-    return "A";
-  }
-  if (avg >= 1.2 && sWinRate >= 50 && signals >= 10) {
-    return "B";
-  }
-  return "C";
-}
 
 // 점수 계산 함수
 function scoreTime(d: SummaryResult, {maxAvg, maxWinRate, maxSignals}): number {
@@ -188,7 +124,7 @@ function scoreTime(d: SummaryResult, {maxAvg, maxWinRate, maxSignals}): number {
   const normSignals = signals / maxSignals;
 
   // 가중합 (비율은 필요에 따라 조절 가능)
-  const score = normAvg * 0.3 + normWinRate * 0.4 + normSignals * 0.3;
+  const score = normAvg * 0.1 + normWinRate * 0.5 + normSignals * 0.4;
   return (score * 100);
 }
 
