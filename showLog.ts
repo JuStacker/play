@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import * as path from 'path';
 import { SignalStat } from './src/log/signalStat';
 import { readFile } from './src/log/readFile';
@@ -13,22 +12,19 @@ showLog();
 function showLog() {
   const signalStats = readFile(filePath);
   const summary = summarizeByHourMinute(signalStats);
+  const summaryByHour = summarizeByHour(signalStats);
+  
   console.log("시간대 목록:");
-  // for (const s of summary) {
-  //   /**
-  //    * 평균: 시뮬레이션 중 뽑은 평균 s 갯수
-  //    * sCount합: 시뮬레이션 총   
-  //   **/
-  //   console.log(`[${s.time}] 평균: ${s.sCountAvg.toFixed(2)}, sCount 합: ${s.sCountTotal},  Signals 개수: ${s.sSignalCount}, s승률: ${s.sWinAvg}, s승리수: ${s.sWinCount}`);
-  // }
-
-  console.table(summary);
+  console.table(summaryByHour);
 
   // 출력
-  console.log("🔥 종합 추천 시간대 목록:");
-  console.table(getRecommendation(summary, 20));
+  console.log("🔥 추천 분대 목록:");
+  console.table(getRecommendation(summary, 10));
 
-
+  
+  // 출력
+  console.log("🔥 추천 시대 목록:");
+  console.table(getRecommendation(summaryByHour, 10));
 }
 
 
@@ -69,6 +65,41 @@ function summarizeByHourMinute(stats: SignalStat[]): SummaryResult[] {
   return result;
 }
 
+function summarizeByHour(stats: SignalStat[]): SummaryResult[] {
+  const grouped = new Map<string, SignalStat[]>();
+
+  for (const stat of stats) {
+    const key = getHourKey(stat.date);
+    if (!grouped.has(key)) {
+      grouped.set(key, []);
+    }
+    grouped.get(key)!.push(stat);
+  }
+
+  const result: SummaryResult[] = [];
+
+  for (const [time, group] of grouped.entries()) {
+    const sCountTotal = group.reduce((sum, s) => sum + s.sCount, 0);
+    const sCountAvg = sCountTotal / group.length;
+    const sSignalCount = group.length;
+    const sWinCount = group.reduce((sum, s) => sum + s.sWinCount, 0);
+    result.push({
+      time,
+      sCountTotal,
+      sCountAvg,
+      sSignalCount,
+      sWinCount,
+      sWinAvg: (sWinCount / sCountTotal) * 100
+    });
+  }
+
+  // 시:분 문자열 기준 정렬
+  result.sort((a, b) => a.time.localeCompare(b.time));
+
+  return result;
+}
+
+
 /**
  * 시:분 단위로 10분 내림한 문자열 반환 (UTC 기준)
  * 예: 17:23 → "17:20"
@@ -83,6 +114,15 @@ function getHourMinuteKey(date: Date): string {
 
   return `${hh}:${mm}`;
 }
+
+function getHourKey(date: Date): string {
+  const hours = date.getHours(); // ✅ 한국 시간 기준
+
+  const hh = String(hours).padStart(2, '0');
+
+  return `${hh}:00`;
+}
+
 
 
 // 점수 계산 함수

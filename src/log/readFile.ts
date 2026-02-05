@@ -1,3 +1,7 @@
+import { SignalStat } from "./signalStat";
+import * as fs from 'fs';
+
+
 export function readFile(filePath: string): SignalStat[] {
   const result: SignalStat[] = [];
   const logString: string = fs.readFileSync(filePath, 'utf-8');
