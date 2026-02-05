@@ -9,4 +9,4 @@ class Log {
     }
 }
 exports.Log = Log;
-Log.isDebug = true;
+Log.isDebug = false;
