@@ -32,16 +32,15 @@ export class GachaTable {
         Log.log(`랜덤값: ${this.toPercent(r)}, 롤 확률: { S: ${this.toPercent(sRate)}, A: ${this.toPercent(this.aRate)}, B: ${this.toPercent(this.bRate)} }`);
 
         if (r < sRate) {
-        if (state.hasPickupGuard()) return RollResult.ofSWin();
-        const pickupRandom = Math.random();
-        // 픽뚧
-        if (pickupRandom > this.winRate) {
-            result = RollResult.ofLoseS();
-        } else {
-            result = RollResult.ofSWin();
-        }
+            const pickupRandom = Math.random();
+            // 픽뚧
+            if (pickupRandom > this.winRate && !state.hasPickupGuard()) {
+                result = RollResult.ofLoseS();
+            } else {
+                result = RollResult.ofSWin();
+            }
         } else if (r < aRate) {
-        result = RollResult.OfA();
+            result = RollResult.ofA();
         }
 
         state.pullCount(result);

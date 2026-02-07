@@ -16,7 +16,7 @@ export class RollResult {
         return new RollResult(GachaResultType.S_Lose);
     }
 
-    static OfA(): RollResult {
+    static ofA(): RollResult {
         return new RollResult(GachaResultType.A);
     }
 
