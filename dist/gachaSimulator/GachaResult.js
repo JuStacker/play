@@ -42,5 +42,11 @@ class GachaResult {
             totalSignal: this.logs.length
         };
     }
+    hasWinS() {
+        return this.logs.includes(GachaResultType_1.GachaResultType.S_Win);
+    }
+    getLattResult() {
+        return this.logs[this.logs.length - 1];
+    }
 }
 exports.GachaResult = GachaResult;

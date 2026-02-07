@@ -22,11 +22,9 @@ class GachaTable {
         let result = RollResult_1.RollResult.ofB();
         log_1.Log.log(`랜덤값: ${this.toPercent(r)}, 롤 확률: { S: ${this.toPercent(sRate)}, A: ${this.toPercent(this.aRate)}, B: ${this.toPercent(this.bRate)} }`);
         if (r < sRate) {
-            if (state.hasPickupGuard())
-                return RollResult_1.RollResult.ofSWin();
             const pickupRandom = Math.random();
             // 픽뚧
-            if (pickupRandom > this.winRate) {
+            if (pickupRandom > this.winRate && !state.hasPickupGuard()) {
                 result = RollResult_1.RollResult.ofLoseS();
             }
             else {
@@ -34,7 +32,7 @@ class GachaTable {
             }
         }
         else if (r < aRate) {
-            result = RollResult_1.RollResult.OfA();
+            result = RollResult_1.RollResult.ofA();
         }
         state.pullCount(result);
         return result;

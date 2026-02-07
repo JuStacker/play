@@ -7,6 +7,12 @@ class Log {
             return;
         console.log(...message);
     }
+    static table(obj) {
+        if (!this.isDebug)
+            return;
+        console.table(obj);
+    }
 }
 exports.Log = Log;
+// static isDebug: boolean = true;
 Log.isDebug = false;

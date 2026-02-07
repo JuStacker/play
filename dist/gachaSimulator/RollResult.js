@@ -12,7 +12,7 @@ class RollResult {
     static ofLoseS() {
         return new RollResult(GachaResultType_1.GachaResultType.S_Lose);
     }
-    static OfA() {
+    static ofA() {
         return new RollResult(GachaResultType_1.GachaResultType.A);
     }
     static ofB() {

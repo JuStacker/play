@@ -1,10 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const GachaResult_1 = require("./gachaSimulator/GachaResult");
-const GachaResultType_1 = require("./gachaSimulator/GachaResultType");
 const rollCharacter_1 = require("./gachaSimulator/rollCharacter");
 const GachaState_1 = require("./gachaSimulator/GachaState");
-const log_1 = require("./log/log");
 const writeGachaLog_1 = require("./log/writeGachaLog");
 const rollWeapon_1 = require("./gachaSimulator/rollWeapon");
 /**
@@ -29,23 +27,24 @@ function chararcterGacha() {
     const state = new GachaState_1.GachaState();
     const result = new GachaResult_1.GachaResult();
     for (let i = 0; i < 160; i++) {
-        const rollResult = (0, rollCharacter_1.rollCharacter)(state);
-        result.addRollResult(rollResult);
-        if (rollResult.result === GachaResultType_1.GachaResultType.S_Win)
+        // Log.log(`${i + 1}번째 뽑기:`, state);
+        result.addRollResult((0, rollCharacter_1.rollCharacter)(state));
+        // Log.log(` 결과 -> `, GachaResultType[result.logs[result.logs.length -1]], state);
+        if (result.hasWinS())
             break;
     }
-    log_1.Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType_1.GachaResultType[r]).join(", "));
+    // Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
     return result;
 }
 function weaponGacha() {
     const state = new GachaState_1.GachaState();
     const result = new GachaResult_1.GachaResult();
     for (let i = 0; i < 160; i++) {
-        const rollResult = (0, rollWeapon_1.rollWeapon)(state);
-        result.addRollResult(rollResult);
-        if (rollResult.result === GachaResultType_1.GachaResultType.S_Win)
+        result.addRollResult((0, rollWeapon_1.rollWeapon)(state));
+        // Log.log(`${i + 1}번째 뽑기 결과:`, GachaResultType[result.logs[result.logs.length -1]]);
+        if (result.hasWinS())
             break;
     }
-    log_1.Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType_1.GachaResultType[r]).join(", "));
+    // Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
     return result;
 }
