@@ -2,6 +2,8 @@ import * as path from 'path';
 import { SignalStat } from './log/signalStat';
 import { readFile } from './log/readFile';
 import { SummaryResult } from './log/SummaryResult';
+import { getHourKey } from './util/getHourKey';
+import { getHourMinuteKey } from './util/getHourMinuteKey';
 
 
 // 파일 경로 설정 (현재 파일 기준으로 같은 디렉토리의 example.txt)
@@ -98,31 +100,6 @@ function summarizeByHour(stats: SignalStat[]): SummaryResult[] {
 
   return result;
 }
-
-
-/**
- * 시:분 단위로 10분 내림한 문자열 반환 (UTC 기준)
- * 예: 17:23 → "17:20"
- */
-function getHourMinuteKey(date: Date): string {
-  const hours = date.getHours(); // ✅ 한국 시간 기준
-  const minutes = date.getMinutes();
-  const roundedMinutes = minutes - (minutes % 10);
-
-  const hh = String(hours).padStart(2, '0');
-  const mm = String(roundedMinutes).padStart(2, '0');
-
-  return `${hh}:${mm}`;
-}
-
-function getHourKey(date: Date): string {
-  const hours = date.getHours(); // ✅ 한국 시간 기준
-
-  const hh = String(hours).padStart(2, '0');
-
-  return `${hh}:00`;
-}
-
 
 
 // 점수 계산 함수
