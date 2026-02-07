@@ -23,13 +23,13 @@ function main():void {
 
 function simlateForGacha(): void {
     const aCharacter = chararcterGacha();
-    // const bCharacter = chararcterGacha();
+    const bCharacter = chararcterGacha();
 
-    // const aWeapon = weaponGacha(); 
-    // const bWeapon = weaponGacha();
+    const aWeapon = weaponGacha(); 
+    const bWeapon = weaponGacha();
 
 
-    // writeGachaLog(aCharacter, aWeapon, bCharacter, bWeapon);
+    writeGachaLog(aCharacter, aWeapon, bCharacter, bWeapon);
 }
 
 
