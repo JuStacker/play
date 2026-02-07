@@ -136,7 +136,7 @@ function scoreTime(d: SummaryResult, {maxAvg, maxWinRate, maxSignals}): number {
   const normSignals = signals / maxSignals;
 
   // 가중합 (비율은 필요에 따라 조절 가능)
-  const score = normAvg * 0.1 + normWinRate * 0.5 + normSignals * 0.4;
+  const score = normAvg * 0.01 + normWinRate * 0.5 + normSignals * 0.4;
   return (score * 100);
 }
 
