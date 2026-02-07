@@ -15,7 +15,7 @@ export function writeGachaLog(aCharacter: GachaResult, aWeapon: GachaResult, bCh
 
     logToResult(result);
 
-    fs.appendFileSync("zzzGachaV2.txt", `${new Date().toISOString()}": ${JSON.stringify(result)}, \n`)
+    fs.appendFileSync("zzzGachaV2.txt", `"${new Date().toISOString()}": ${JSON.stringify(result)}, \n`)
 }
 
 
