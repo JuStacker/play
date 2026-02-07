@@ -1,0 +1,74 @@
+{
+  "A_CHARACTER": {
+    "21:00~21:09": { "avgPity": 52, "winRate": 0, "simCount": 1 },
+    "21:30~21:39": { "avgPity": 76, "winRate": 1, "simCount": 1 },
+    "21:50~21:59": { "avgPity": 80, "winRate": 1, "simCount": 1 },
+    "22:30~22:39": { "avgPity": 153, "winRate": 0, "simCount": 1 },
+    "22:50~22:59": { "avgPity": 54.5, "winRate": 0.5, "simCount": 2 },
+    "23:00~23:09": { "avgPity": 19, "winRate": 0, "simCount": 1 }
+  },
+  "AB_CHARACTER": {
+    "21:00~21:09": {
+      "avgPity": 86.33333333333333,
+      "winRate": 0,
+      "simCount": 2
+    },
+    "21:30~21:39": { "avgPity": 76, "winRate": 1, "simCount": 2 },
+    "21:50~21:59": {
+      "avgPity": 105.33333333333333,
+      "winRate": 0.6666666666666666,
+      "simCount": 2
+    },
+    "22:30~22:39": {
+      "avgPity": 102,
+      "winRate": 0.3333333333333333,
+      "simCount": 2
+    },
+    "22:50~22:59": {
+      "avgPity": 62,
+      "winRate": 0.6666666666666666,
+      "simCount": 4
+    },
+    "23:00~23:09": {
+      "avgPity": 38,
+      "winRate": 0.3333333333333333,
+      "simCount": 2
+    }
+  },
+  "AB_CHARACTER_A_WEAPON": {
+    "21:00~21:09": {
+      "avgPity": 88.66666666666667,
+      "winRate": 0.16666666666666666,
+      "simCount": 3
+    },
+    "21:30~21:39": {
+      "avgPity": 71.66666666666667,
+      "winRate": 0.8333333333333334,
+      "simCount": 3
+    },
+    "21:50~21:59": {
+      "avgPity": 103.5,
+      "winRate": 0.6666666666666666,
+      "simCount": 3
+    },
+    "22:30~22:39": {
+      "avgPity": 87.83333333333333,
+      "winRate": 0.5,
+      "simCount": 3
+    },
+    "22:50~22:59": {
+      "avgPity": 72.16666666666667,
+      "winRate": 0.5833333333333334,
+      "simCount": 6
+    },
+    "23:00~23:09": { "avgPity": 46, "winRate": 0.5, "simCount": 3 }
+  },
+  "AB_CHARACTER_AB_WEAPON": {
+    "21:00~21:09": { "avgPity": 94.1, "winRate": 0.2, "simCount": 4 },
+    "21:30~21:39": { "avgPity": 77.3, "winRate": 0.7, "simCount": 4 },
+    "21:50~21:59": { "avgPity": 92.6, "winRate": 0.7, "simCount": 4 },
+    "22:30~22:39": { "avgPity": 88.3, "winRate": 0.5, "simCount": 4 },
+    "22:50~22:59": { "avgPity": 74.9, "winRate": 0.6, "simCount": 8 },
+    "23:00~23:09": { "avgPity": 57, "winRate": 0.5, "simCount": 4 }
+  }
+}

@@ -17,8 +17,8 @@ type Simulation = {
 }
 
 type RawData = Record<string, Simulation>
-
-type ScenarioKey =
+export type Format = {avgPity: number, winRate: number, simCount: number } 
+export type ScenarioKey =
   | 'A_CHARACTER'
   | 'AB_CHARACTER'
   | 'AB_CHARACTER_A_WEAPON'
@@ -174,8 +174,6 @@ main();
 function main() {
     const rawData = readGachaLog(GACHA_LOG_PATH);
     const outputLines: string[] = [];
-
-    
 
     outputLines.push(analyze(rawData, 'A_CHARACTER'));
     outputLines.push(analyze(rawData, 'AB_CHARACTER'));
