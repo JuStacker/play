@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { ScenarioKey } from './analyze';
+import { TimeSlotFormate } from './timeSlot/dto/TimeSlotFormate';
 
 const GACHA_LOG_PATH = "zzzGachaV2.txt";
 
@@ -28,15 +29,6 @@ type Simulation = {
 }
 
 type RawData = Record<string, Simulation>
-
-type TimeSlotFormate = {
-    A_CHARACTER : { [key: string]: Format },
-    AB_CHARACTER : { [key: string]: Format },
-    AB_CHARACTER_A_WEAPON : { [key: string]: Format },
-    AB_CHARACTER_AB_WEAPON : { [key: string]: Format },
-};
-
-type Format = {avgPity: number, winRate: number, simCount: number };
 
 function readGachaLog(filePath: string): RawData {
     const result = {};
