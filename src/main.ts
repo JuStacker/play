@@ -38,9 +38,9 @@ function chararcterGacha(): GachaResult {
     const result = new GachaResult();
 
     for(let i = 0; i < 160; i++) {
-        const rollResult = rollCharacter(state);
-        result.addRollResult(rollResult);
-        if(rollResult.result === GachaResultType.S_Win) break;
+        result.addRollResult(rollCharacter(state));
+        Log.log(`${i + 1}번째 뽑기 결과:`, GachaResultType[result.logs[result.logs.length -1]]);
+        if(result.hasWinS()) break;
     }
 
     Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
@@ -53,9 +53,9 @@ function weaponGacha(): GachaResult {
     const result = new GachaResult();
 
     for(let i = 0; i < 160; i++) {
-        const rollResult = rollWeapon(state);
-        result.addRollResult(rollResult);
-        if(rollResult.result === GachaResultType.S_Win) break;
+        result.addRollResult(rollWeapon(state));
+        Log.log(`${i + 1}번째 뽑기 결과:`, GachaResultType[result.logs[result.logs.length -1]]);
+        if(result.hasWinS()) break;
     }
 
     Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));

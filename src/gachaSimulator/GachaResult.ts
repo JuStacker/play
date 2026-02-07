@@ -48,4 +48,12 @@ export class GachaResult {
             totalSignal: this.logs.length
         };
     }
+
+    hasWinS(): boolean {
+        return this.logs.includes(GachaResultType.S_Win);
+    }
+
+    getLattResult(): GachaResultType {
+        return this.logs[this.logs.length - 1];
+    }
 }
