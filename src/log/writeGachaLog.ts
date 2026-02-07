@@ -2,6 +2,7 @@ import { GachaResult } from "../gachaSimulator/GachaResult";
 import * as fs from "fs";
 import { GachaResultLog } from "./dto/GachaResultLog";
 import { Log } from "./log";
+import { GachaLog } from "./dto/GachaLog";
 
 
 export function writeGachaLog(aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {
@@ -15,13 +16,6 @@ export function writeGachaLog(aCharacter: GachaResult, aWeapon: GachaResult, bCh
     logToResult(result);
 
     fs.appendFileSync("zzzGachaV2.txt", `${new Date().toISOString()}": ${JSON.stringify(result)}, \n`)
-}
-
-interface GachaLog {
-    aCharacter: GachaResultLog;
-    aWeapon: GachaResultLog;
-    bCharacter: GachaResultLog;
-    bWeapon: GachaResultLog;
 }
 
 

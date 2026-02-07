@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "log": "ts-node src/showLog.ts",
+    "init-log-v2": "ts-node src/initV2Log.ts",
     "start": "ts-node src/main.ts"
   },
   "keywords": [],
