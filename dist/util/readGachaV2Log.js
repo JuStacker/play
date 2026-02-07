@@ -36,7 +36,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.readGachaV2Log = readGachaV2Log;
 const fs = __importStar(require("fs"));
 function readGachaV2Log(filePath) {
-    const result = {};
+    const result = [];
     const logString = fs.readFileSync(filePath, 'utf-8');
     logString.replaceAll('\r', '').split('\n').forEach((log) => {
         if (log.length == 0) {
@@ -44,7 +44,10 @@ function readGachaV2Log(filePath) {
         }
         const jsonString = `{${log.substring(0, log.lastIndexOf(','))}}`;
         const [[dateString, gachaLog]] = Object.entries(JSON.parse(jsonString));
-        result[dateString] = gachaLog;
+        result.push({
+            date: new Date(dateString),
+            gachaLog: gachaLog
+        });
     });
     return result;
 }
