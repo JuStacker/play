@@ -11,6 +11,8 @@ permissions:
 jobs:
   run-simulation:
     runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Seoul
     steps:
       - uses: actions/checkout@v3
 
