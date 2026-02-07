@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Log = void 0;
 class Log {
+    // static isDebug: boolean = false;
     static log(...message) {
         if (!this.isDebug)
             return;
@@ -14,5 +15,4 @@ class Log {
     }
 }
 exports.Log = Log;
-// static isDebug: boolean = true;
-Log.isDebug = false;
+Log.isDebug = true;

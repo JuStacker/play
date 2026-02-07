@@ -33,31 +33,18 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeGachaLog = writeGachaLog;
+exports.readGachaV2Log = readGachaV2Log;
 const fs = __importStar(require("fs"));
-const log_1 = require("./log");
-function writeGachaLog(aCharacter, aWeapon, bCharacter, bWeapon) {
-    const result = {
-        aCharacter: aCharacter.toLog(),
-        aWeapon: aWeapon.toLog(),
-        bCharacter: bCharacter.toLog(),
-        bWeapon: bWeapon.toLog()
-    };
-    logToResult(result);
-    fs.appendFileSync("zzzGachaV2.txt", `"${new Date().toISOString()}": ${JSON.stringify(result)}, \n`);
-}
-function logToResult(gachaLog) {
-    log_1.Log.table({
-        "A 캐릭터": toObj(gachaLog.aCharacter),
-        "B 캐릭터": toObj(gachaLog.bCharacter),
-        "A 무기": toObj(gachaLog.aWeapon),
-        "B 무기": toObj(gachaLog.bWeapon),
+function readGachaV2Log(filePath) {
+    const result = {};
+    const logString = fs.readFileSync(filePath, 'utf-8');
+    logString.replaceAll('\r', '').split('\n').forEach((log) => {
+        if (log.length == 0) {
+            return;
+        }
+        const jsonString = `{${log.substring(0, log.lastIndexOf(','))}}`;
+        const [[dateString, gachaLog]] = Object.entries(JSON.parse(jsonString));
+        result[dateString] = gachaLog;
     });
-    function toObj(resultLog) {
-        return {
-            "픽업까지 뽑은 횟수": resultLog.pickupPityCount,
-            "픽뚫 여부": resultLog.isWin ? "반천" : "픽뚫",
-            "A등급 뽑은 횟수": resultLog.aCount,
-        };
-    }
+    return result;
 }

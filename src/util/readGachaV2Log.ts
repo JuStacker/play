@@ -10,7 +10,7 @@ export function readGachaV2Log(filePath: string): {  [date: string]: GachaLog } 
         return;
       }
       
-      const jsonString = `{${log.substring(log.lastIndexOf(','))}}`;
+      const jsonString = `{${log.substring(0, log.lastIndexOf(','))}}`;
       const [[dateString, gachaLog]] = Object.entries(JSON.parse(jsonString)) as any;
       result[dateString] = gachaLog;
     });
