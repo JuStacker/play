@@ -67,12 +67,15 @@ function toTimeSlot(iso: string): string {
 
 function calcStats(results: GachaResult[], simCount: number) {
   const avgPity =
-    results.reduce((a, b) => a + b.pickupPityCount, 0) / results.length
+    fl(results.reduce((a, b) => a + b.pickupPityCount, 0) / results.length);
 
   const winRate =
-    results.filter(r => r.isWin).length / results.length
+    fl(results.filter(r => r.isWin).length / results.length);
 
   return { avgPity, winRate, simCount }
+}
+function fl(num: number): number {
+  return Math.floor(num * 100) / 100;
 }
 
 
