@@ -35,6 +35,8 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 const path = __importStar(require("path"));
 const readFile_1 = require("./log/readFile");
+const getHourKey_1 = require("./util/getHourKey");
+const getHourMinuteKey_1 = require("./util/getHourMinuteKey");
 // 파일 경로 설정 (현재 파일 기준으로 같은 디렉토리의 example.txt)
 const filePath = path.join('results.txt');
 showLog();
@@ -57,7 +59,7 @@ function showLog() {
 function summarizeByHourMinute(stats) {
     const grouped = new Map();
     for (const stat of stats) {
-        const key = getHourMinuteKey(stat.date);
+        const key = (0, getHourMinuteKey_1.getHourMinuteKey)(stat.date);
         if (!grouped.has(key)) {
             grouped.set(key, []);
         }
@@ -85,7 +87,7 @@ function summarizeByHourMinute(stats) {
 function summarizeByHour(stats) {
     const grouped = new Map();
     for (const stat of stats) {
-        const key = getHourKey(stat.date);
+        const key = (0, getHourKey_1.getHourKey)(stat.date);
         if (!grouped.has(key)) {
             grouped.set(key, []);
         }
@@ -110,23 +112,6 @@ function summarizeByHour(stats) {
     result.sort((a, b) => a.time.localeCompare(b.time));
     return result;
 }
-/**
- * 시:분 단위로 10분 내림한 문자열 반환 (UTC 기준)
- * 예: 17:23 → "17:20"
- */
-function getHourMinuteKey(date) {
-    const hours = date.getHours(); // ✅ 한국 시간 기준
-    const minutes = date.getMinutes();
-    const roundedMinutes = minutes - (minutes % 10);
-    const hh = String(hours).padStart(2, '0');
-    const mm = String(roundedMinutes).padStart(2, '0');
-    return `${hh}:${mm}`;
-}
-function getHourKey(date) {
-    const hours = date.getHours(); // ✅ 한국 시간 기준
-    const hh = String(hours).padStart(2, '0');
-    return `${hh}:00`;
-}
 // 점수 계산 함수
 function scoreTime(d, { maxAvg, maxWinRate, maxSignals }) {
     const avg = d.sCountAvg;
@@ -136,7 +121,7 @@ function scoreTime(d, { maxAvg, maxWinRate, maxSignals }) {
     const normWinRate = sWinRate / maxWinRate;
     const normSignals = signals / maxSignals;
     // 가중합 (비율은 필요에 따라 조절 가능)
-    const score = normAvg * 0.1 + normWinRate * 0.5 + normSignals * 0.4;
+    const score = normAvg * 0.01 + normWinRate * 0.5 + normSignals * 0.4;
     return (score * 100);
 }
 function getRecommendation(data, maxCount = 10) {

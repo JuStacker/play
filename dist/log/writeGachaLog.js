@@ -33,6 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.writeGachaLog = writeGachaLog;
 const fs = __importStar(require("fs"));
 function writeGachaLog(aCharacter, aWeapon, bCharacter, bWeapon) {
     const result = {

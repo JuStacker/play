@@ -1,6 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const gachaSimulator_1 = require("./gachaSimulator/gachaSimulator");
+const GachaResult_1 = require("./gachaSimulator/GachaResult");
+const GachaResultType_1 = require("./gachaSimulator/GachaResultType");
+const rollCharacter_1 = require("./gachaSimulator/rollCharacter");
+const GachaState_1 = require("./gachaSimulator/GachaState");
+const log_1 = require("./log/log");
+const writeGachaLog_1 = require("./log/writeGachaLog");
+const rollWeapon_1 = require("./gachaSimulator/rollWeapon");
 /**
  * 어떤 시간대에 최적의 값이 나오는지 가챠 시뮬레이터를 만들어서 저장하기
  * 요구사항
@@ -10,5 +16,36 @@ const gachaSimulator_1 = require("./gachaSimulator/gachaSimulator");
  */
 main();
 function main() {
-    (0, gachaSimulator_1.gachaSimulator)();
+    simlateForGacha();
+}
+function simlateForGacha() {
+    const aCharacter = chararcterGacha();
+    const bCharacter = chararcterGacha();
+    const aWeapon = weaponGacha();
+    const bWeapon = weaponGacha();
+    (0, writeGachaLog_1.writeGachaLog)(aCharacter, aWeapon, bCharacter, bWeapon);
+}
+function chararcterGacha() {
+    const state = new GachaState_1.GachaState();
+    const result = new GachaResult_1.GachaResult();
+    for (let i = 0; i < 160; i++) {
+        const rollResult = (0, rollCharacter_1.rollCharacter)(state);
+        result.addRollResult(rollResult);
+        if (rollResult.result === GachaResultType_1.GachaResultType.S_Win)
+            break;
+    }
+    log_1.Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType_1.GachaResultType[r]).join(", "));
+    return result;
+}
+function weaponGacha() {
+    const state = new GachaState_1.GachaState();
+    const result = new GachaResult_1.GachaResult();
+    for (let i = 0; i < 160; i++) {
+        const rollResult = (0, rollWeapon_1.rollWeapon)(state);
+        result.addRollResult(rollResult);
+        if (rollResult.result === GachaResultType_1.GachaResultType.S_Win)
+            break;
+    }
+    log_1.Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType_1.GachaResultType[r]).join(", "));
+    return result;
 }
