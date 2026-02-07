@@ -3,7 +3,7 @@ import * as fs from "fs";
 import { GachaResultLog } from "./dto/GachaResultLog";
 
 
-function writeGachaLog(aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {
+export function writeGachaLog(aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {
     const result: GachaLog = {
         aCharacter: aCharacter.toLog(),
         aWeapon: aWeapon.toLog(),

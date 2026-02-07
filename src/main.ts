@@ -1,4 +1,10 @@
-import { gachaSimulator } from "./gachaSimulator/gachaSimulator";
+import { GachaResult } from "./gachaSimulator/GachaResult";
+import { GachaResultType } from "./gachaSimulator/GachaResultType";
+import { rollCharacter } from "./gachaSimulator/rollCharacter";
+import { GachaState } from "./gachaSimulator/GachaState";
+import { Log } from "./log/log";
+import { writeGachaLog } from "./log/writeGachaLog";
+import { rollWeapon } from "./gachaSimulator/rollWeapon";
 /**
  * 어떤 시간대에 최적의 값이 나오는지 가챠 시뮬레이터를 만들어서 저장하기
  * 요구사항
@@ -11,5 +17,48 @@ import { gachaSimulator } from "./gachaSimulator/gachaSimulator";
 main();
 
 function main():void {
-    gachaSimulator();
+    simlateForGacha();
+}
+
+
+function simlateForGacha(): void {
+    const aCharacter = chararcterGacha();
+    const bCharacter = chararcterGacha();
+
+    const aWeapon = weaponGacha(); 
+    const bWeapon = weaponGacha();
+
+
+    writeGachaLog(aCharacter, aWeapon, bCharacter, bWeapon);
+}
+
+
+function chararcterGacha(): GachaResult {
+    const state = new GachaState();
+    const result = new GachaResult();
+
+    for(let i = 0; i < 160; i++) {
+        const rollResult = rollCharacter(state);
+        result.addRollResult(rollResult);
+        if(rollResult.result === GachaResultType.S_Win) break;
+    }
+
+    Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
+
+    return result;
+}
+
+function weaponGacha(): GachaResult {
+    const state = new GachaState();
+    const result = new GachaResult();
+
+    for(let i = 0; i < 160; i++) {
+        const rollResult = rollWeapon(state);
+        result.addRollResult(rollResult);
+        if(rollResult.result === GachaResultType.S_Win) break;
+    }
+
+    Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
+
+    return result;
 }
