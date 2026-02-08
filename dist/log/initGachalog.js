@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.initGachalog = initGachalog;
 const getHourMinuteKey_1 = require("../util/getHourMinuteKey");
 const readGachaV2Log_1 = require("../util/readGachaV2Log");
-const log_1 = require("./log");
+const log_1 = require("../util/log");
 const GACHA_V2_LOG_PATH = "zzzGachaV2.txt";
 /**
  * 시간별 요약 정보를 업데이트 시키기

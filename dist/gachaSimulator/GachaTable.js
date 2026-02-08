@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GachaTable = void 0;
-const log_1 = require("../log/log");
+const log_1 = require("../util/log");
 const RollResult_1 = require("./RollResult");
 class GachaTable {
     constructor(sRate, aRate, bRate, winRate) {

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.rollCharacter = rollCharacter;
-const log_1 = require("../log/log");
+const log_1 = require("../util/log");
 const GachaTableGenerlator_1 = require("./GachaTableGenerlator");
 const toPercent_1 = require("../util/toPercent");
 const tableGenerlator = GachaTableGenerlator_1.GachaTableGenerlator.ofZZZCharacter();

@@ -34,6 +34,7 @@ var __importStar = (this && this.__importStar) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
+const Enviroment_1 = require("./Enviroment");
 const GACHA_LOG_PATH = "zzzGachaV2.txt";
 /* ================= 시나리오 ================= */
 const SCENARIOS = {
@@ -135,7 +136,7 @@ function main() {
     outputLines.push(analyze(rawData, 'AB_CHARACTER'));
     outputLines.push(analyze(rawData, 'AB_CHARACTER_A_WEAPON'));
     outputLines.push(analyze(rawData, 'AB_CHARACTER_AB_WEAPON'));
-    fs.writeFileSync('zzzGachaV2-info.txt', outputLines.join('\n'), 'utf-8');
+    fs.writeFileSync(Enviroment_1.Eniviroment.LOG_V2_INFO_PATH, outputLines.join('\n'), 'utf-8');
 }
 function readGachaLog(filePath) {
     const result = {};

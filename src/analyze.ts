@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+import { Eniviroment } from './Enviroment';
 
 const GACHA_LOG_PATH = "zzzGachaV2.txt";
 
@@ -181,7 +182,7 @@ function main() {
     outputLines.push(analyze(rawData, 'AB_CHARACTER_AB_WEAPON'));
 
     fs.writeFileSync(
-        'zzzGachaV2-info.txt',
+        Eniviroment.LOG_V2_INFO_PATH,
         outputLines.join('\n'),
         'utf-8'
     );
