@@ -7,13 +7,14 @@ import { rollWeapon } from "../gachaSimulator/rollWeapon";
 import { rollCharacter } from "../gachaSimulator/rollCharacter";
 import { writeSimulateLog } from "../simulateLog/writeSimulateLog";
 
-Log.log("cron app started");
+console.log("cron app started");
 
 // 10분마다 실행
 cron.schedule("*/10 * * * *", () => {
   const now = new Date().toLocaleString("ko-KR", {
     timeZone: "Asia/Seoul",
   });
+  console.log("----스케줄 실행",  now);
   
   main(Eniviroment.LOCAL_GACHA_LOG_V2_PATH);
 });
