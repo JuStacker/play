@@ -1,7 +1,4 @@
-import { Eniviroment } from "../Enviroment";
-import { TimeSlotFormate } from "./dto/TimeSlotFormate";
-import fs from "fs";
+import { SimulateResult } from "../dto/SimulateResult";
 
-export function updateTimeSlot(timeSlotFormat: TimeSlotFormate): void {
-    fs.writeFileSync(Eniviroment.TIME_SLOT_PATH, JSON.stringify(timeSlotFormat));
+export function updateTimeSlot(date, simulateResult: SimulateResult) {
 }

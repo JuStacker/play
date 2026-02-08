@@ -5,4 +5,4 @@ export interface TimeSlotFormate {
     AB_CHARACTER_AB_WEAPON : { [key: string]: Format },
 }
 
-type Format = {avgPity: number, winRate: number, simCount: number };
+type Format = { avgPity: number, winRate: number, simCount: number };
