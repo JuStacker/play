@@ -1,6 +1,7 @@
 import cron from "node-cron";
 import { Log } from "../util/log";
 import { main } from "../main";
+import { Eniviroment } from "../Enviroment";
 
 Log.log("cron app started");
 
@@ -10,7 +11,7 @@ cron.schedule("*/10 * * * *", () => {
     timeZone: "Asia/Seoul",
   });
   
-  main();
+  main(Eniviroment.LOCAL_GACHA_LOG_V2_PATH);
 });
 
 // 프로세스 유지

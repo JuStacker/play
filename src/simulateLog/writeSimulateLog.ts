@@ -6,7 +6,7 @@ import { SimulateResult } from "./dto/SimulateResult";
 import { Eniviroment } from "../Enviroment";
 
 
-export function writeSimulateLog(aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {
+export function writeSimulateLog(filePath: string ,aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {
     const result: SimulateResult = {
         aCharacter: aCharacter.toLog(),
         aWeapon: aWeapon.toLog(),
@@ -16,7 +16,7 @@ export function writeSimulateLog(aCharacter: GachaResult, aWeapon: GachaResult, 
 
     logToResult(result);
 
-    fs.appendFileSync(Eniviroment.GACHA_LOG_V2_PATH, `"${new Date().toISOString()}": ${JSON.stringify(result)}, \n`)
+    fs.appendFileSync(filePath, `"${new Date().toISOString()}": ${JSON.stringify(result)}, \n`)
 }
 
 
