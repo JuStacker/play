@@ -1,11 +1,11 @@
 import cron from "node-cron";
-import { Log } from "../util/log";
 import { Eniviroment } from "../Enviroment";
 import { GachaResult } from "../gachaSimulator/GachaResult";
 import { GachaState } from "../gachaSimulator/GachaState";
 import { rollWeapon } from "../gachaSimulator/rollWeapon";
 import { rollCharacter } from "../gachaSimulator/rollCharacter";
 import { writeSimulateLog } from "../simulateLog/writeSimulateLog";
+import * as fs from "fs";
 
 console.log("cron app started");
 
@@ -21,6 +21,8 @@ cron.schedule("*/10 * * * *", () => {
 
 // 프로세스 유지
 process.stdin.resume();
+fs.writeFileSync("pid.txt", process.pid.toString());
+console.log("cron started, pid:", process.pid);
 
 
 export function main(logPath: string):void {

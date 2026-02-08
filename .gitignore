@@ -31,3 +31,7 @@ pnpm-debug.log*
 # 테스트 관련
 coverage/
 jest-cache/
+
+pid.txt
+run.vbs
+stop.bat
