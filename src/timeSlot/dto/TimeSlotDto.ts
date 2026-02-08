@@ -4,6 +4,8 @@ import { TimeSlotFormat } from "../format/TimeSlotFormate";
 import { SlotDto } from "./SlotDto";
 import { SimulateGachaResult } from "../../simulateLog/dto/SimulateGachaResult";
 import { time } from "console";
+import { SimulateResult } from "../../dto/SimulateResult";
+import { toTimeSlot } from "../../util/toTimeSlot";
 
 export class TimeSlotDto {
   aCharacter: Map<string, SlotDto> = new Map();
@@ -105,6 +107,88 @@ export class TimeSlotDto {
     return result;
   }
 
+  get timeSlotFormate(): TimeSlotFormat {
+    const result = {
+      aCharacter: {},
+      abCharacter: {},
+      abCharacterAWeapon: {},
+      abCharacterAbWeapon: {},
+    };
+
+    for (const [timeRange, slotDto] of this.aCharacter.entries()) {
+      result.aCharacter[timeRange] = slotDto.toSlotFormat();
+    }
+    for (const [timeRange, slotDto] of this.abCharacter.entries()) {
+      result.abCharacter[timeRange] = slotDto.toSlotFormat();
+    }
+    for (const [timeRange, slotDto] of this.abCharacterAWeapon.entries()) {
+      result.abCharacterAWeapon[timeRange] = slotDto.toSlotFormat();
+    }
+    for (const [timeRange, slotDto] of this.abCharacterAbWeapon.entries()) {
+      result.abCharacterAbWeapon[timeRange] = slotDto.toSlotFormat();
+    }
+
+    return result;
+  }
+
+  addSimulate(date: Date, simulateResult: SimulateResult): void {
+    const timeRange = toTimeSlot(date.toISOString());
+
+    TimeSlotDto.addSimulateGacha(
+      this.aCharacter,
+      timeRange,
+      simulateResult.aCharacter,
+    );
+
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacter,
+      timeRange,
+      simulateResult.aCharacter,
+    );
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacter,
+      timeRange,
+      simulateResult.bCharacter,
+    );
+
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacterAWeapon,
+      timeRange,
+      simulateResult.aCharacter,
+    );
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacterAWeapon,
+      timeRange,
+      simulateResult.bCharacter,
+    );
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacterAWeapon,
+      timeRange,
+      simulateResult.aWeapon,
+    );
+
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacterAbWeapon,
+      timeRange,
+      simulateResult.aCharacter,
+    );
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacterAbWeapon,
+      timeRange,
+      simulateResult.bCharacter,
+    );
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacterAbWeapon,
+      timeRange,
+      simulateResult.aWeapon,
+    );
+    TimeSlotDto.addSimulateGacha(
+      this.abCharacterAbWeapon,
+      timeRange,
+      simulateResult.bWeapon,
+    );
+  }
+
   private static addSimulateGacha(
     target: Map<string, SlotDto>,
     timeRange: string,
@@ -114,29 +198,5 @@ export class TimeSlotDto {
       target.set(timeRange, SlotDto.empty());
     }
     target.get(timeRange).addBySimulateReuslt(simulateGachaResult);
-  }
-
-  get timeSlotFormate(): TimeSlotFormat {
-    const result = {
-      aCharacter: {},
-      abCharacter: {},
-      abCharacterAWeapon: {},
-      abCharacterAbWeapon: {},
-    };
-
-    for(const [timeRange, slotDto] of this.aCharacter.entries()) {
-        result.aCharacter[timeRange] = slotDto.toSlotFormat();
-    }
-    for(const [timeRange, slotDto] of this.abCharacter.entries()) {
-        result.abCharacter[timeRange] = slotDto.toSlotFormat();
-    }
-    for(const [timeRange, slotDto] of this.abCharacterAWeapon.entries()) {
-        result.abCharacterAWeapon[timeRange] = slotDto.toSlotFormat();
-    }
-    for(const [timeRange, slotDto] of this.abCharacterAbWeapon.entries()) {
-        result.abCharacterAbWeapon[timeRange] = slotDto.toSlotFormat();
-    }
-
-    return result;
   }
 }
