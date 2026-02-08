@@ -1,55 +1,63 @@
 {
-    // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
-    // 기존 특성에 대한 설명을 보려면 가리킵니다.
-    // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
-    "version": "0.2.0",
-    "configurations": [
-
-    
-
-        {
-            "name": "Yarn log",
-            "type": "node",
-            "request": "launch",
-            "runtimeExecutable": "yarn",
-            "runtimeArgs": ["log"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "sourceMaps": true
-        },
-        {
-            "name": "Yarn main",
-            "type": "node",
-            "request": "launch",
-            "runtimeExecutable": "yarn",
-            "runtimeArgs": ["start"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "sourceMaps": true
-        },
-        {
-            "name": "yarn init-log-v2",
-            "type": "node",
-            "request": "launch",
-            "runtimeExecutable": "yarn",
-            "runtimeArgs": ["init-log-v2"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "sourceMaps": true
-        },
-        {
-            "name": "Yarn init-time-slot",
-            "type": "node",
-            "request": "launch",
-            "runtimeExecutable": "yarn",
-            "runtimeArgs": ["init-time-slot"],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "internalConsoleOptions": "neverOpen",
-            "sourceMaps": true
-        },
-    ]
+  // IntelliSense를 사용하여 가능한 특성에 대해 알아보세요.
+  // 기존 특성에 대한 설명을 보려면 가리킵니다.
+  // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Yarn log",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["log"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true
+    },
+    {
+      "name": "Yarn main",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["start"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true
+    },
+    {
+      "name": "yarn init-log-v2",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["init-log-v2"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true
+    },
+    {
+      "name": "Yarn init-time-slot",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["init-time-slot"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true
+    },
+    {
+      "name": "Yarn analyze-for-v2",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["analyze-for-v2"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "sourceMaps": true
+    }
+  ]
 }
