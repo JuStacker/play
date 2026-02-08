@@ -1,10 +1,10 @@
 import fs from "fs";
-import { Log } from "../log/log";
+import { Log } from "../util/log";
 import { GachaResultType } from "./GachaResultType";
 import { GachaState } from "./GachaState";
 import { RollResult } from "./RollResult";
 import { GachaTableGenerlator } from "./GachaTableGenerlator";
-import { GachaResultLog } from "../log/dto/GachaResultLog";
+import { SimulateGachaResult } from "../simulateLog/dto/SimulateGachaResult";
 import { toPercent } from "../util/toPercent";
 
 

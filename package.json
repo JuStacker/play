@@ -7,7 +7,7 @@
     "log": "ts-node src/showLog.ts",
     "init-log-v2": "ts-node src/analyze.ts",
     "start": "ts-node src/main.ts",
-    "init-time-slot": "ts-node src/wrtieTimeSlotLog.ts"
+    "init-time-slot": "ts-node src/initTimeSlotByLog.ts"
   },
   "keywords": [],
   "author": "",

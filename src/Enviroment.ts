@@ -1,3 +1,4 @@
 export class Eniviroment {
+    static GACHA_LOG_V2_PATH = 'zzzGachaV2.txt';
     static TIME_SLOT_PATH = "zzzGachaV2-time-slot.json";
 }

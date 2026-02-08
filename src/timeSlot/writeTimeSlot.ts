@@ -1,7 +1,7 @@
 import { Eniviroment } from "../Enviroment";
-import { TimeSlotFormate } from "./dto/TimeSlotFormate";
+import { TimeSlotFormat } from "./format/TimeSlotFormate";
 import fs from "fs";
 
-export function writeTimeSlot(timeSlotFormat: TimeSlotFormate): void {
+export function writeTimeSlot(timeSlotFormat: TimeSlotFormat): void {
     fs.writeFileSync(Eniviroment.TIME_SLOT_PATH, JSON.stringify(timeSlotFormat));
 }

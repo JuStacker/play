@@ -1,8 +1,8 @@
 import { getHourMinuteKey } from "../util/getHourMinuteKey";
 import { GachaV2Log, readGachaV2Log } from "../util/readGachaV2Log";
-import { GachaLog } from "./dto/GachaLog";
-import { GachaResultLog } from "./dto/GachaResultLog";
-import { Log } from "./log";
+import { SimulateResult } from "../simulateLog/dto/SimulateResult";
+import { SimulateGachaResult } from "../simulateLog/dto/SimulateGachaResult";
+import { Log } from "../util/log";
 
 const GACHA_V2_LOG_PATH = "zzzGachaV2.txt";
 
@@ -43,7 +43,7 @@ interface MoniterProtocol {
  * 시:분(10분 단위) 기준으로 SignalStat들을 그룹화하고 요약 통계 생성
  */
 function summarizeByHourMinute(gachaLogs: GachaV2Log[]): SummaryResultManager {
-  const grouped = new Map<string, GachaLog[]>();
+  const grouped = new Map<string, SimulateResult[]>();
 
   for (const stat of gachaLogs) {
     const key = getHourMinuteKey(stat.date);
@@ -65,7 +65,7 @@ class SummaryResultManager {
     }
 
 
-    static of(grouped: Map<string, GachaLog[]>): SummaryResultManager {
+    static of(grouped: Map<string, SimulateResult[]>): SummaryResultManager {
         const result = new SummaryResultManager();
 
         for (const [time, group] of grouped.entries()) {
@@ -91,7 +91,7 @@ class SummaryResult {
     bWeaponTotal: GachaSummary;
 
 
-    constructor(time: string, Logs: GachaLog[]) {
+    constructor(time: string, Logs: SimulateResult[]) {
         this.time = time;
         this.aCharacterTotal = GachaSummary.of(Logs.map(log => log.aCharacter));
         this.bCharacterTotal = GachaSummary.of(Logs.map(log => log.bCharacter));
@@ -116,13 +116,13 @@ class GachaSummary {
     }
 
 
-    static of(gachaResultLogs: GachaResultLog[]): GachaSummary {
+    static of(gachaResultLogs: SimulateGachaResult[]): GachaSummary {
         const summary = new GachaSummary();
         summary.init(gachaResultLogs);
         return summary;
     }
 
-    private init(gachaResultLogs: GachaResultLog[]): void {
+    private init(gachaResultLogs: SimulateGachaResult[]): void {
         this.totalSimulate = gachaResultLogs.length;
         this.pickupPityAvg = gachaResultLogs.reduce((sum, log) => sum + log.pickupPityCount, 0) / this.totalSimulate;
         this.winCount = gachaResultLogs.filter(log => log.isWin).length;

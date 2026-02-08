@@ -1,4 +1,4 @@
-import { Log } from "../log/log";
+import { Log } from "../util/log";
 import { toPercent } from "../util/toPercent";
 import { GachaState } from "./GachaState";
 import { GachaTableGenerlator } from "./GachaTableGenerlator";

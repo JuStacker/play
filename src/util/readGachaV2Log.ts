@@ -1,4 +1,4 @@
-import { GachaLog } from "../log/dto/GachaLog";
+import { SimulateResult } from "../simulateLog/dto/SimulateResult";
 import * as fs from 'fs';
 
 export function readGachaV2Log(filePath: string): GachaV2Log[] {
@@ -22,5 +22,5 @@ export function readGachaV2Log(filePath: string): GachaV2Log[] {
 
   export interface GachaV2Log {
     date: Date,
-    gachaLog: GachaLog 
+    gachaLog: SimulateResult 
   }

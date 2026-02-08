@@ -1,4 +1,4 @@
-import { GachaResultLog } from "../log/dto/GachaResultLog";
+import { SimulateGachaResult } from "../simulateLog/dto/SimulateGachaResult";
 import { GachaResultType } from "./GachaResultType";
 import { RollResult } from "./RollResult";
 
@@ -13,7 +13,7 @@ export class GachaResult {
         this.logs.push(result.result);
     }
 
-    toLog(): GachaResultLog {
+    toLog(): SimulateGachaResult {
         let pickupPityCount = 0;
         let sPityCounts = [];
         let aPityCounts = [];

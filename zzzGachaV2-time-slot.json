@@ -1,34 +1,682 @@
 {
-  "A_CHARACTER": {
-    "06:00~06:09": { "avgPity": 52, "winRate": 0, "simCount": 1 },
-    "06:30~06:39": { "avgPity": 76, "winRate": 1, "simCount": 1 },
-    "06:50~06:59": { "avgPity": 80, "winRate": 1, "simCount": 1 },
-    "07:30~07:39": { "avgPity": 153, "winRate": 0, "simCount": 1 },
-    "07:50~07:59": { "avgPity": 54.5, "winRate": 0.5, "simCount": 2 },
-    "08:00~08:09": { "avgPity": 19, "winRate": 0, "simCount": 1 }
+  "aCharacter": {
+    "06:00~06:09": {
+      "avgPity": 52,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 52,
+      "totalWinCount": 0,
+      "totalACount": 6
+    },
+    "06:30~06:39": {
+      "avgPity": 76,
+      "winRate": 100,
+      "simCount": 1,
+      "totalPityCount": 76,
+      "totalWinCount": 1,
+      "totalACount": 11
+    },
+    "06:50~06:59": {
+      "avgPity": 80,
+      "winRate": 100,
+      "simCount": 1,
+      "totalPityCount": 80,
+      "totalWinCount": 1,
+      "totalACount": 11
+    },
+    "07:30~07:39": {
+      "avgPity": 153,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 153,
+      "totalWinCount": 0,
+      "totalACount": 20
+    },
+    "07:50~07:59": {
+      "avgPity": 54.5,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 109,
+      "totalWinCount": 1,
+      "totalACount": 11
+    },
+    "08:00~08:09": {
+      "avgPity": 19,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 19,
+      "totalWinCount": 0,
+      "totalACount": 1
+    },
+    "08:40~08:49": {
+      "avgPity": 60.5,
+      "winRate": 0,
+      "simCount": 2,
+      "totalPityCount": 121,
+      "totalWinCount": 0,
+      "totalACount": 12
+    },
+    "09:00~09:09": {
+      "avgPity": 77,
+      "winRate": 100,
+      "simCount": 2,
+      "totalPityCount": 154,
+      "totalWinCount": 2,
+      "totalACount": 21
+    },
+    "12:30~12:39": {
+      "avgPity": 153,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 153,
+      "totalWinCount": 0,
+      "totalACount": 18
+    },
+    "14:10~14:19": {
+      "avgPity": 13,
+      "winRate": 100,
+      "simCount": 1,
+      "totalPityCount": 13,
+      "totalWinCount": 1,
+      "totalACount": 1
+    },
+    "15:00~15:09": {
+      "avgPity": 76,
+      "winRate": 100,
+      "simCount": 1,
+      "totalPityCount": 76,
+      "totalWinCount": 1,
+      "totalACount": 12
+    },
+    "16:00~16:09": {
+      "avgPity": 78,
+      "winRate": 100,
+      "simCount": 1,
+      "totalPityCount": 78,
+      "totalWinCount": 1,
+      "totalACount": 10
+    },
+    "16:40~16:49": {
+      "avgPity": 79,
+      "winRate": 100,
+      "simCount": 1,
+      "totalPityCount": 79,
+      "totalWinCount": 1,
+      "totalACount": 10
+    },
+    "17:20~17:29": {
+      "avgPity": 154,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 154,
+      "totalWinCount": 0,
+      "totalACount": 17
+    },
+    "17:50~17:59": {
+      "avgPity": 31,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 31,
+      "totalWinCount": 0,
+      "totalACount": 3
+    },
+    "18:30~18:39": {
+      "avgPity": 120,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 120,
+      "totalWinCount": 0,
+      "totalACount": 15
+    },
+    "18:50~18:59": {
+      "avgPity": 81,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 81,
+      "totalWinCount": 0,
+      "totalACount": 10
+    },
+    "19:30~19:39": {
+      "avgPity": 154,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 154,
+      "totalWinCount": 0,
+      "totalACount": 19
+    },
+    "20:00~20:09": {
+      "avgPity": 79,
+      "winRate": 100,
+      "simCount": 1,
+      "totalPityCount": 79,
+      "totalWinCount": 1,
+      "totalACount": 11
+    },
+    "20:30~20:39": {
+      "avgPity": 57,
+      "winRate": 100,
+      "simCount": 1,
+      "totalPityCount": 57,
+      "totalWinCount": 1,
+      "totalACount": 9
+    },
+    "20:50~20:59": {
+      "avgPity": 104,
+      "winRate": 0,
+      "simCount": 1,
+      "totalPityCount": 104,
+      "totalWinCount": 0,
+      "totalACount": 12
+    }
   },
-  "AB_CHARACTER": {
-    "06:00~06:09": { "avgPity": 86.33, "winRate": 0, "simCount": 2 },
-    "06:30~06:39": { "avgPity": 76, "winRate": 1, "simCount": 2 },
-    "06:50~06:59": { "avgPity": 105.33, "winRate": 0.66, "simCount": 2 },
-    "07:30~07:39": { "avgPity": 102, "winRate": 0.33, "simCount": 2 },
-    "07:50~07:59": { "avgPity": 62, "winRate": 0.66, "simCount": 4 },
-    "08:00~08:09": { "avgPity": 38, "winRate": 0.33, "simCount": 2 }
+  "abCharacter": {
+    "06:00~06:09": {
+      "avgPity": 103.5,
+      "winRate": 0,
+      "simCount": 2,
+      "totalPityCount": 207,
+      "totalWinCount": 0,
+      "totalACount": 26
+    },
+    "06:30~06:39": {
+      "avgPity": 76,
+      "winRate": 100,
+      "simCount": 2,
+      "totalPityCount": 152,
+      "totalWinCount": 2,
+      "totalACount": 23
+    },
+    "06:50~06:59": {
+      "avgPity": 118,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 236,
+      "totalWinCount": 1,
+      "totalACount": 29
+    },
+    "07:30~07:39": {
+      "avgPity": 76.5,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 153,
+      "totalWinCount": 1,
+      "totalACount": 41
+    },
+    "07:50~07:59": {
+      "avgPity": 65.75,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 263,
+      "totalWinCount": 3,
+      "totalACount": 36
+    },
+    "08:00~08:09": {
+      "avgPity": 47.5,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 95,
+      "totalWinCount": 1,
+      "totalACount": 9
+    },
+    "08:40~08:49": {
+      "avgPity": 83,
+      "winRate": 25,
+      "simCount": 4,
+      "totalPityCount": 332,
+      "totalWinCount": 1,
+      "totalACount": 40
+    },
+    "09:00~09:09": {
+      "avgPity": 93.25,
+      "winRate": 50,
+      "simCount": 4,
+      "totalPityCount": 373,
+      "totalWinCount": 2,
+      "totalACount": 50
+    },
+    "12:30~12:39": {
+      "avgPity": 116,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 232,
+      "totalWinCount": 1,
+      "totalACount": 28
+    },
+    "14:10~14:19": {
+      "avgPity": 39,
+      "winRate": 100,
+      "simCount": 2,
+      "totalPityCount": 78,
+      "totalWinCount": 2,
+      "totalACount": 8
+    },
+    "15:00~15:09": {
+      "avgPity": 76.5,
+      "winRate": 100,
+      "simCount": 2,
+      "totalPityCount": 153,
+      "totalWinCount": 2,
+      "totalACount": 21
+    },
+    "16:00~16:09": {
+      "avgPity": 78,
+      "winRate": 100,
+      "simCount": 2,
+      "totalPityCount": 156,
+      "totalWinCount": 2,
+      "totalACount": 20
+    },
+    "16:40~16:49": {
+      "avgPity": 118.5,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 237,
+      "totalWinCount": 1,
+      "totalACount": 31
+    },
+    "17:20~17:29": {
+      "avgPity": 155,
+      "winRate": 0,
+      "simCount": 2,
+      "totalPityCount": 310,
+      "totalWinCount": 0,
+      "totalACount": 38
+    },
+    "17:50~17:59": {
+      "avgPity": 84,
+      "winRate": 0,
+      "simCount": 2,
+      "totalPityCount": 168,
+      "totalWinCount": 0,
+      "totalACount": 20
+    },
+    "18:30~18:39": {
+      "avgPity": 99,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 198,
+      "totalWinCount": 1,
+      "totalACount": 29
+    },
+    "18:50~18:59": {
+      "avgPity": 50,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 100,
+      "totalWinCount": 1,
+      "totalACount": 13
+    },
+    "19:30~19:39": {
+      "avgPity": 125.5,
+      "winRate": 0,
+      "simCount": 2,
+      "totalPityCount": 251,
+      "totalWinCount": 0,
+      "totalACount": 34
+    },
+    "20:00~20:09": {
+      "avgPity": 48.5,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 97,
+      "totalWinCount": 1,
+      "totalACount": 12
+    },
+    "20:30~20:39": {
+      "avgPity": 28.5,
+      "winRate": 100,
+      "simCount": 2,
+      "totalPityCount": 57,
+      "totalWinCount": 2,
+      "totalACount": 29
+    },
+    "20:50~20:59": {
+      "avgPity": 91,
+      "winRate": 50,
+      "simCount": 2,
+      "totalPityCount": 182,
+      "totalWinCount": 1,
+      "totalACount": 23
+    }
   },
-  "AB_CHARACTER_A_WEAPON": {
-    "06:00~06:09": { "avgPity": 88.66, "winRate": 0.16, "simCount": 3 },
-    "06:30~06:39": { "avgPity": 71.66, "winRate": 0.83, "simCount": 3 },
-    "06:50~06:59": { "avgPity": 103.5, "winRate": 0.66, "simCount": 3 },
-    "07:30~07:39": { "avgPity": 87.83, "winRate": 0.5, "simCount": 3 },
-    "07:50~07:59": { "avgPity": 72.16, "winRate": 0.58, "simCount": 6 },
-    "08:00~08:09": { "avgPity": 46, "winRate": 0.5, "simCount": 3 }
+  "abCharacterAWeapon": {
+    "06:00~06:09": {
+      "avgPity": 91,
+      "winRate": 33.33333333333333,
+      "simCount": 3,
+      "totalPityCount": 273,
+      "totalWinCount": 1,
+      "totalACount": 36
+    },
+    "06:30~06:39": {
+      "avgPity": 67.33333333333333,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 202,
+      "totalWinCount": 2,
+      "totalACount": 31
+    },
+    "06:50~06:59": {
+      "avgPity": 101.66666666666667,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 305,
+      "totalWinCount": 2,
+      "totalACount": 39
+    },
+    "07:30~07:39": {
+      "avgPity": 73.66666666666667,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 221,
+      "totalWinCount": 2,
+      "totalACount": 52
+    },
+    "07:50~07:59": {
+      "avgPity": 82.33333333333333,
+      "winRate": 50,
+      "simCount": 6,
+      "totalPityCount": 494,
+      "totalWinCount": 3,
+      "totalACount": 75
+    },
+    "08:00~08:09": {
+      "avgPity": 54,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 162,
+      "totalWinCount": 2,
+      "totalACount": 17
+    },
+    "08:40~08:49": {
+      "avgPity": 88.16666666666667,
+      "winRate": 33.33333333333333,
+      "simCount": 6,
+      "totalPityCount": 529,
+      "totalWinCount": 2,
+      "totalACount": 75
+    },
+    "09:00~09:09": {
+      "avgPity": 75.33333333333333,
+      "winRate": 66.66666666666666,
+      "simCount": 6,
+      "totalPityCount": 452,
+      "totalWinCount": 4,
+      "totalACount": 60
+    },
+    "12:30~12:39": {
+      "avgPity": 99.66666666666667,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 299,
+      "totalWinCount": 2,
+      "totalACount": 38
+    },
+    "14:10~14:19": {
+      "avgPity": 31.666666666666668,
+      "winRate": 100,
+      "simCount": 3,
+      "totalPityCount": 95,
+      "totalWinCount": 3,
+      "totalACount": 12
+    },
+    "15:00~15:09": {
+      "avgPity": 75.33333333333333,
+      "winRate": 100,
+      "simCount": 3,
+      "totalPityCount": 226,
+      "totalWinCount": 3,
+      "totalACount": 30
+    },
+    "16:00~16:09": {
+      "avgPity": 97.33333333333333,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 292,
+      "totalWinCount": 2,
+      "totalACount": 43
+    },
+    "16:40~16:49": {
+      "avgPity": 102,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 306,
+      "totalWinCount": 2,
+      "totalACount": 45
+    },
+    "17:20~17:29": {
+      "avgPity": 125.66666666666667,
+      "winRate": 33.33333333333333,
+      "simCount": 3,
+      "totalPityCount": 377,
+      "totalWinCount": 1,
+      "totalACount": 46
+    },
+    "17:50~17:59": {
+      "avgPity": 74.66666666666667,
+      "winRate": 33.33333333333333,
+      "simCount": 3,
+      "totalPityCount": 224,
+      "totalWinCount": 1,
+      "totalACount": 27
+    },
+    "18:30~18:39": {
+      "avgPity": 78.66666666666667,
+      "winRate": 33.33333333333333,
+      "simCount": 3,
+      "totalPityCount": 236,
+      "totalWinCount": 1,
+      "totalACount": 32
+    },
+    "18:50~18:59": {
+      "avgPity": 38.666666666666664,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 116,
+      "totalWinCount": 2,
+      "totalACount": 15
+    },
+    "19:30~19:39": {
+      "avgPity": 106,
+      "winRate": 33.33333333333333,
+      "simCount": 3,
+      "totalPityCount": 318,
+      "totalWinCount": 1,
+      "totalACount": 42
+    },
+    "20:00~20:09": {
+      "avgPity": 58.666666666666664,
+      "winRate": 33.33333333333333,
+      "simCount": 3,
+      "totalPityCount": 176,
+      "totalWinCount": 1,
+      "totalACount": 26
+    },
+    "20:30~20:39": {
+      "avgPity": 41,
+      "winRate": 100,
+      "simCount": 3,
+      "totalPityCount": 123,
+      "totalWinCount": 3,
+      "totalACount": 39
+    },
+    "20:50~20:59": {
+      "avgPity": 74.66666666666667,
+      "winRate": 66.66666666666666,
+      "simCount": 3,
+      "totalPityCount": 224,
+      "totalWinCount": 2,
+      "totalACount": 30
+    }
   },
-  "AB_CHARACTER_AB_WEAPON": {
-    "06:00~06:09": { "avgPity": 94.1, "winRate": 0.2, "simCount": 4 },
-    "06:30~06:39": { "avgPity": 77.3, "winRate": 0.7, "simCount": 4 },
-    "06:50~06:59": { "avgPity": 92.6, "winRate": 0.7, "simCount": 4 },
-    "07:30~07:39": { "avgPity": 88.3, "winRate": 0.5, "simCount": 4 },
-    "07:50~07:59": { "avgPity": 74.9, "winRate": 0.6, "simCount": 8 },
-    "08:00~08:09": { "avgPity": 57, "winRate": 0.5, "simCount": 4 }
+  "abCharacterAbWeapon": {
+    "06:00~06:09": {
+      "avgPity": 102.25,
+      "winRate": 25,
+      "simCount": 4,
+      "totalPityCount": 409,
+      "totalWinCount": 1,
+      "totalACount": 55
+    },
+    "06:30~06:39": {
+      "avgPity": 85.75,
+      "winRate": 50,
+      "simCount": 4,
+      "totalPityCount": 343,
+      "totalWinCount": 2,
+      "totalACount": 53
+    },
+    "06:50~06:59": {
+      "avgPity": 76.25,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 305,
+      "totalWinCount": 3,
+      "totalACount": 39
+    },
+    "07:30~07:39": {
+      "avgPity": 89,
+      "winRate": 50,
+      "simCount": 4,
+      "totalPityCount": 356,
+      "totalWinCount": 2,
+      "totalACount": 71
+    },
+    "07:50~07:59": {
+      "avgPity": 79,
+      "winRate": 62.5,
+      "simCount": 8,
+      "totalPityCount": 632,
+      "totalWinCount": 5,
+      "totalACount": 98
+    },
+    "08:00~08:09": {
+      "avgPity": 73.5,
+      "winRate": 50,
+      "simCount": 4,
+      "totalPityCount": 294,
+      "totalWinCount": 2,
+      "totalACount": 37
+    },
+    "08:40~08:49": {
+      "avgPity": 85.125,
+      "winRate": 37.5,
+      "simCount": 8,
+      "totalPityCount": 681,
+      "totalWinCount": 3,
+      "totalACount": 97
+    },
+    "09:00~09:09": {
+      "avgPity": 66.375,
+      "winRate": 75,
+      "simCount": 8,
+      "totalPityCount": 531,
+      "totalWinCount": 6,
+      "totalACount": 69
+    },
+    "12:30~12:39": {
+      "avgPity": 85.25,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 341,
+      "totalWinCount": 3,
+      "totalACount": 43
+    },
+    "14:10~14:19": {
+      "avgPity": 42.25,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 169,
+      "totalWinCount": 3,
+      "totalACount": 22
+    },
+    "15:00~15:09": {
+      "avgPity": 74,
+      "winRate": 100,
+      "simCount": 4,
+      "totalPityCount": 296,
+      "totalWinCount": 4,
+      "totalACount": 42
+    },
+    "16:00~16:09": {
+      "avgPity": 89.25,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 357,
+      "totalWinCount": 3,
+      "totalACount": 54
+    },
+    "16:40~16:49": {
+      "avgPity": 88.5,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 354,
+      "totalWinCount": 3,
+      "totalACount": 52
+    },
+    "17:20~17:29": {
+      "avgPity": 127.25,
+      "winRate": 25,
+      "simCount": 4,
+      "totalPityCount": 509,
+      "totalWinCount": 1,
+      "totalACount": 64
+    },
+    "17:50~17:59": {
+      "avgPity": 73,
+      "winRate": 50,
+      "simCount": 4,
+      "totalPityCount": 292,
+      "totalWinCount": 2,
+      "totalACount": 38
+    },
+    "18:30~18:39": {
+      "avgPity": 90.25,
+      "winRate": 25,
+      "simCount": 4,
+      "totalPityCount": 361,
+      "totalWinCount": 1,
+      "totalACount": 48
+    },
+    "18:50~18:59": {
+      "avgPity": 45.25,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 181,
+      "totalWinCount": 3,
+      "totalACount": 25
+    },
+    "19:30~19:39": {
+      "avgPity": 79.75,
+      "winRate": 50,
+      "simCount": 4,
+      "totalPityCount": 319,
+      "totalWinCount": 2,
+      "totalACount": 42
+    },
+    "20:00~20:09": {
+      "avgPity": 44,
+      "winRate": 50,
+      "simCount": 4,
+      "totalPityCount": 176,
+      "totalWinCount": 2,
+      "totalACount": 26
+    },
+    "20:30~20:39": {
+      "avgPity": 63.75,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 255,
+      "totalWinCount": 3,
+      "totalACount": 59
+    },
+    "20:50~20:59": {
+      "avgPity": 73,
+      "winRate": 75,
+      "simCount": 4,
+      "totalPityCount": 292,
+      "totalWinCount": 3,
+      "totalACount": 39
+    }
   }
 }

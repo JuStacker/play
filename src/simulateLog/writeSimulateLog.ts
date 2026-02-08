@@ -1,12 +1,13 @@
 import { GachaResult } from "../gachaSimulator/GachaResult";
 import * as fs from "fs";
-import { GachaResultLog } from "./dto/GachaResultLog";
-import { Log } from "./log";
-import { GachaLog } from "./dto/GachaLog";
+import { SimulateGachaResult } from "./dto/SimulateGachaResult";
+import { Log } from "../util/log";
+import { SimulateResult } from "./dto/SimulateResult";
+import { Eniviroment } from "../Enviroment";
 
 
-export function writeGachaLog(aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {
-    const result: GachaLog = {
+export function writeSimulateLog(aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {
+    const result: SimulateResult = {
         aCharacter: aCharacter.toLog(),
         aWeapon: aWeapon.toLog(),
         bCharacter: bCharacter.toLog(),
@@ -15,11 +16,11 @@ export function writeGachaLog(aCharacter: GachaResult, aWeapon: GachaResult, bCh
 
     logToResult(result);
 
-    fs.appendFileSync("zzzGachaV2.txt", `"${new Date().toISOString()}": ${JSON.stringify(result)}, \n`)
+    fs.appendFileSync(Eniviroment.GACHA_LOG_V2_PATH, `"${new Date().toISOString()}": ${JSON.stringify(result)}, \n`)
 }
 
 
-function logToResult(gachaLog: GachaLog): void {
+function logToResult(gachaLog: SimulateResult): void {
     Log.table({
         "A 캐릭터": toObj(gachaLog.aCharacter),
         "B 캐릭터": toObj(gachaLog.bCharacter),
@@ -28,7 +29,7 @@ function logToResult(gachaLog: GachaLog): void {
     });
 
 
-    function toObj(resultLog: GachaResultLog): object {
+    function toObj(resultLog: SimulateGachaResult): object {
         return {
             "픽업까지 뽑은 횟수": resultLog.pickupPityCount,
             "픽뚫 여부": resultLog.isWin ? "반천" : "픽뚫",

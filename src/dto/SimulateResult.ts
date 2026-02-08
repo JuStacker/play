@@ -1,20 +1,25 @@
-import { GachaResult } from "../gachaSimulator/GachaResult"
+import { GachaResult } from "../gachaSimulator/GachaResult";
+import { SimulateGachaResult } from "../simulateLog/dto/SimulateGachaResult";
 
 export class SimulateResult {
-    aCharacter: GachaResult
-    aWeapon: GachaResult
-    bCharacter: GachaResult
-    bWeapon: GachaResult
+  aCharacter: SimulateGachaResult;
+  aWeapon: SimulateGachaResult;
+  bCharacter: SimulateGachaResult;
+  bWeapon: SimulateGachaResult;
 
-    constructor(
-        aCharacter: GachaResult,
-        aWeapon: GachaResult,
-        bCharacter: GachaResult,
-        bWeapon: GachaResult
-    ) {
-        this.aCharacter = aCharacter;
-        this.aWeapon = aWeapon;
-        this.bCharacter = bCharacter;
-        this.bWeapon = bWeapon;
-    }
+  constructor(
+    aCharacter: SimulateGachaResult,
+    aWeapon: SimulateGachaResult,
+    bCharacter: SimulateGachaResult,
+    bWeapon: SimulateGachaResult,
+  ) {
+    this.aCharacter = aCharacter;
+    this.aWeapon = aWeapon;
+    this.bCharacter = bCharacter;
+    this.bWeapon = bWeapon;
+  }
+
+  static of({ aCharacter, aWeapon, bCharacter, bWeapon }) {
+    return new SimulateResult(aCharacter, aWeapon, bCharacter, bWeapon);
+  }
 }
