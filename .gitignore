@@ -33,5 +33,5 @@ coverage/
 jest-cache/
 
 pid.txt
-run.vbs
 stop.bat
+run.bat

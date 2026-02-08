@@ -1,0 +1,24 @@
+yarn run v1.22.22
+$ ts-node src/cron/cron10.ts ""
+cron app started
+cron started, pid: 18000
+^C일괄 작업을 끝내시겠습니까 (Y/N)? error Command failed with exit code 3221225786.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+yarn run v1.22.22
+$ ts-node src/cron/cron10.ts ""
+cron app started
+cron started, pid: 9872
+^C일괄 작업을 끝내시겠습니까 (Y/N)? error Command failed with exit code 3221225786.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+yarn run v1.22.22
+$ ts-node src/cron/cron10.ts ""
+cron app started
+cron started, pid: 32412
+^C일괄 작업을 끝내시겠습니까 (Y/N)? error Command failed with exit code 3221225786.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+yarn run v1.22.22
+$ ts-node src/cron/cron10.ts ""
+cron app started
+cron started, pid: 35076
+^C일괄 작업을 끝내시겠습니까 (Y/N)? error Command failed with exit code 3221225786.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
