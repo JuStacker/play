@@ -7,4 +7,5 @@ function updateTimeSlot(date, simulateResult) {
     const timeSlotDto = (0, readTimeSlot_1.readTimeSlot)();
     timeSlotDto.addSimulate(date, simulateResult);
     (0, writeTimeSlot_1.writeTimeSlot)(timeSlotDto.timeSlotFormate);
+    return timeSlotDto;
 }
