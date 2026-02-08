@@ -8,14 +8,16 @@
     "init-log-v2": "ts-node src/analyze.ts",
     "start": "ts-node src/main.ts",
     "init-time-slot": "ts-node src/initTimeSlotByLog.ts",
-    "analyze-for-v2": "ts-node src/analyzeForV2.ts"
+    "analyze-for-v2": "ts-node src/analyzeForV2.ts",
+    "cron": "ts-node src/cron/cron10.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "fast-xml-parser": "^5.0.6"
+    "fast-xml-parser": "^5.0.6",
+    "node-cron": "^4.2.1"
   },
   "devDependencies": {
     "@types/node": "^22.13.5"

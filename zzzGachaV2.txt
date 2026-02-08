@@ -49,3 +49,4 @@
 06:50~06:59 | 점수:55 | 평균 뽑기:76.3 | 승률:75 | 시뮬 횟수:4
 07:50~07:59 | 점수:54 | 평균 뽑기:79 | 승률:62.5 | 시뮬 횟수:8
 12:30~12:39 | 점수:52 | 평균 뽑기:85.3 | 승률:75 | 시뮬 횟수:4
+"2026-02-08T15:50:23.183Z": {"aCharacter":{"pickupPityCount":63,"isWin":true,"sPityCounts":[63],"aPityCounts":[9,11,16,18,28,32,42,51,52,62],"bCount":53,"aCount":10,"totalSignal":64},"aWeapon":{"pickupPityCount":99,"isWin":false,"sPityCounts":[67,99],"aPityCounts":[9,19,20,30,36,46,55,62,68,75,84,86,88,98],"bCount":84,"aCount":14,"totalSignal":100},"bCharacter":{"pickupPityCount":29,"isWin":true,"sPityCounts":[29],"aPityCounts":[9,19],"bCount":27,"aCount":2,"totalSignal":30},"bWeapon":{"pickupPityCount":65,"isWin":true,"sPityCounts":[65],"aPityCounts":[9,19,24,29,39,44,52,59],"bCount":57,"aCount":8,"totalSignal":66}}, 

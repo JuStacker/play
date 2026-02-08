@@ -16,7 +16,7 @@ import { rollWeapon } from "./gachaSimulator/rollWeapon";
 
 main();
 
-function main():void {
+export function main():void {
     simlateForGacha();
 }
 
