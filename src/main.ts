@@ -1,12 +1,5 @@
-import { GachaResult } from "./gachaSimulator/GachaResult";
-import { rollCharacter } from "./gachaSimulator/rollCharacter";
-import { GachaState } from "./gachaSimulator/GachaState";
-import { writeSimulateLog } from "./simulateLog/writeSimulateLog";
-import { rollWeapon } from "./gachaSimulator/rollWeapon";
 import { Eniviroment } from "./Enviroment";
-import { updateTimeSlot } from "./timeSlot/updateTimeSlot";
-import { SimulateResult } from "./dto/SimulateResult";
-import { analyzeByTimeSlot } from "./analyze/analyzeByTimeSlot";
+import { simlateForGacha } from "./simulate/simlateForGacha";
 /**
  * 어떤 시간대에 최적의 값이 나오는지 가챠 시뮬레이터를 만들어서 저장하기
  * 요구사항
@@ -20,53 +13,4 @@ main(Eniviroment.GACHA_LOG_V2_PATH);
 
 export function main(logPath: string, date: Date = new Date()):void {
     simlateForGacha(logPath, date);
-}
-
-
-function simlateForGacha(logPath: string, date: Date): void {
-    const aCharacter = chararcterGacha();
-    const bCharacter = chararcterGacha();
-
-    const aWeapon = weaponGacha(); 
-    const bWeapon = weaponGacha();
-
-    const simulateResult = new SimulateResult(aCharacter.toLog(), bCharacter.toLog(), aWeapon.toLog(), bWeapon.toLog());
-
-    writeSimulateLog(logPath, date, simulateResult);
-
-    const timeSlotDto = updateTimeSlot(date, simulateResult);
-
-    analyzeByTimeSlot(timeSlotDto);
-}
-
-
-function chararcterGacha(): GachaResult {
-    const state = new GachaState();
-    const result = new GachaResult();
-
-    for(let i = 0; i < 180; i++) {
-        // Log.log(`${i + 1}번째 뽑기:`, state);
-        result.addRollResult(rollCharacter(state));
-        // Log.log(` 결과 -> `, GachaResultType[result.logs[result.logs.length -1]], state);
-        if(result.hasWinS()) break;
-    }
-
-    // Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
-
-    return result;
-}
-
-function weaponGacha(): GachaResult {
-    const state = new GachaState();
-    const result = new GachaResult();
-
-    for(let i = 0; i < 160; i++) {
-        result.addRollResult(rollWeapon(state));
-        // Log.log(`${i + 1}번째 뽑기 결과:`, GachaResultType[result.logs[result.logs.length -1]]);
-        if(result.hasWinS()) break;
-    }
-
-    // Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
-
-    return result;
 }

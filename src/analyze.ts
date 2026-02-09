@@ -182,7 +182,7 @@ function main() {
     outputLines.push(analyze(rawData, 'AB_CHARACTER_AB_WEAPON'));
 
     fs.writeFileSync(
-        Eniviroment.LOG_V2_INFO_PATH,
+        Eniviroment.ANALYZE_PATH,
         outputLines.join('\n'),
         'utf-8'
     );

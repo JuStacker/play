@@ -16,11 +16,11 @@
       "sourceMaps": true
     },
     {
-      "name": "Yarn main",
+      "name": "Yarn start:local",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "yarn",
-      "runtimeArgs": ["start"],
+      "runtimeArgs": ["start:local"],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",

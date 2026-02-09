@@ -60,7 +60,7 @@ function analyzeByTimeSlot(timeSlotDto) {
         formatTable(AB_CH_A_WP_TITLE, abChaWpAnlyzeList),
         formatTable(AB_CH_AB_WP_TITLE, abChabWpAnlyzeList),
     ];
-    fs.writeFileSync(Enviroment_1.Eniviroment.GACHA_LOG_V2_PATH, outputLines.join('\n'), 'utf-8');
+    fs.writeFileSync(Enviroment_1.Eniviroment.ANALYZE_PATH, outputLines.join('\n'), 'utf-8');
 }
 function showLog(title, maxSlot, analyzeTimeSlots) {
     log_1.Log.log("\n" + title);

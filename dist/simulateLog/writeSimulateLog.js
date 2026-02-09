@@ -36,15 +36,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.writeSimulateLog = writeSimulateLog;
 const fs = __importStar(require("fs"));
 const log_1 = require("../util/log");
-function writeSimulateLog(filePath, aCharacter, aWeapon, bCharacter, bWeapon) {
-    const result = {
-        aCharacter: aCharacter.toLog(),
-        aWeapon: aWeapon.toLog(),
-        bCharacter: bCharacter.toLog(),
-        bWeapon: bWeapon.toLog()
-    };
+function writeSimulateLog(filePath, date, result) {
     logToResult(result);
-    fs.appendFileSync(filePath, `"${new Date().toISOString()}": ${JSON.stringify(result)}, \n`);
+    fs.appendFileSync(filePath, `"${date.toISOString()}": ${JSON.stringify(result)}, \n`);
 }
 function logToResult(gachaLog) {
     log_1.Log.table({

@@ -9,11 +9,6 @@ pnpm-lock.yaml
 *.d.ts
 
 # 환경 설정 파일
-.env
-.env.local
-.env.development
-.env.production
-.env.test
 
 # VS Code 설정 파일
 .vscode/

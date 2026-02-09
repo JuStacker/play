@@ -37,7 +37,7 @@ export function analyzeByTimeSlot(timeSlotDto: TimeSlotDto): void {
     formatTable(AB_CH_AB_WP_TITLE, abChabWpAnlyzeList),
   ];
   fs.writeFileSync(
-      Eniviroment.GACHA_LOG_V2_PATH,
+      Eniviroment.ANALYZE_PATH,
       outputLines.join('\n'),
       'utf-8'
   );
