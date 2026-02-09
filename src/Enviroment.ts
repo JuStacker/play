@@ -12,6 +12,7 @@ export class Eniviroment {
   static ANALYZE_PATH: string;
   static CLOD_GACHA_LOG_V2_PATH: string;
   static LOCAL_GACHA_LOG_V2_PATH: string;
+  static LOG_LEVEL: string;
 
   static init({
     GACHA_LOG_V2_PATH,
@@ -19,12 +20,14 @@ export class Eniviroment {
     ANALYZE_PATH,
     CLOD_GACHA_LOG_V2_PATH,
     LOCAL_GACHA_LOG_V2_PATH,
+    LOG_LEVEL,
   }) {
     this.GACHA_LOG_V2_PATH = GACHA_LOG_V2_PATH;
     this.TIME_SLOT_PATH = TIME_SLOT_PATH;
     this.ANALYZE_PATH = ANALYZE_PATH;
     this.CLOD_GACHA_LOG_V2_PATH = CLOD_GACHA_LOG_V2_PATH;
     this.LOCAL_GACHA_LOG_V2_PATH = LOCAL_GACHA_LOG_V2_PATH;
+    this.LOG_LEVEL = LOG_LEVEL;
   }
 }
 
