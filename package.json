@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start:local": "cross-env NODE_ENV=local yarn start",
+    "init:local": "cross-env NODE_ENV=local yarn init-time-slot",
     "start": "ts-node src/main.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "log": "ts-node src/showLog.ts",
