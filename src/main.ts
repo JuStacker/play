@@ -1,8 +1,6 @@
 import { GachaResult } from "./gachaSimulator/GachaResult";
-import { GachaResultType } from "./gachaSimulator/GachaResultType";
 import { rollCharacter } from "./gachaSimulator/rollCharacter";
 import { GachaState } from "./gachaSimulator/GachaState";
-import { Log } from "./util/log";
 import { writeSimulateLog } from "./simulateLog/writeSimulateLog";
 import { rollWeapon } from "./gachaSimulator/rollWeapon";
 import { Eniviroment } from "./Enviroment";
@@ -17,12 +15,12 @@ import { Eniviroment } from "./Enviroment";
 
 main(Eniviroment.GACHA_LOG_V2_PATH);
 
-export function main(logPath: string):void {
-    simlateForGacha(logPath);
+export function main(logPath: string, date: Date = new Date()):void {
+    simlateForGacha(logPath, date);
 }
 
 
-function simlateForGacha(logPath: string): void {
+function simlateForGacha(logPath: string, date: Date): void {
     const aCharacter = chararcterGacha();
     const bCharacter = chararcterGacha();
 
@@ -30,7 +28,7 @@ function simlateForGacha(logPath: string): void {
     const bWeapon = weaponGacha();
 
 
-    writeSimulateLog(logPath, aCharacter, aWeapon, bCharacter, bWeapon);
+    writeSimulateLog(logPath, date, aCharacter, aWeapon, bCharacter, bWeapon);
 }
 
 
