@@ -5,8 +5,8 @@ import { simlateForGacha } from "../simulate/simlateForGacha";
 
 console.log("cron app started");
 
-// 10분마다 실행
-cron.schedule("*/10 * * * *", () => {
+// ?분마다 실행
+cron.schedule("*/1 * * * *", () => {
   const now = new Date().toLocaleString("ko-KR", {
     timeZone: "Asia/Seoul",
   });

@@ -41,8 +41,8 @@ const Enviroment_1 = require("../Enviroment");
 const fs = __importStar(require("fs"));
 const simlateForGacha_1 = require("../simulate/simlateForGacha");
 console.log("cron app started");
-// 10분마다 실행
-node_cron_1.default.schedule("*/10 * * * *", () => {
+// ?분마다 실행
+node_cron_1.default.schedule("*/1 * * * *", () => {
     const now = new Date().toLocaleString("ko-KR", {
         timeZone: "Asia/Seoul",
     });
