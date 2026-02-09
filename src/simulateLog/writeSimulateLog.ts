@@ -5,14 +5,7 @@ import { Log } from "../util/log";
 import { SimulateResult } from "./dto/SimulateResult";
 
 
-export function writeSimulateLog(filePath: string, date: Date ,aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {
-    const result: SimulateResult = {
-        aCharacter: aCharacter.toLog(),
-        aWeapon: aWeapon.toLog(),
-        bCharacter: bCharacter.toLog(),
-        bWeapon: bWeapon.toLog()
-    };
-
+export function writeSimulateLog(filePath: string, date: Date ,result: SimulateResult): void {
     logToResult(result);
 
     fs.appendFileSync(filePath, `"${date.toISOString()}": ${JSON.stringify(result)}, \n`)

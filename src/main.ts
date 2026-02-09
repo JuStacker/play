@@ -4,6 +4,9 @@ import { GachaState } from "./gachaSimulator/GachaState";
 import { writeSimulateLog } from "./simulateLog/writeSimulateLog";
 import { rollWeapon } from "./gachaSimulator/rollWeapon";
 import { Eniviroment } from "./Enviroment";
+import { updateTimeSlot } from "./timeSlot/updateTimeSlot";
+import { SimulateResult } from "./dto/SimulateResult";
+import { analyzeByTimeSlot } from "./analyze/analyzeByTimeSlot";
 /**
  * 어떤 시간대에 최적의 값이 나오는지 가챠 시뮬레이터를 만들어서 저장하기
  * 요구사항
@@ -27,8 +30,13 @@ function simlateForGacha(logPath: string, date: Date): void {
     const aWeapon = weaponGacha(); 
     const bWeapon = weaponGacha();
 
+    const simulateResult = new SimulateResult(aCharacter.toLog(), bCharacter.toLog(), aWeapon.toLog(), bWeapon.toLog());
 
-    writeSimulateLog(logPath, date, aCharacter, aWeapon, bCharacter, bWeapon);
+    writeSimulateLog(logPath, date, simulateResult);
+
+    const timeSlotDto = updateTimeSlot(date, simulateResult);
+
+    analyzeByTimeSlot(timeSlotDto);
 }
 
 
