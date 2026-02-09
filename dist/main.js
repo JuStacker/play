@@ -28,7 +28,7 @@ function simlateForGacha(logPath) {
 function chararcterGacha() {
     const state = new GachaState_1.GachaState();
     const result = new GachaResult_1.GachaResult();
-    for (let i = 0; i < 160; i++) {
+    for (let i = 0; i < 180; i++) {
         // Log.log(`${i + 1}번째 뽑기:`, state);
         result.addRollResult((0, rollCharacter_1.rollCharacter)(state));
         // Log.log(` 결과 -> `, GachaResultType[result.logs[result.logs.length -1]], state);

@@ -3,7 +3,6 @@ import * as fs from "fs";
 import { SimulateGachaResult } from "./dto/SimulateGachaResult";
 import { Log } from "../util/log";
 import { SimulateResult } from "./dto/SimulateResult";
-import { Eniviroment } from "../Enviroment";
 
 
 export function writeSimulateLog(filePath: string ,aCharacter: GachaResult, aWeapon: GachaResult, bCharacter: GachaResult, bWeapon: GachaResult): void {

@@ -38,7 +38,7 @@ function chararcterGacha(): GachaResult {
     const state = new GachaState();
     const result = new GachaResult();
 
-    for(let i = 0; i < 160; i++) {
+    for(let i = 0; i < 180; i++) {
         // Log.log(`${i + 1}번째 뽑기:`, state);
         result.addRollResult(rollCharacter(state));
         // Log.log(` 결과 -> `, GachaResultType[result.logs[result.logs.length -1]], state);
