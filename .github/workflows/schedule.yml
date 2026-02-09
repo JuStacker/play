@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TZ: Asia/Seoul
+
     steps:
       - uses: actions/checkout@v3
 
@@ -20,6 +21,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
       - name: Run Simulation
         env:
