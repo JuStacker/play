@@ -1,16 +1,7 @@
-import { table } from "console";
-import * as fs from "fs";
 import { GachaState } from "./GachaState";
 import { GachaTable } from "./GachaTable";
-import { GachaResult } from "./GachaResult";
 
 export class GachaTableGenerlator {
-    // sofPityStart = 74;
-    // hardPity = 90;
-    // baseSRate = 0.006; // 0.6%
-    // baseARate = 0.072; // 7.2%
-    // stepIncereaseRate = 0.06; // 6%
-
     sofPityStart: number;
     hardPity: number;
     baseSRate: number; 
