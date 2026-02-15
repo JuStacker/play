@@ -49,11 +49,11 @@
       "sourceMaps": true
     },
     {
-      "name": "Yarn analyze-for-v2",
+      "name": "Yarn analyze:local",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "yarn",
-      "runtimeArgs": ["analyze-for-v2"],
+      "runtimeArgs": ["analyze:local"],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
