@@ -7,7 +7,7 @@ import { rollWeapon } from "../gachaSimulator/rollWeapon";
 import { writeSimulateLog } from "../simulateLog/writeSimulateLog";
 import { updateTimeSlot } from "../timeSlot/updateTimeSlot";
 
-export function simlateForGacha(logPath: string, date: Date): void {
+export function simlateForGacha(logPath: string, date: Date, isSkipAnalyze = false): void {
     const aCharacter = chararcterGacha();
     const bCharacter = chararcterGacha();
 
@@ -15,6 +15,8 @@ export function simlateForGacha(logPath: string, date: Date): void {
     const bWeapon = weaponGacha();
 
     const simulateResult = new SimulateResult(aCharacter.toLog(), bCharacter.toLog(), aWeapon.toLog(), bWeapon.toLog());
+
+    if(!isSkipAnalyze) return
 
     writeSimulateLog(logPath, date, simulateResult);
 

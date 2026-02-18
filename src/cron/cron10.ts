@@ -22,5 +22,5 @@ console.log("cron started, pid:", process.pid);
 
 
 function main(logPath: string, date = new Date()):void {
-    simlateForGacha(logPath, date);
+    simlateForGacha(logPath, date, true);
 }
