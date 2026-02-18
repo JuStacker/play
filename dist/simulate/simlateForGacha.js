@@ -15,9 +15,9 @@ function simlateForGacha(logPath, date, isSkipAnalyze = false) {
     const aWeapon = weaponGacha();
     const bWeapon = weaponGacha();
     const simulateResult = new SimulateResult_1.SimulateResult(aCharacter.toLog(), bCharacter.toLog(), aWeapon.toLog(), bWeapon.toLog());
+    (0, writeSimulateLog_1.writeSimulateLog)(logPath, date, simulateResult);
     if (isSkipAnalyze)
         return;
-    (0, writeSimulateLog_1.writeSimulateLog)(logPath, date, simulateResult);
     const timeSlotDto = (0, updateTimeSlot_1.updateTimeSlot)(date, simulateResult);
     (0, analyzeByTimeSlot_1.analyzeByTimeSlot)(timeSlotDto);
 }
