@@ -54,5 +54,5 @@ process.stdin.resume();
 fs.writeFileSync("pid.txt", process.pid.toString());
 console.log("cron started, pid:", process.pid);
 function main(logPath, date = new Date()) {
-    (0, simlateForGacha_1.simlateForGacha)(logPath, date);
+    (0, simlateForGacha_1.simlateForGacha)(logPath, date, true);
 }

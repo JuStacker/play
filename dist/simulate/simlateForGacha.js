@@ -9,12 +9,14 @@ const rollCharacter_1 = require("../gachaSimulator/rollCharacter");
 const rollWeapon_1 = require("../gachaSimulator/rollWeapon");
 const writeSimulateLog_1 = require("../simulateLog/writeSimulateLog");
 const updateTimeSlot_1 = require("../timeSlot/updateTimeSlot");
-function simlateForGacha(logPath, date) {
+function simlateForGacha(logPath, date, isSkipAnalyze = false) {
     const aCharacter = chararcterGacha();
     const bCharacter = chararcterGacha();
     const aWeapon = weaponGacha();
     const bWeapon = weaponGacha();
     const simulateResult = new SimulateResult_1.SimulateResult(aCharacter.toLog(), bCharacter.toLog(), aWeapon.toLog(), bWeapon.toLog());
+    if (!isSkipAnalyze)
+        return;
     (0, writeSimulateLog_1.writeSimulateLog)(logPath, date, simulateResult);
     const timeSlotDto = (0, updateTimeSlot_1.updateTimeSlot)(date, simulateResult);
     (0, analyzeByTimeSlot_1.analyzeByTimeSlot)(timeSlotDto);
