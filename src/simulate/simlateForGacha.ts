@@ -16,7 +16,7 @@ export function simlateForGacha(logPath: string, date: Date, isSkipAnalyze = fal
 
     const simulateResult = new SimulateResult(aCharacter.toLog(), bCharacter.toLog(), aWeapon.toLog(), bWeapon.toLog());
 
-    if(!isSkipAnalyze) return
+    if(isSkipAnalyze) return
 
     writeSimulateLog(logPath, date, simulateResult);
 
