@@ -8,7 +8,10 @@ export function analyzeForV2() {
 	const zzzSections = analyzeByTimeSlot(readTimeSlot());
 	const gf2Sections = analyzeGF2ByTimeSlot(readGF2TimeSlot());
 
-	writeHtmlReport("가챠 시간대 분석", [...zzzSections, ...gf2Sections]);
+	writeHtmlReport("가챠 시간대 분석", [
+		{ game: "ZZZ", sections: zzzSections },
+		{ game: "GF2", sections: gf2Sections },
+	]);
 }
 
 if (require.main === module) {

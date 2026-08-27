@@ -1,5 +1,8 @@
 # play
 
+# 요약
+https://justacker.github.io/play/
+
 ## 요구사항
 
 - Node.js: `.nvmrc` 참고 (`nvm use`)
