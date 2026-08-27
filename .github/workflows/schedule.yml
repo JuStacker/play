@@ -34,8 +34,15 @@ jobs:
           NODE_ENV: cloud
         run: pnpm start
 
-      - name: Generate Log Page
-        run: pnpm log
+      - name: Build Time Slot
+        env:
+          NODE_ENV: cloud
+        run: pnpm init-time-slot
+
+      - name: Analyze And Generate Page
+        env:
+          NODE_ENV: cloud
+        run: pnpm analyze-for-v2
 
       - name: Commit results
         run: |

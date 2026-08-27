@@ -4,6 +4,7 @@ import { TimeSlotDto } from "../timeSlot/dto/TimeSlotDto";
 import { inverseRelativeScore } from "../util/inverseRelativeScore";
 import { Log } from "../util/log";
 import { relativeScore } from "../util/relativeScore";
+import { writeHtmlReport } from "../util/htmlReport";
 import { AnalyzeTimeSlotDto } from "./dto/AnalyzeTimeSlot";
 import { TotalAnalyze } from "./dto/TotalAnalyze";
 import * as fs from "fs";
@@ -36,6 +37,13 @@ export function analyzeByTimeSlot(timeSlotDto: TimeSlotDto): void {
 		formatTable(AB_CH_AB_WP_TITLE, abChabWpAnlyzeList),
 	];
 	fs.writeFileSync(Eniviroment.ANALYZE_PATH, outputLines.join("\n"), "utf-8");
+
+	writeHtmlReport("가챠 시간대 분석", [
+		{ title: A_CH_TITLE, data: aAnalyzeList.slice(0, 10).map((d) => d.analyzeTimeFormat) },
+		{ title: AB_CH_TITLE, data: abAnalyzeList.slice(0, 10).map((d) => d.analyzeTimeFormat) },
+		{ title: AB_CH_A_WP_TITLE, data: abChaWpAnlyzeList.slice(0, 10).map((d) => d.analyzeTimeFormat) },
+		{ title: AB_CH_AB_WP_TITLE, data: abChabWpAnlyzeList.slice(0, 10).map((d) => d.analyzeTimeFormat) },
+	]);
 }
 
 function showLog(

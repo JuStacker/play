@@ -12,8 +12,6 @@
 		"init:local": "cross-env NODE_ENV=local pnpm init-time-slot && pnpm analyze-for-v2",
 		"analyze:local": "cross-env NODE_ENV=local pnpm analyze-for-v2",
 		"start": "ts-node src/main.ts",
-		"log": "ts-node src/showLog.ts",
-		"init-log-v2": "ts-node src/analyze.ts",
 		"init-time-slot": "ts-node src/initTimeSlotByLog.ts",
 		"analyze-for-v2": "ts-node src/analyzeForV2.ts",
 		"cron": "cross-env NODE_ENV=local ts-node dist/cron/cron10.js",

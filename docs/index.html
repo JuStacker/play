@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>Show Log</title>
+<title>가챠 시간대 분석</title>
 <style>
 :root {
 	--bg: #0d1117;
@@ -54,8 +54,17 @@ td:first-child, th:first-child { text-align: left; }
 </head>
 <body>
 <div class="container">
+<<<<<<< HEAD
 <h1>ShowLog Report</h1>
+<<<<<<< HEAD
 <p class="updated">업데이트: 2026년 8월 27일(목) 15:15 <span id="relative" data-generated="2026-08-27T06:15:47.311Z"></span></p>
+=======
+<p class="updated">업데이트: 2026년 8월 27일(목) 15:14 <span id="relative" data-generated="2026-08-27T06:14:30.082Z"></span></p>
+=======
+<h1>가챠 시간대 분석</h1>
+<p class="updated">업데이트: 2026년 8월 27일(목) 15:12 <span id="relative" data-generated="2026-08-27T06:12:26.538Z"></span></p>
+>>>>>>> 17843cce (refactor: modularize HTML reporting and remove obsolete logging and data files)
+>>>>>>> 126ca920 (refactor: modularize HTML reporting and remove obsolete logging and data files)
 <script>
 (function () {
 	const el = document.getElementById("relative");
@@ -73,50 +82,46 @@ td:first-child, th:first-child { text-align: left; }
 	setInterval(render, 30000);
 })();
 </script>
-<h2>시간대 목록</h2><div class="table-wrap"><table><thead><tr><th>time</th><th>sCountTotal</th><th>sCountAvg</th><th>sSignalCount</th><th>sWinCount</th><th>sWinAvg</th></tr></thead><tbody><tr><td>00:00</td><td>1000</td><td>1.3123359580052494</td><td>762</td><td>504</td><td>50.4</td></tr>
-<tr><td>01:00</td><td>680</td><td>1.1888111888111887</td><td>572</td><td>353</td><td>51.911764705882355</td></tr>
-<tr><td>02:00</td><td>1044</td><td>1.2488038277511961</td><td>836</td><td>501</td><td>47.98850574712644</td></tr>
-<tr><td>03:00</td><td>696</td><td>1.2794117647058822</td><td>544</td><td>343</td><td>49.2816091954023</td></tr>
-<tr><td>04:00</td><td>1219</td><td>1.3037433155080214</td><td>935</td><td>610</td><td>50.04101722723544</td></tr>
-<tr><td>05:00</td><td>880</td><td>1.1624834874504624</td><td>757</td><td>436</td><td>49.54545454545455</td></tr>
-<tr><td>06:00</td><td>1148</td><td>1.3045454545454545</td><td>880</td><td>566</td><td>49.30313588850174</td></tr>
-<tr><td>07:00</td><td>1002</td><td>1.287917737789203</td><td>778</td><td>514</td><td>51.29740518962076</td></tr>
-<tr><td>08:00</td><td>1087</td><td>1.2581018518518519</td><td>864</td><td>563</td><td>51.793928242870294</td></tr>
-<tr><td>09:00</td><td>52</td><td>1.4444444444444444</td><td>36</td><td>23</td><td>44.230769230769226</td></tr>
-<tr><td>10:00</td><td>156</td><td>1.3928571428571428</td><td>112</td><td>69</td><td>44.230769230769226</td></tr>
-<tr><td>11:00</td><td>217</td><td>1.1923076923076923</td><td>182</td><td>118</td><td>54.377880184331794</td></tr>
-<tr><td>12:00</td><td>477</td><td>1.2519685039370079</td><td>381</td><td>242</td><td>50.73375262054507</td></tr>
-<tr><td>13:00</td><td>715</td><td>1.2118644067796611</td><td>590</td><td>366</td><td>51.18881118881119</td></tr>
-<tr><td>14:00</td><td>905</td><td>1.2448418156808803</td><td>727</td><td>444</td><td>49.06077348066298</td></tr>
-<tr><td>15:00</td><td>606</td><td>1.2317073170731707</td><td>492</td><td>298</td><td>49.17491749174918</td></tr>
-<tr><td>16:00</td><td>1088</td><td>1.3045563549160673</td><td>834</td><td>522</td><td>47.97794117647059</td></tr>
-<tr><td>17:00</td><td>721</td><td>1.3109090909090908</td><td>550</td><td>367</td><td>50.90152565880721</td></tr>
-<tr><td>18:00</td><td>985</td><td>1.329284750337382</td><td>741</td><td>481</td><td>48.83248730964467</td></tr>
-<tr><td>19:00</td><td>876</td><td>1.2732558139534884</td><td>688</td><td>444</td><td>50.68493150684932</td></tr>
-<tr><td>20:00</td><td>1090</td><td>1.2165178571428572</td><td>896</td><td>577</td><td>52.93577981651376</td></tr>
-<tr><td>21:00</td><td>293</td><td>1.2362869198312236</td><td>237</td><td>141</td><td>48.122866894197955</td></tr>
-<tr><td>22:00</td><td>845</td><td>1.2940275650842266</td><td>653</td><td>451</td><td>53.37278106508876</td></tr>
-<tr><td>23:00</td><td>990</td><td>1.3580246913580247</td><td>729</td><td>493</td><td>49.7979797979798</td></tr></tbody></table></div>
-<h2>🔥 추천 분대 목록</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>시뮬레이션수</th><th>평균S갯수</th><th>반천장 승률</th><th>총S갯수</th><th>반천장 승리 수</th><th>점수</th></tr></thead><tbody><tr><td>20:50</td><td>214</td><td>1.1</td><td>56.96</td><td>237</td><td>135</td><td>74</td></tr>
-<tr><td>06:40</td><td>216</td><td>1.24</td><td>56.13</td><td>269</td><td>151</td><td>74</td></tr>
-<tr><td>04:50</td><td>218</td><td>1.2</td><td>54.19</td><td>262</td><td>142</td><td>73</td></tr>
-<tr><td>08:50</td><td>220</td><td>1.27</td><td>53.02</td><td>281</td><td>149</td><td>73</td></tr>
-<tr><td>02:50</td><td>223</td><td>1.36</td><td>50.65</td><td>304</td><td>154</td><td>72</td></tr>
-<tr><td>14:50</td><td>217</td><td>1.26</td><td>52</td><td>275</td><td>143</td><td>72</td></tr>
-<tr><td>00:50</td><td>209</td><td>1.44</td><td>53.46</td><td>303</td><td>162</td><td>71</td></tr>
-<tr><td>19:50</td><td>208</td><td>1.25</td><td>52.49</td><td>261</td><td>137</td><td>70</td></tr>
-<tr><td>07:50</td><td>215</td><td>1.32</td><td>49.82</td><td>285</td><td>142</td><td>70</td></tr>
-<tr><td>22:50</td><td>198</td><td>1.32</td><td>53.99</td><td>263</td><td>142</td><td>69</td></tr></tbody></table></div>
-<h2>🔥 추천 시대 목록</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>시뮬레이션수</th><th>평균S갯수</th><th>반천장 승률</th><th>총S갯수</th><th>반천장 승리 수</th><th>점수</th></tr></thead><tbody><tr><td>20:00</td><td>896</td><td>1.21</td><td>52.93</td><td>1090</td><td>577</td><td>87</td></tr>
-<tr><td>04:00</td><td>935</td><td>1.3</td><td>50.04</td><td>1219</td><td>610</td><td>86</td></tr>
-<tr><td>08:00</td><td>864</td><td>1.25</td><td>51.79</td><td>1087</td><td>563</td><td>85</td></tr>
-<tr><td>06:00</td><td>880</td><td>1.3</td><td>49.3</td><td>1148</td><td>566</td><td>83</td></tr>
-<tr><td>07:00</td><td>778</td><td>1.28</td><td>51.29</td><td>1002</td><td>514</td><td>81</td></tr>
-<tr><td>02:00</td><td>836</td><td>1.24</td><td>47.98</td><td>1044</td><td>501</td><td>80</td></tr>
-<tr><td>16:00</td><td>834</td><td>1.3</td><td>47.97</td><td>1088</td><td>522</td><td>80</td></tr>
-<tr><td>00:00</td><td>762</td><td>1.31</td><td>50.4</td><td>1000</td><td>504</td><td>79</td></tr>
-<tr><td>05:00</td><td>757</td><td>1.16</td><td>49.54</td><td>880</td><td>436</td><td>78</td></tr>
-<tr><td>23:00</td><td>729</td><td>1.35</td><td>49.79</td><td>990</td><td>493</td><td>77</td></tr></tbody></table></div>
+<h2>A캐릭터 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>09:50~09:59</td><td>57</td><td>83.5</td><td>58.6</td><td>560</td><td>10.9</td></tr>
+<tr><td>08:20~08:29</td><td>54</td><td>88.9</td><td>57</td><td>614</td><td>11.8</td></tr>
+<tr><td>02:50~02:59</td><td>53</td><td>85.7</td><td>56.2</td><td>498</td><td>11.3</td></tr>
+<tr><td>17:10~17:19</td><td>53</td><td>87.3</td><td>55.4</td><td>570</td><td>11.6</td></tr>
+<tr><td>21:10~21:19</td><td>52</td><td>89.3</td><td>53.3</td><td>690</td><td>11.5</td></tr>
+<tr><td>21:20~21:29</td><td>52</td><td>87.6</td><td>51.9</td><td>702</td><td>11.6</td></tr>
+<tr><td>14:40~14:49</td><td>52</td><td>89</td><td>55.3</td><td>528</td><td>11.8</td></tr>
+<tr><td>16:30~16:39</td><td>52</td><td>87.7</td><td>54.7</td><td>552</td><td>11.3</td></tr>
+<tr><td>03:20~03:29</td><td>51</td><td>90.7</td><td>56.8</td><td>518</td><td>12.2</td></tr>
+<tr><td>06:10~06:19</td><td>51</td><td>92.1</td><td>52.1</td><td>672</td><td>12.1</td></tr></tbody></table></div>
+<h2>AB캐릭터 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>22:00~22:09</td><td>53</td><td>78</td><td>65.3</td><td>1376</td><td>10.6</td></tr>
+<tr><td>09:50~09:59</td><td>53</td><td>75.8</td><td>67.3</td><td>1120</td><td>10.4</td></tr>
+<tr><td>19:10~19:19</td><td>52</td><td>77.4</td><td>64.5</td><td>1352</td><td>10.6</td></tr>
+<tr><td>21:20~21:29</td><td>52</td><td>77.6</td><td>63.2</td><td>1404</td><td>10.7</td></tr>
+<tr><td>18:50~18:59</td><td>52</td><td>78.7</td><td>63.5</td><td>1396</td><td>10.8</td></tr>
+<tr><td>08:20~08:29</td><td>52</td><td>78.5</td><td>65.8</td><td>1228</td><td>10.9</td></tr>
+<tr><td>03:20~03:29</td><td>51</td><td>78.3</td><td>67</td><td>1036</td><td>10.9</td></tr>
+<tr><td>21:10~21:19</td><td>51</td><td>80.3</td><td>63.2</td><td>1380</td><td>10.9</td></tr>
+<tr><td>21:30~21:39</td><td>51</td><td>77.8</td><td>61.5</td><td>1404</td><td>10.6</td></tr>
+<tr><td>23:40~23:49</td><td>51</td><td>75.8</td><td>65.6</td><td>1040</td><td>10.4</td></tr></tbody></table></div>
+<h2>AB캐릭터 + A무기 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>22:00~22:09</td><td>52</td><td>82.8</td><td>60.3</td><td>2064</td><td>11.1</td></tr>
+<tr><td>07:30~07:39</td><td>52</td><td>82.9</td><td>60.4</td><td>2010</td><td>11.2</td></tr>
+<tr><td>19:10~19:19</td><td>51</td><td>82.8</td><td>59.7</td><td>2028</td><td>11.2</td></tr>
+<tr><td>21:20~21:29</td><td>51</td><td>82.1</td><td>59.2</td><td>2106</td><td>11.1</td></tr>
+<tr><td>22:20~22:29</td><td>51</td><td>82.6</td><td>60</td><td>1962</td><td>11.2</td></tr>
+<tr><td>23:40~23:49</td><td>51</td><td>80.2</td><td>62.2</td><td>1560</td><td>10.9</td></tr>
+<tr><td>18:10~18:19</td><td>51</td><td>82.6</td><td>60.4</td><td>1962</td><td>11.2</td></tr>
+<tr><td>19:00~19:09</td><td>51</td><td>82.4</td><td>58.6</td><td>2022</td><td>11.1</td></tr>
+<tr><td>09:20~09:29</td><td>51</td><td>80.5</td><td>61.7</td><td>1578</td><td>11</td></tr>
+<tr><td>06:40~06:49</td><td>50</td><td>84.4</td><td>58.5</td><td>2004</td><td>11.5</td></tr></tbody></table></div>
+<h2>AB캐릭터 + AB무기 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>21:10~21:19</td><td>51</td><td>79.6</td><td>63.2</td><td>2760</td><td>10.8</td></tr>
+<tr><td>22:00~22:09</td><td>51</td><td>78.8</td><td>64.2</td><td>2752</td><td>10.8</td></tr>
+<tr><td>07:30~07:39</td><td>51</td><td>79.8</td><td>63.2</td><td>2680</td><td>11</td></tr>
+<tr><td>09:50~09:59</td><td>51</td><td>77.6</td><td>65.4</td><td>2240</td><td>10.7</td></tr>
+<tr><td>10:00~10:09</td><td>51</td><td>78.2</td><td>64.8</td><td>2232</td><td>10.8</td></tr>
+<tr><td>19:10~19:19</td><td>50</td><td>79.1</td><td>62.9</td><td>2704</td><td>10.8</td></tr>
+<tr><td>21:20~21:29</td><td>50</td><td>79</td><td>63</td><td>2808</td><td>10.9</td></tr>
+<tr><td>21:30~21:39</td><td>50</td><td>79.5</td><td>62.3</td><td>2808</td><td>10.9</td></tr>
+<tr><td>22:10~22:19</td><td>50</td><td>79.4</td><td>62.7</td><td>2728</td><td>10.9</td></tr>
+<tr><td>22:20~22:29</td><td>50</td><td>78.8</td><td>63.9</td><td>2616</td><td>10.8</td></tr></tbody></table></div>
 </div>
 </body>
 </html>
