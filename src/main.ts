@@ -8,9 +8,8 @@ import { simlateForGacha } from "./simulate/simlateForGacha";
  * - 가챠는 73회까지는 0.6% 고정확률 74회부터 확률보정, 90회 천장 74-90회 구간에 확률 보정이 선형적
  */
 
-
 main(Eniviroment.GACHA_LOG_V2_PATH);
 
-export function main(logPath: string, date: Date = new Date()):void {
-    simlateForGacha(logPath, date);
+export function main(logPath: string, date: Date = new Date()): void {
+	simlateForGacha(logPath, date);
 }
