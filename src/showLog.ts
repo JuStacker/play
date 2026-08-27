@@ -34,6 +34,21 @@ function showLog() {
 	]);
 }
 
+function formatKst(date: Date): string {
+	const parts = new Intl.DateTimeFormat("ko-KR", {
+		timeZone: "Asia/Seoul",
+		year: "numeric",
+		month: "numeric",
+		day: "numeric",
+		weekday: "short",
+		hour: "2-digit",
+		minute: "2-digit",
+		hour12: false,
+	}).formatToParts(date);
+	const get = (type: string) => parts.find((p) => p.type === type)!.value;
+	return `${get("year")}년 ${get("month")}월 ${get("day")}일(${get("weekday")}) ${get("hour")}:${get("minute")}`;
+}
+
 function toHtmlTable(data: object[]): string {
 	if (data.length === 0) return "<p>데이터 없음</p>";
 	const headers = Object.keys(data[0]);
@@ -48,6 +63,7 @@ function toHtmlTable(data: object[]): string {
 }
 
 function writeHtmlReport(sections: { title: string; data: object[] }[]) {
+	const now = new Date();
 	const html = `<!doctype html>
 <html lang="ko">
 <head>
@@ -105,7 +121,24 @@ td:first-child, th:first-child { text-align: left; }
 <body>
 <div class="container">
 <h1>ShowLog Report</h1>
-<p class="updated">업데이트: ${new Date().toISOString()}</p>
+<p class="updated">업데이트: ${formatKst(now)} <span id="relative" data-generated="${now.toISOString()}"></span></p>
+<script>
+(function () {
+	const el = document.getElementById("relative");
+	const generated = new Date(el.dataset.generated).getTime();
+	function render() {
+		const diffMin = Math.floor((Date.now() - generated) / 60000);
+		let text;
+		if (diffMin < 1) text = "방금 전";
+		else if (diffMin < 60) text = diffMin + "분 전";
+		else if (diffMin < 60 * 24) text = Math.floor(diffMin / 60) + "시간 전";
+		else text = Math.floor(diffMin / (60 * 24)) + "일 전";
+		el.textContent = "(" + text + ")";
+	}
+	render();
+	setInterval(render, 30000);
+})();
+</script>
 ${sections
 	.map(
 		(s) =>

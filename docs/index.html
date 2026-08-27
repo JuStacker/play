@@ -55,7 +55,24 @@ td:first-child, th:first-child { text-align: left; }
 <body>
 <div class="container">
 <h1>ShowLog Report</h1>
-<p class="updated">업데이트: 2026-08-27T05:46:49.166Z</p>
+<p class="updated">업데이트: 2026년 8월 27일(목) 14:51 <span id="relative" data-generated="2026-08-27T05:51:55.957Z"></span></p>
+<script>
+(function () {
+	const el = document.getElementById("relative");
+	const generated = new Date(el.dataset.generated).getTime();
+	function render() {
+		const diffMin = Math.floor((Date.now() - generated) / 60000);
+		let text;
+		if (diffMin < 1) text = "방금 전";
+		else if (diffMin < 60) text = diffMin + "분 전";
+		else if (diffMin < 60 * 24) text = Math.floor(diffMin / 60) + "시간 전";
+		else text = Math.floor(diffMin / (60 * 24)) + "일 전";
+		el.textContent = "(" + text + ")";
+	}
+	render();
+	setInterval(render, 30000);
+})();
+</script>
 <h2>시간대 목록</h2><div class="table-wrap"><table><thead><tr><th>time</th><th>sCountTotal</th><th>sCountAvg</th><th>sSignalCount</th><th>sWinCount</th><th>sWinAvg</th></tr></thead><tbody><tr><td>00:00</td><td>1000</td><td>1.3123359580052494</td><td>762</td><td>504</td><td>50.4</td></tr>
 <tr><td>01:00</td><td>680</td><td>1.1888111888111887</td><td>572</td><td>353</td><td>51.911764705882355</td></tr>
 <tr><td>02:00</td><td>1044</td><td>1.2488038277511961</td><td>836</td><td>501</td><td>47.98850574712644</td></tr>
