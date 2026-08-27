@@ -5,6 +5,11 @@ name: 시뮬레이션 실행 및 결과 커밋
 on:
   workflow_dispatch:
 
+# 외부 cron이 1분 간격으로 호출해도 겹쳐 돌지 않게 직렬화 (동시 실행 시 같은 데이터 파일에 동시 write하면서 git merge conflict 발생했었음)
+concurrency:
+  group: gacha-simulation
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
