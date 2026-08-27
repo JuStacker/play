@@ -14,10 +14,10 @@ pnpm install
 ## 스크립트
 
 ```bash
+pnpm log                # 가차 결과 보기
 pnpm start              # ts-node src/main.ts 실행
 pnpm start:local        # NODE_ENV=local 로 start 실행
 pnpm build              # tsc 빌드 (dist/ 생성)
-pnpm log                # ts-node src/showLog.ts 실행
 pnpm init-log-v2        # ts-node src/analyze.ts 실행
 pnpm init-time-slot     # ts-node src/initTimeSlotByLog.ts 실행
 pnpm analyze-for-v2     # ts-node src/analyzeForV2.ts 실행
