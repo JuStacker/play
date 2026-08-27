@@ -1,6 +1,7 @@
 import cron from "node-cron";
 import { Eniviroment } from "../Enviroment";
 import * as fs from "fs";
+import { simulateForGF2 } from "../gf2/simulate/simulateForGF2";
 import { simlateForGacha } from "../simulate/simlateForGacha";
 
 console.log("cron app started");
@@ -22,4 +23,5 @@ console.log("cron started, pid:", process.pid);
 
 function main(logPath: string, date = new Date()): void {
 	simlateForGacha(logPath, date, true);
+	simulateForGF2(Eniviroment.GF2_GACHA_LOG_PATH, date, true);
 }

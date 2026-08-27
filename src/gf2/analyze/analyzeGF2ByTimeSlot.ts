@@ -1,28 +1,34 @@
 import * as fs from "fs";
-import { Eniviroment } from "../Enviroment";
-import { TimeSlotDto } from "../timeSlot/dto/TimeSlotDto";
-import { Log } from "../util/log";
-import { AnalyzeTimeSlotDto } from "./dto/AnalyzeTimeSlot";
-import { TimeSlotCategory } from "./TimeSlotCategory";
+import { Eniviroment } from "../../Enviroment";
+import { TimeSlotCategory } from "../../analyze/TimeSlotCategory";
+import { AnalyzeTimeSlotDto } from "../../analyze/dto/AnalyzeTimeSlot";
+import { ReportSection } from "../../analyze/analyzeByTimeSlot";
+import { Log } from "../../util/log";
+import { GF2TimeSlotDto } from "../timeSlot/dto/GF2TimeSlotDto";
 
 const TOP_SLOT_COUNT = 10;
 
-export interface ReportSection {
-	title: string;
-	data: object[];
-}
-
-export function analyzeByTimeSlot(timeSlotDto: TimeSlotDto): ReportSection[] {
+export function analyzeGF2ByTimeSlot(
+	timeSlotDto: GF2TimeSlotDto,
+): ReportSection[] {
 	const categories = [
-		new TimeSlotCategory("A캐릭터 추천 시간대", timeSlotDto.aCharacter),
-		new TimeSlotCategory("AB캐릭터 추천 시간대", timeSlotDto.abCharacter),
+		new TimeSlotCategory("[GF2] 캐릭터1 추천 시간대", timeSlotDto.character1),
 		new TimeSlotCategory(
-			"AB캐릭터 + A무기 추천 시간대",
-			timeSlotDto.abCharacterAWeapon,
+			"[GF2] 캐릭터1 + 무기1 추천 시간대",
+			timeSlotDto.character1Weapon1,
 		),
 		new TimeSlotCategory(
-			"AB캐릭터 + AB무기 추천 시간대",
-			timeSlotDto.abCharacterAbWeapon,
+			"[GF2] 캐릭터2 + 무기1 추천 시간대",
+			timeSlotDto.character2Weapon1,
+		),
+		new TimeSlotCategory(
+			"[GF2] 캐릭터4 + 무기1 추천 시간대",
+			timeSlotDto.character4Weapon1,
+		),
+		new TimeSlotCategory("[GF2] 캐릭터4 추천 시간대", timeSlotDto.character4),
+		new TimeSlotCategory(
+			"[GF2] 캐릭터6 + 무기1 추천 시간대",
+			timeSlotDto.character6Weapon1,
 		),
 	];
 
@@ -36,7 +42,7 @@ export function analyzeByTimeSlot(timeSlotDto: TimeSlotDto): ReportSection[] {
 	}
 
 	fs.writeFileSync(
-		Eniviroment.ANALYZE_PATH,
+		Eniviroment.GF2_ANALYZE_PATH,
 		analyzed.map(({ title, list }) => formatTable(title, list)).join("\n"),
 		"utf-8",
 	);

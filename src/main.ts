@@ -1,4 +1,6 @@
 import { Eniviroment } from "./Enviroment";
+import { analyzeForV2 } from "./analyzeForV2";
+import { simulateForGF2 } from "./gf2/simulate/simulateForGF2";
 import { simlateForGacha } from "./simulate/simlateForGacha";
 /**
  * 어떤 시간대에 최적의 값이 나오는지 가챠 시뮬레이터를 만들어서 저장하기
@@ -12,4 +14,6 @@ main(Eniviroment.GACHA_LOG_V2_PATH);
 
 export function main(logPath: string, date: Date = new Date()): void {
 	simlateForGacha(logPath, date);
+	simulateForGF2(Eniviroment.GF2_GACHA_LOG_PATH, date);
+	analyzeForV2();
 }

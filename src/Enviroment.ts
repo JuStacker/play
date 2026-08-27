@@ -13,6 +13,10 @@ export class Eniviroment {
 	static CLOD_GACHA_LOG_V2_PATH: string;
 	static LOCAL_GACHA_LOG_V2_PATH: string;
 	static LOG_LEVEL: string;
+	static GF2_GACHA_LOG_PATH: string;
+	static GF2_LOCAL_GACHA_LOG_PATH: string;
+	static GF2_TIME_SLOT_PATH: string;
+	static GF2_ANALYZE_PATH: string;
 
 	static init({
 		GACHA_LOG_V2_PATH,
@@ -21,6 +25,10 @@ export class Eniviroment {
 		CLOD_GACHA_LOG_V2_PATH,
 		LOCAL_GACHA_LOG_V2_PATH,
 		LOG_LEVEL,
+		GF2_GACHA_LOG_PATH,
+		GF2_LOCAL_GACHA_LOG_PATH,
+		GF2_TIME_SLOT_PATH,
+		GF2_ANALYZE_PATH,
 	}) {
 		this.GACHA_LOG_V2_PATH = GACHA_LOG_V2_PATH;
 		this.TIME_SLOT_PATH = TIME_SLOT_PATH;
@@ -28,6 +36,10 @@ export class Eniviroment {
 		this.CLOD_GACHA_LOG_V2_PATH = CLOD_GACHA_LOG_V2_PATH;
 		this.LOCAL_GACHA_LOG_V2_PATH = LOCAL_GACHA_LOG_V2_PATH;
 		this.LOG_LEVEL = LOG_LEVEL;
+		this.GF2_GACHA_LOG_PATH = GF2_GACHA_LOG_PATH;
+		this.GF2_LOCAL_GACHA_LOG_PATH = GF2_LOCAL_GACHA_LOG_PATH;
+		this.GF2_TIME_SLOT_PATH = GF2_TIME_SLOT_PATH;
+		this.GF2_ANALYZE_PATH = GF2_ANALYZE_PATH;
 	}
 }
 
