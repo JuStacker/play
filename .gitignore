@@ -4,6 +4,7 @@ package-lock.json
 yarn.lock
 
 # TypeScript 빌드 결과물
+dist/
 *.js.map
 *.d.ts
 
