@@ -1,4 +1,6 @@
-name: Run simulation every 10 minutes
+# 외부 cron-job.org에서 1분마다 workflow_dispatch 호출
+# https://console.cron-job.org/jobs/8335590/history
+name: 시뮬레이션 실행 및 결과 커밋
 
 on:
   workflow_dispatch:
@@ -21,7 +23,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          node-version: "24"
           cache: pnpm
 
       - name: Install dependencies
