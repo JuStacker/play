@@ -1,8 +1,1 @@
-{
-	"character1": {},
-	"character1Weapon1": {},
-	"character2Weapon1": {},
-	"character4Weapon1": {},
-	"character4": {},
-	"character7Weapon1": {}
-}
+{"character1":{"15:50~15:59":{"avgPity":63,"winRate":100,"simCount":1,"totalPityCount":63,"totalWinCount":1,"totalACount":10}},"character1Weapon1":{"15:50~15:59":{"avgPity":52,"winRate":100,"simCount":2,"totalPityCount":104,"totalWinCount":2,"totalACount":16}},"character2Weapon1":{"15:50~15:59":{"avgPity":74.5,"winRate":50,"simCount":2,"totalPityCount":149,"totalWinCount":1,"totalACount":15}},"character4Weapon1":{"15:50~15:59":{"avgPity":83.5,"winRate":0,"simCount":2,"totalPityCount":167,"totalWinCount":0,"totalACount":23}},"character4":{"15:50~15:59":{"avgPity":72,"winRate":0,"simCount":1,"totalPityCount":72,"totalWinCount":0,"totalACount":10}},"character7Weapon1":{"15:50~15:59":{"avgPity":44,"winRate":50,"simCount":2,"totalPityCount":88,"totalWinCount":1,"totalACount":11}}}
