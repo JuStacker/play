@@ -1,11 +1,9 @@
-import { read } from "fs";
+import { SimulateResult } from "../../dto/SimulateResult";
+import { SimulateGachaResult } from "../../simulateLog/dto/SimulateGachaResult";
 import { SimulateLogDto } from "../../simulateLog/dto/SimulateLog";
+import { toTimeSlot } from "../../util/toTimeSlot";
 import { TimeSlotFormat } from "../format/TimeSlotFormate";
 import { SlotDto } from "./SlotDto";
-import { SimulateGachaResult } from "../../simulateLog/dto/SimulateGachaResult";
-import { time } from "console";
-import { SimulateResult } from "../../dto/SimulateResult";
-import { toTimeSlot } from "../../util/toTimeSlot";
 
 export class TimeSlotDto {
 	aCharacter: Map<string, SlotDto> = new Map();
@@ -43,65 +41,11 @@ export class TimeSlotDto {
 		return result;
 	}
 
-	static ofSimulateLogDtos(simulateLogDtos: SimulateLogDto[]) {
+	static ofSimulateLogDtos(simulateLogDtos: SimulateLogDto[]): TimeSlotDto {
 		const result = new TimeSlotDto();
 
 		for (const simulateLogDto of simulateLogDtos) {
-			const timeRange = simulateLogDto.timeRange;
-
-			this.addSimulateGacha(
-				result.aCharacter,
-				timeRange,
-				simulateLogDto.result.aCharacter,
-			);
-
-			this.addSimulateGacha(
-				result.abCharacter,
-				timeRange,
-				simulateLogDto.result.aCharacter,
-			);
-			this.addSimulateGacha(
-				result.abCharacter,
-				timeRange,
-				simulateLogDto.result.bCharacter,
-			);
-
-			this.addSimulateGacha(
-				result.abCharacterAWeapon,
-				timeRange,
-				simulateLogDto.result.aCharacter,
-			);
-			this.addSimulateGacha(
-				result.abCharacterAWeapon,
-				timeRange,
-				simulateLogDto.result.bCharacter,
-			);
-			this.addSimulateGacha(
-				result.abCharacterAWeapon,
-				timeRange,
-				simulateLogDto.result.aWeapon,
-			);
-
-			this.addSimulateGacha(
-				result.abCharacterAbWeapon,
-				timeRange,
-				simulateLogDto.result.aCharacter,
-			);
-			this.addSimulateGacha(
-				result.abCharacterAbWeapon,
-				timeRange,
-				simulateLogDto.result.bCharacter,
-			);
-			this.addSimulateGacha(
-				result.abCharacterAbWeapon,
-				timeRange,
-				simulateLogDto.result.aWeapon,
-			);
-			this.addSimulateGacha(
-				result.abCharacterAbWeapon,
-				timeRange,
-				simulateLogDto.result.bWeapon,
-			);
+			result.addSimulate(simulateLogDto.date, simulateLogDto.result);
 		}
 
 		return result;

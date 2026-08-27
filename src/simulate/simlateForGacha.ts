@@ -1,29 +1,34 @@
 import { analyzeByTimeSlot } from "../analyze/analyzeByTimeSlot";
 import { SimulateResult } from "../dto/SimulateResult";
 import { GachaResult } from "../gachaSimulator/GachaResult";
+import { GachaRoller } from "../gachaSimulator/GachaRoller";
 import { GachaState } from "../gachaSimulator/GachaState";
-import { rollCharacter } from "../gachaSimulator/rollCharacter";
-import { rollWeapon } from "../gachaSimulator/rollWeapon";
 import { writeSimulateLog } from "../simulateLog/writeSimulateLog";
 import { updateTimeSlot } from "../timeSlot/updateTimeSlot";
+
+const MAX_CHARACTER_PULLS = 180;
+const MAX_WEAPON_PULLS = 160;
+
+const characterRoller = GachaRoller.ofCharacter();
+const weaponRoller = GachaRoller.ofWeapon();
 
 export function simlateForGacha(
 	logPath: string,
 	date: Date,
 	isSkipAnalyze = false,
 ): void {
-	const aCharacter = chararcterGacha();
-	const bCharacter = chararcterGacha();
+	const aCharacter = runGacha(characterRoller, MAX_CHARACTER_PULLS);
+	const bCharacter = runGacha(characterRoller, MAX_CHARACTER_PULLS);
 
-	const aWeapon = weaponGacha();
-	const bWeapon = weaponGacha();
+	const aWeapon = runGacha(weaponRoller, MAX_WEAPON_PULLS);
+	const bWeapon = runGacha(weaponRoller, MAX_WEAPON_PULLS);
 
-	const simulateResult = new SimulateResult(
-		aCharacter.toLog(),
-		bCharacter.toLog(),
-		aWeapon.toLog(),
-		bWeapon.toLog(),
-	);
+	const simulateResult = SimulateResult.of({
+		aCharacter: aCharacter.toLog(),
+		bCharacter: bCharacter.toLog(),
+		aWeapon: aWeapon.toLog(),
+		bWeapon: bWeapon.toLog(),
+	});
 
 	writeSimulateLog(logPath, date, simulateResult);
 
@@ -34,33 +39,14 @@ export function simlateForGacha(
 	analyzeByTimeSlot(timeSlotDto);
 }
 
-function chararcterGacha(): GachaResult {
+function runGacha(roller: GachaRoller, maxPulls: number): GachaResult {
 	const state = new GachaState();
 	const result = new GachaResult();
 
-	for (let i = 0; i < 180; i++) {
-		// Log.log(`${i + 1}번째 뽑기:`, state);
-		result.addRollResult(rollCharacter(state));
-		// Log.log(` 결과 -> `, GachaResultType[result.logs[result.logs.length -1]], state);
+	for (let i = 0; i < maxPulls; i++) {
+		result.addRollResult(roller.roll(state));
 		if (result.hasWinS()) break;
 	}
-
-	// Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
-
-	return result;
-}
-
-function weaponGacha(): GachaResult {
-	const state = new GachaState();
-	const result = new GachaResult();
-
-	for (let i = 0; i < 160; i++) {
-		result.addRollResult(rollWeapon(state));
-		// Log.log(`${i + 1}번째 뽑기 결과:`, GachaResultType[result.logs[result.logs.length -1]]);
-		if (result.hasWinS()) break;
-	}
-
-	// Log.log("최종 결과 로그:", result.logs.map(r => GachaResultType[r]).join(", "));
 
 	return result;
 }

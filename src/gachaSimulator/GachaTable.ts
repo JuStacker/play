@@ -1,4 +1,3 @@
-import { stat } from "fs";
 import { Log } from "../util/log";
 import { GachaState } from "./GachaState";
 import { RollResult } from "./RollResult";

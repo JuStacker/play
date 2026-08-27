@@ -15,8 +15,8 @@ export class GachaResult {
 
 	toLog(): SimulateGachaResult {
 		let pickupPityCount = 0;
-		let sPityCounts = [];
-		let aPityCounts = [];
+		const sPityCounts: number[] = [];
+		const aPityCounts: number[] = [];
 		let bCount = 0;
 
 		for (let i = 0; i < this.logs.length; i++) {

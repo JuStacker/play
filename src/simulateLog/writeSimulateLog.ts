@@ -1,8 +1,7 @@
-import { GachaResult } from "../gachaSimulator/GachaResult";
 import * as fs from "fs";
-import { SimulateGachaResult } from "./dto/SimulateGachaResult";
+import { SimulateResult } from "../dto/SimulateResult";
 import { Log } from "../util/log";
-import { SimulateResult } from "./dto/SimulateResult";
+import { SimulateGachaResult } from "./dto/SimulateGachaResult";
 
 export function writeSimulateLog(
 	filePath: string,
