@@ -83,6 +83,7 @@ export class TimeSlotDto {
 			timeRange,
 			simulateResult.aCharacter,
 		);
+		TimeSlotDto.markRun(this.aCharacter, timeRange);
 
 		TimeSlotDto.addSimulateGacha(
 			this.abCharacter,
@@ -94,6 +95,7 @@ export class TimeSlotDto {
 			timeRange,
 			simulateResult.bCharacter,
 		);
+		TimeSlotDto.markRun(this.abCharacter, timeRange);
 
 		TimeSlotDto.addSimulateGacha(
 			this.abCharacterAWeapon,
@@ -110,6 +112,7 @@ export class TimeSlotDto {
 			timeRange,
 			simulateResult.aWeapon,
 		);
+		TimeSlotDto.markRun(this.abCharacterAWeapon, timeRange);
 
 		TimeSlotDto.addSimulateGacha(
 			this.abCharacterAbWeapon,
@@ -131,6 +134,7 @@ export class TimeSlotDto {
 			timeRange,
 			simulateResult.bWeapon,
 		);
+		TimeSlotDto.markRun(this.abCharacterAbWeapon, timeRange);
 	}
 
 	private static addSimulateGacha(
@@ -142,5 +146,9 @@ export class TimeSlotDto {
 			target.set(timeRange, SlotDto.empty());
 		}
 		target.get(timeRange).addBySimulateReuslt(simulateGachaResult);
+	}
+
+	private static markRun(target: Map<string, SlotDto>, timeRange: string): void {
+		target.get(timeRange)!.addRun();
 	}
 }

@@ -92,18 +92,26 @@ export class GF2TimeSlotDto {
 		const timeRange = toTimeSlot(date.toISOString());
 
 		GF2TimeSlotDto.add(this.character1, timeRange, result.character1);
+		GF2TimeSlotDto.markRun(this.character1, timeRange);
+
 		GF2TimeSlotDto.add(this.character1Weapon1, timeRange, result.character1);
 		GF2TimeSlotDto.add(this.character1Weapon1, timeRange, result.weapon1);
+		GF2TimeSlotDto.markRun(this.character1Weapon1, timeRange);
 
 		GF2TimeSlotDto.add(this.character2Weapon1, timeRange, result.character2);
 		GF2TimeSlotDto.add(this.character2Weapon1, timeRange, result.weapon2);
+		GF2TimeSlotDto.markRun(this.character2Weapon1, timeRange);
 
 		GF2TimeSlotDto.add(this.character4Weapon1, timeRange, result.character4);
 		GF2TimeSlotDto.add(this.character4Weapon1, timeRange, result.weapon4);
+		GF2TimeSlotDto.markRun(this.character4Weapon1, timeRange);
+
 		GF2TimeSlotDto.add(this.character4, timeRange, result.character4);
+		GF2TimeSlotDto.markRun(this.character4, timeRange);
 
 		GF2TimeSlotDto.add(this.character7Weapon1, timeRange, result.character7);
 		GF2TimeSlotDto.add(this.character7Weapon1, timeRange, result.weapon7);
+		GF2TimeSlotDto.markRun(this.character7Weapon1, timeRange);
 	}
 
 	private static add(
@@ -115,5 +123,9 @@ export class GF2TimeSlotDto {
 			target.set(timeRange, SlotDto.empty());
 		}
 		target.get(timeRange)!.addBySimulateReuslt(gachaResult);
+	}
+
+	private static markRun(target: Map<string, SlotDto>, timeRange: string): void {
+		target.get(timeRange)!.addRun();
 	}
 }

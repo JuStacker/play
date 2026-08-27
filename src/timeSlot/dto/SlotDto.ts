@@ -5,17 +5,20 @@ export class SlotDto {
 	avgPity: number;
 	winRate: number;
 	simCount: number;
+	runCount: number;
 	totalPityCount: number;
 	totalWinCount: number;
 	totalACount: number;
 
 	constructor(
 		simCount: number,
+		runCount: number,
 		totalPityCount: number,
 		totalWinCount: number,
 		totalACount: number,
 	) {
 		this.simCount = simCount;
+		this.runCount = runCount;
 		this.totalPityCount = totalPityCount;
 		this.totalWinCount = totalWinCount;
 		this.totalACount = totalACount;
@@ -25,6 +28,7 @@ export class SlotDto {
 	static of(slotFormat: SlotFormat) {
 		return new SlotDto(
 			slotFormat.simCount,
+			slotFormat.runCount ?? slotFormat.simCount,
 			slotFormat.totalPityCount,
 			slotFormat.totalWinCount,
 			slotFormat.totalACount,
@@ -37,7 +41,7 @@ export class SlotDto {
 	}
 
 	static empty(): SlotDto {
-		return new SlotDto(0, 0, 0, 0);
+		return new SlotDto(0, 0, 0, 0, 0);
 	}
 
 	addBySimulateReuslt(simGachaReuslt: SimulateGachaResult) {
@@ -48,11 +52,16 @@ export class SlotDto {
 		this.updateAverge();
 	}
 
+	addRun(): void {
+		++this.runCount;
+	}
+
 	toSlotFormat(): SlotFormat {
 		return {
 			avgPity: this.avgPity,
 			winRate: this.winRate,
 			simCount: this.simCount,
+			runCount: this.runCount,
 			totalPityCount: this.totalPityCount,
 			totalWinCount: this.totalWinCount,
 			totalACount: this.totalACount,
