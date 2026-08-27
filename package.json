@@ -11,7 +11,6 @@
 		"init:local": "cross-env NODE_ENV=local pnpm init-time-slot && pnpm analyze-for-v2",
 		"analyze:local": "cross-env NODE_ENV=local pnpm analyze-for-v2",
 		"start": "ts-node src/main.ts",
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"log": "ts-node src/showLog.ts",
 		"init-log-v2": "ts-node src/analyze.ts",
 		"init-time-slot": "ts-node src/initTimeSlotByLog.ts",
