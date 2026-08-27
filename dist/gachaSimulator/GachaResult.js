@@ -39,7 +39,7 @@ class GachaResult {
             aPityCounts,
             bCount,
             aCount: aPityCounts.length,
-            totalSignal: this.logs.length
+            totalSignal: this.logs.length,
         };
     }
     hasWinS() {

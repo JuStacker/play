@@ -38,7 +38,7 @@ const readFile_1 = require("./log/readFile");
 const getHourKey_1 = require("./util/getHourKey");
 const getHourMinuteKey_1 = require("./util/getHourMinuteKey");
 // 파일 경로 설정 (현재 파일 기준으로 같은 디렉토리의 example.txt)
-const filePath = path.join('results.txt');
+const filePath = path.join("results.txt");
 showLog();
 function showLog() {
     const signalStats = (0, readFile_1.readFile)(filePath);
@@ -77,7 +77,7 @@ function summarizeByHourMinute(stats) {
             sCountAvg,
             sSignalCount,
             sWinCount,
-            sWinAvg: (sWinCount / sCountTotal) * 100
+            sWinAvg: (sWinCount / sCountTotal) * 100,
         });
     }
     // 시:분 문자열 기준 정렬
@@ -105,7 +105,7 @@ function summarizeByHour(stats) {
             sCountAvg,
             sSignalCount,
             sWinCount,
-            sWinAvg: (sWinCount / sCountTotal) * 100
+            sWinAvg: (sWinCount / sCountTotal) * 100,
         });
     }
     // 시:분 문자열 기준 정렬
@@ -122,16 +122,29 @@ function scoreTime(d, { maxAvg, maxWinRate, maxSignals }) {
     const normSignals = signals / maxSignals;
     // 가중합 (비율은 필요에 따라 조절 가능)
     const score = normAvg * 0.01 + normWinRate * 0.5 + normSignals * 0.4;
-    return (score * 100);
+    return score * 100;
 }
 function getRecommendation(data, maxCount = 10) {
     const maxWinRate = Math.max(...data.map((d) => d.sWinAvg || 0));
     const maxAvg = Math.max(...data.map((d) => d.sCountAvg || 0));
     const maxSignals = Math.max(...data.map((d) => d.sSignalCount || 0));
     return data
-        .map((d) => ({ ...d, score: scoreTime(d, { maxAvg, maxWinRate, maxSignals }) }))
+        .map((d) => ({
+        ...d,
+        score: scoreTime(d, { maxAvg, maxWinRate, maxSignals }),
+    }))
         .sort((a, b) => b.score - a.score)
-        .map(d => { return { 시간대: d.time, 시뮬레이션수: d.sSignalCount, "평균S갯수": fl(d.sCountAvg), '반천장 승률': fl(d.sWinAvg), '총S갯수': d.sCountTotal, '반천장 승리 수': d.sWinCount, '점수': Math.floor(d.score) }; })
+        .map((d) => {
+        return {
+            시간대: d.time,
+            시뮬레이션수: d.sSignalCount,
+            평균S갯수: fl(d.sCountAvg),
+            "반천장 승률": fl(d.sWinAvg),
+            총S갯수: d.sCountTotal,
+            "반천장 승리 수": d.sWinCount,
+            점수: Math.floor(d.score),
+        };
+    })
         .slice(0, maxCount);
 }
 function fl(num) {

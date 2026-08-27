@@ -37,16 +37,19 @@ exports.readGachaV2Log = readGachaV2Log;
 const fs = __importStar(require("fs"));
 function readGachaV2Log(filePath) {
     const result = [];
-    const logString = fs.readFileSync(filePath, 'utf-8');
-    logString.replaceAll('\r', '').split('\n').forEach((log) => {
+    const logString = fs.readFileSync(filePath, "utf-8");
+    logString
+        .replaceAll("\r", "")
+        .split("\n")
+        .forEach((log) => {
         if (log.length == 0) {
             return;
         }
-        const jsonString = `{${log.substring(0, log.lastIndexOf(','))}}`;
+        const jsonString = `{${log.substring(0, log.lastIndexOf(","))}}`;
         const [[dateString, gachaLog]] = Object.entries(JSON.parse(jsonString));
         result.push({
             date: new Date(dateString),
-            gachaLog: gachaLog
+            gachaLog: gachaLog,
         });
     });
     return result;

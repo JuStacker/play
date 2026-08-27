@@ -11,7 +11,7 @@ const GACHA_V2_LOG_PATH = "zzzGachaV2.txt";
 function initGachalog() {
     const gachaLogs = (0, readGachaV2Log_1.readGachaV2Log)(GACHA_V2_LOG_PATH);
     const summaryResultManager = summarizeByHourMinute(gachaLogs);
-    // 캐릭터 하나 
+    // 캐릭터 하나
     log_1.Log.log("===== 한개 캐릭터 픽업시 추천 시간대 =====");
     log_1.Log.table(getRecomamendation(1, 0, 10, summaryResultManager));
 }
@@ -52,10 +52,10 @@ class SummaryResultManager {
 class SummaryResult {
     constructor(time, Logs) {
         this.time = time;
-        this.aCharacterTotal = GachaSummary.of(Logs.map(log => log.aCharacter));
-        this.bCharacterTotal = GachaSummary.of(Logs.map(log => log.bCharacter));
-        this.aWeaponTotal = GachaSummary.of(Logs.map(log => log.aWeapon));
-        this.bWeaponTotal = GachaSummary.of(Logs.map(log => log.bWeapon));
+        this.aCharacterTotal = GachaSummary.of(Logs.map((log) => log.aCharacter));
+        this.bCharacterTotal = GachaSummary.of(Logs.map((log) => log.bCharacter));
+        this.aWeaponTotal = GachaSummary.of(Logs.map((log) => log.aWeapon));
+        this.bWeaponTotal = GachaSummary.of(Logs.map((log) => log.bWeapon));
     }
 }
 class GachaSummary {
@@ -73,8 +73,10 @@ class GachaSummary {
     }
     init(gachaResultLogs) {
         this.totalSimulate = gachaResultLogs.length;
-        this.pickupPityAvg = gachaResultLogs.reduce((sum, log) => sum + log.pickupPityCount, 0) / this.totalSimulate;
-        this.winCount = gachaResultLogs.filter(log => log.isWin).length;
+        this.pickupPityAvg =
+            gachaResultLogs.reduce((sum, log) => sum + log.pickupPityCount, 0) /
+                this.totalSimulate;
+        this.winCount = gachaResultLogs.filter((log) => log.isWin).length;
         this.winAvg = (this.winCount / this.totalSimulate) * 100;
         this.aTotal = gachaResultLogs.reduce((sum, log) => sum + log.aCount, 0);
     }

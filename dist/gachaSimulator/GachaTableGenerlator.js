@@ -49,7 +49,7 @@ class GachaTableGenerlator {
         // 75 ~ 90 구간
         const progress = pullSince - this.sofPityStart + 1;
         // 0 → 1 사이 값
-        return this.baseSRate + (progress * this.stepIncereaseRate);
+        return this.baseSRate + progress * this.stepIncereaseRate;
     }
 }
 exports.GachaTableGenerlator = GachaTableGenerlator;

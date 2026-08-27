@@ -38,6 +38,6 @@ const Enviroment_1 = require("../Enviroment");
 const TimeSlotDto_1 = require("./dto/TimeSlotDto");
 const fs = __importStar(require("fs"));
 function readTimeSlot() {
-    const timeSlotFormate = JSON.parse(fs.readFileSync(Enviroment_1.Eniviroment.TIME_SLOT_PATH, 'utf-8'));
+    const timeSlotFormate = JSON.parse(fs.readFileSync(Enviroment_1.Eniviroment.TIME_SLOT_PATH, "utf-8"));
     return TimeSlotDto_1.TimeSlotDto.of(timeSlotFormate);
 }

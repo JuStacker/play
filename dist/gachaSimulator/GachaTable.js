@@ -12,7 +12,10 @@ class GachaTable {
     }
     check() {
         if (this.sRate + this.aRate + this.bRate !== 1) {
-            throw new Error("확률 합이 100이 아님" + JSON.stringify({ cause: { sRate: this.sRate, aRate: this.aRate, bRate: this.bRate } }));
+            throw new Error("확률 합이 100이 아님" +
+                JSON.stringify({
+                    cause: { sRate: this.sRate, aRate: this.aRate, bRate: this.bRate },
+                }));
         }
     }
     roll(state) {

@@ -60,7 +60,7 @@ function analyzeByTimeSlot(timeSlotDto) {
         formatTable(AB_CH_A_WP_TITLE, abChaWpAnlyzeList),
         formatTable(AB_CH_AB_WP_TITLE, abChabWpAnlyzeList),
     ];
-    fs.writeFileSync(Enviroment_1.Eniviroment.ANALYZE_PATH, outputLines.join('\n'), 'utf-8');
+    fs.writeFileSync(Enviroment_1.Eniviroment.ANALYZE_PATH, outputLines.join("\n"), "utf-8");
 }
 function showLog(title, maxSlot, analyzeTimeSlots) {
     log_1.Log.log("\n" + title);
@@ -90,7 +90,7 @@ function formatTable(title, slotDtos, maxSlot = 10) {
     const header = `\n=== ${title} ===\n`;
     const body = slotDtos
         .slice(0, maxSlot)
-        .map(v => v.analyzeTimeFormat)
+        .map((v) => v.analyzeTimeFormat)
         .map((r) => [
         r.시간대,
         `점수:${r.점수}`,

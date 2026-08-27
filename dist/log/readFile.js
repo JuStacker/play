@@ -38,12 +38,15 @@ const signalStat_1 = require("./signalStat");
 const fs = __importStar(require("fs"));
 function readFile(filePath) {
     const result = [];
-    const logString = fs.readFileSync(filePath, 'utf-8');
-    logString.replaceAll('\r', '').split('\n').forEach((log) => {
+    const logString = fs.readFileSync(filePath, "utf-8");
+    logString
+        .replaceAll("\r", "")
+        .split("\n")
+        .forEach((log) => {
         if (log.length == 0) {
             return;
         }
-        const lastDem = log.lastIndexOf(',');
+        const lastDem = log.lastIndexOf(",");
         const jsonString = `{${log.slice(0, lastDem)}}`;
         const [[dateString, signalData]] = Object.entries(JSON.parse(jsonString));
         result.push(new signalStat_1.SignalStat(new Date(dateString), signalData));
