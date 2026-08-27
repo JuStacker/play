@@ -27,8 +27,8 @@ export function analyzeGF2ByTimeSlot(
 		),
 		new TimeSlotCategory("[GF2] 캐릭터4 추천 시간대", timeSlotDto.character4),
 		new TimeSlotCategory(
-			"[GF2] 캐릭터6 + 무기1 추천 시간대",
-			timeSlotDto.character6Weapon1,
+			"[GF2] 캐릭터7 + 무기1 추천 시간대",
+			timeSlotDto.character7Weapon1,
 		),
 	];
 

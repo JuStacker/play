@@ -11,7 +11,7 @@ export class GF2TimeSlotDto {
 	character2Weapon1: Map<string, SlotDto> = new Map();
 	character4Weapon1: Map<string, SlotDto> = new Map();
 	character4: Map<string, SlotDto> = new Map();
-	character6Weapon1: Map<string, SlotDto> = new Map();
+	character7Weapon1: Map<string, SlotDto> = new Map();
 
 	static of(format: GF2TimeSlotFormat): GF2TimeSlotDto {
 		const result = new GF2TimeSlotDto();
@@ -38,9 +38,9 @@ export class GF2TimeSlotDto {
 			result.character4.set(range, SlotDto.of(slotFormat));
 		}
 		for (const [range, slotFormat] of Object.entries(
-			format.character6Weapon1,
+			format.character7Weapon1,
 		)) {
-			result.character6Weapon1.set(range, SlotDto.of(slotFormat));
+			result.character7Weapon1.set(range, SlotDto.of(slotFormat));
 		}
 
 		return result;
@@ -63,7 +63,7 @@ export class GF2TimeSlotDto {
 			character2Weapon1: {},
 			character4Weapon1: {},
 			character4: {},
-			character6Weapon1: {},
+			character7Weapon1: {},
 		};
 
 		for (const [timeRange, slotDto] of this.character1.entries()) {
@@ -81,8 +81,8 @@ export class GF2TimeSlotDto {
 		for (const [timeRange, slotDto] of this.character4.entries()) {
 			result.character4[timeRange] = slotDto.toSlotFormat();
 		}
-		for (const [timeRange, slotDto] of this.character6Weapon1.entries()) {
-			result.character6Weapon1[timeRange] = slotDto.toSlotFormat();
+		for (const [timeRange, slotDto] of this.character7Weapon1.entries()) {
+			result.character7Weapon1[timeRange] = slotDto.toSlotFormat();
 		}
 
 		return result;
@@ -102,8 +102,8 @@ export class GF2TimeSlotDto {
 		GF2TimeSlotDto.add(this.character4Weapon1, timeRange, result.weapon4);
 		GF2TimeSlotDto.add(this.character4, timeRange, result.character4);
 
-		GF2TimeSlotDto.add(this.character6Weapon1, timeRange, result.character6);
-		GF2TimeSlotDto.add(this.character6Weapon1, timeRange, result.weapon6);
+		GF2TimeSlotDto.add(this.character7Weapon1, timeRange, result.character7);
+		GF2TimeSlotDto.add(this.character7Weapon1, timeRange, result.weapon7);
 	}
 
 	private static add(

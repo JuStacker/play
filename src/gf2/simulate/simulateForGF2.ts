@@ -23,8 +23,8 @@ export function simulateForGF2(
 	const weapon2 = runGacha(weaponRoller, MAX_WEAPON_PULLS);
 	const character4 = runGacha(characterRoller, MAX_CHARACTER_PULLS);
 	const weapon4 = runGacha(weaponRoller, MAX_WEAPON_PULLS);
-	const character6 = runGacha(characterRoller, MAX_CHARACTER_PULLS);
-	const weapon6 = runGacha(weaponRoller, MAX_WEAPON_PULLS);
+	const character7 = runGacha(characterRoller, MAX_CHARACTER_PULLS);
+	const weapon7 = runGacha(weaponRoller, MAX_WEAPON_PULLS);
 
 	const simulateResult = GF2SimulateResult.of({
 		character1: character1.toLog(),
@@ -33,8 +33,8 @@ export function simulateForGF2(
 		weapon2: weapon2.toLog(),
 		character4: character4.toLog(),
 		weapon4: weapon4.toLog(),
-		character6: character6.toLog(),
-		weapon6: weapon6.toLog(),
+		character7: character7.toLog(),
+		weapon7: weapon7.toLog(),
 	});
 
 	writeGF2SimulateLog(logPath, date, simulateResult);

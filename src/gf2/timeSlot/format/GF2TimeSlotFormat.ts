@@ -6,5 +6,5 @@ export interface GF2TimeSlotFormat {
 	character2Weapon1: { [key: string]: SlotFormat };
 	character4Weapon1: { [key: string]: SlotFormat };
 	character4: { [key: string]: SlotFormat };
-	character6Weapon1: { [key: string]: SlotFormat };
+	character7Weapon1: { [key: string]: SlotFormat };
 }

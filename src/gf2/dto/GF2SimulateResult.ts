@@ -7,8 +7,8 @@ export class GF2SimulateResult {
 	weapon2: SimulateGachaResult;
 	character4: SimulateGachaResult;
 	weapon4: SimulateGachaResult;
-	character6: SimulateGachaResult;
-	weapon6: SimulateGachaResult;
+	character7: SimulateGachaResult;
+	weapon7: SimulateGachaResult;
 
 	constructor(
 		character1: SimulateGachaResult,
@@ -17,8 +17,8 @@ export class GF2SimulateResult {
 		weapon2: SimulateGachaResult,
 		character4: SimulateGachaResult,
 		weapon4: SimulateGachaResult,
-		character6: SimulateGachaResult,
-		weapon6: SimulateGachaResult,
+		character7: SimulateGachaResult,
+		weapon7: SimulateGachaResult,
 	) {
 		this.character1 = character1;
 		this.weapon1 = weapon1;
@@ -26,8 +26,8 @@ export class GF2SimulateResult {
 		this.weapon2 = weapon2;
 		this.character4 = character4;
 		this.weapon4 = weapon4;
-		this.character6 = character6;
-		this.weapon6 = weapon6;
+		this.character7 = character7;
+		this.weapon7 = weapon7;
 	}
 
 	static of({
@@ -37,8 +37,8 @@ export class GF2SimulateResult {
 		weapon2,
 		character4,
 		weapon4,
-		character6,
-		weapon6,
+		character7,
+		weapon7,
 	}: {
 		character1: SimulateGachaResult;
 		weapon1: SimulateGachaResult;
@@ -46,8 +46,8 @@ export class GF2SimulateResult {
 		weapon2: SimulateGachaResult;
 		character4: SimulateGachaResult;
 		weapon4: SimulateGachaResult;
-		character6: SimulateGachaResult;
-		weapon6: SimulateGachaResult;
+		character7: SimulateGachaResult;
+		weapon7: SimulateGachaResult;
 	}): GF2SimulateResult {
 		return new GF2SimulateResult(
 			character1,
@@ -56,8 +56,8 @@ export class GF2SimulateResult {
 			weapon2,
 			character4,
 			weapon4,
-			character6,
-			weapon6,
+			character7,
+			weapon7,
 		);
 	}
 }

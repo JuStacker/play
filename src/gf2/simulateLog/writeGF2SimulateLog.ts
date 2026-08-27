@@ -24,8 +24,8 @@ function logToResult(gachaLog: GF2SimulateResult): void {
 		무기2: toObj(gachaLog.weapon2),
 		캐릭터4: toObj(gachaLog.character4),
 		무기4: toObj(gachaLog.weapon4),
-		캐릭터6: toObj(gachaLog.character6),
-		무기6: toObj(gachaLog.weapon6),
+		캐릭터7: toObj(gachaLog.character7),
+		무기7: toObj(gachaLog.weapon7),
 	});
 
 	function toObj(resultLog: SimulateGachaResult): object {
