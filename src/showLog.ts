@@ -1,3 +1,4 @@
+import * as fs from "fs";
 import * as path from "path";
 import { SignalStat } from "./log/signalStat";
 import { readFile } from "./log/readFile";
@@ -25,6 +26,98 @@ function showLog() {
 	// 출력
 	console.log("🔥 추천 시대 목록:");
 	console.table(getRecommendation(summaryByHour, 10));
+
+	writeHtmlReport([
+		{ title: "시간대 목록", data: summaryByHour },
+		{ title: "🔥 추천 분대 목록", data: getRecommendation(summary, 10) },
+		{ title: "🔥 추천 시대 목록", data: getRecommendation(summaryByHour, 10) },
+	]);
+}
+
+function toHtmlTable(data: object[]): string {
+	if (data.length === 0) return "<p>데이터 없음</p>";
+	const headers = Object.keys(data[0]);
+	const thead = headers.map((h) => `<th>${h}</th>`).join("");
+	const rows = data
+		.map(
+			(row) =>
+				`<tr>${headers.map((h) => `<td>${(row as Record<string, unknown>)[h]}</td>`).join("")}</tr>`,
+		)
+		.join("\n");
+	return `<table><thead><tr>${thead}</tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function writeHtmlReport(sections: { title: string; data: object[] }[]) {
+	const html = `<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>Show Log</title>
+<style>
+:root {
+	--bg: #0d1117;
+	--panel: #161b22;
+	--border: #30363d;
+	--text: #e6edf3;
+	--muted: #8b949e;
+	--accent: #58a6ff;
+	--row-hover: #1f2733;
+}
+* { box-sizing: border-box; }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, sans-serif;
+	background: var(--bg);
+	color: var(--text);
+	margin: 0;
+	padding: 2rem 1.5rem 4rem;
+}
+h1, h2 { margin: 0 0 1rem; }
+h1 { font-size: 1.4rem; }
+h2 {
+	font-size: 1.1rem;
+	color: var(--accent);
+	border-bottom: 1px solid var(--border);
+	padding-bottom: 0.5rem;
+	margin-top: 2.5rem;
+}
+.updated { color: var(--muted); font-size: 0.85rem; margin-bottom: 2rem; }
+.container { max-width: 960px; margin: 0 auto; }
+.table-wrap {
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	overflow-x: auto;
+}
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; white-space: nowrap; }
+th, td { padding: 8px 14px; text-align: right; }
+th {
+	background: #1c2128;
+	color: var(--muted);
+	font-weight: 600;
+	position: sticky;
+	top: 0;
+}
+tbody tr { border-top: 1px solid var(--border); }
+tbody tr:hover { background: var(--row-hover); }
+td:first-child, th:first-child { text-align: left; }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>ShowLog Report</h1>
+<p class="updated">업데이트: ${new Date().toISOString()}</p>
+${sections
+	.map(
+		(s) =>
+			`<h2>${s.title}</h2><div class="table-wrap">${toHtmlTable(s.data)}</div>`,
+	)
+	.join("\n")}
+</div>
+</body>
+</html>`;
+
+	fs.mkdirSync("docs", { recursive: true });
+	fs.writeFileSync(path.join("docs", "index.html"), html);
 }
 
 /**
