@@ -2,60 +2,116 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>가챠 시간대 분석</title>
 <style>
 :root {
-	--bg: #0d1117;
+	--bg: #0b0e14;
 	--panel: #161b22;
 	--border: #30363d;
 	--text: #e6edf3;
 	--muted: #8b949e;
-	--accent: #58a6ff;
 	--row-hover: #1f2733;
 }
 * { box-sizing: border-box; }
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Pretendard, sans-serif;
-	background: var(--bg);
+	background: radial-gradient(ellipse 1200px 800px at top, #1a2130 0%, var(--bg) 100%);
+	background-repeat: no-repeat;
 	color: var(--text);
 	margin: 0;
-	padding: 2rem 1.5rem 4rem;
+	padding: 2.5rem 1.5rem 4rem;
 }
-h1, h2 { margin: 0 0 1rem; }
-h1 { font-size: 1.4rem; }
-h2 {
-	font-size: 1.1rem;
-	color: var(--accent);
+.container { max-width: 1000px; margin: 0 auto; }
+.meta-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	color: var(--muted);
+	font-size: 0.85rem;
+	margin-bottom: 3rem;
 	border-bottom: 1px solid var(--border);
-	padding-bottom: 0.5rem;
-	margin-top: 2.5rem;
+	padding-bottom: 1rem;
 }
-.updated { color: var(--muted); font-size: 0.85rem; margin-bottom: 2rem; }
-.container { max-width: 960px; margin: 0 auto; }
+.meta-bar .page-title { color: var(--text); font-weight: 700; font-size: 1.1rem; }
+.game { margin-bottom: 4rem; }
+.game-head {
+	display: flex;
+	align-items: center;
+	gap: 0.7rem;
+	margin-bottom: 1.8rem;
+}
+.game-icon {
+	font-size: 1.6rem;
+	width: 2.6rem;
+	height: 2.6rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	background: var(--accent-soft);
+}
+.game-head h1 {
+	margin: 0;
+	font-size: 2rem;
+	letter-spacing: 0.02em;
+	background: linear-gradient(90deg, var(--accent), var(--text) 140%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+h2 {
+	margin: 0 0 0.8rem;
+	font-size: 1rem;
+	color: var(--text);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+h2::before {
+	content: "";
+	width: 4px;
+	height: 1rem;
+	border-radius: 2px;
+	background: var(--accent);
+	display: inline-block;
+}
+.section { margin-bottom: 1.6rem; }
 .table-wrap {
 	background: var(--panel);
 	border: 1px solid var(--border);
-	border-radius: 8px;
+	border-radius: 10px;
 	overflow-x: auto;
+	box-shadow: 0 4px 20px -8px #00000080;
 }
-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; white-space: nowrap; }
-th, td { padding: 8px 14px; text-align: right; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 14px; text-align: right; }
 th {
 	background: #1c2128;
 	color: var(--muted);
 	font-weight: 600;
-	position: sticky;
-	top: 0;
+	font-size: 0.8rem;
 }
 tbody tr { border-top: 1px solid var(--border); }
 tbody tr:hover { background: var(--row-hover); }
+tbody tr.top { background: linear-gradient(90deg, var(--accent-soft), transparent 70%); }
+tbody tr.top td:first-child::before { content: "★ "; color: var(--accent); }
 td:first-child, th:first-child { text-align: left; }
+td.score { font-weight: 700; color: var(--accent); }
+td.rate-high { color: #3fb950; }
+td.rate-mid { color: #d29922; }
+td.rate-low { color: #8b949e; }
+.empty { color: var(--muted); padding: 1rem; }
 </style>
 </head>
 <body>
 <div class="container">
-<h1>가챠 시간대 분석</h1>
-<p class="updated">업데이트: 2026년 8월 27일(목) 16:32 <span id="relative" data-generated="2026-08-27T07:32:33.406Z"></span></p>
+<div class="meta-bar">
+	<span class="page-title">가챠 시간대 분석</span>
+	<span>업데이트: 2026년 8월 27일(목) 16:33 <span id="relative" data-generated="2026-08-27T07:33:32.984Z"></span></span>
+</div>
 <script>
 (function () {
 	const el = document.getElementById("relative");
@@ -73,70 +129,76 @@ td:first-child, th:first-child { text-align: left; }
 	setInterval(render, 30000);
 })();
 </script>
-<h2>A캐릭터 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>09:50~09:59</td><td>56</td><td>83.8</td><td>58.5</td><td>287</td><td>10.9</td></tr>
-<tr><td>08:20~08:29</td><td>54</td><td>89.9</td><td>56.4</td><td>342</td><td>11.9</td></tr>
-<tr><td>23:40~23:49</td><td>52</td><td>86.7</td><td>53.7</td><td>283</td><td>11.4</td></tr>
-<tr><td>03:20~03:29</td><td>52</td><td>90.5</td><td>56.5</td><td>278</td><td>12.1</td></tr>
-<tr><td>17:10~17:19</td><td>52</td><td>88.2</td><td>55.2</td><td>299</td><td>11.7</td></tr>
-<tr><td>16:40~16:49</td><td>51</td><td>89</td><td>54.2</td><td>308</td><td>11.9</td></tr>
-<tr><td>20:00~20:09</td><td>51</td><td>91.5</td><td>53.7</td><td>350</td><td>12</td></tr>
-<tr><td>19:10~19:19</td><td>51</td><td>89.1</td><td>52.5</td><td>354</td><td>11.7</td></tr>
-<tr><td>20:10~20:19</td><td>51</td><td>90.1</td><td>52.2</td><td>343</td><td>11.9</td></tr>
-<tr><td>16:30~16:39</td><td>51</td><td>88.8</td><td>54.2</td><td>299</td><td>11.4</td></tr></tbody></table></div>
-<h2>AB캐릭터 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>20:50~20:59</td><td>52</td><td>79.2</td><td>64.8</td><td>768</td><td>10.9</td></tr>
-<tr><td>19:10~19:19</td><td>52</td><td>77.3</td><td>64.8</td><td>708</td><td>10.6</td></tr>
-<tr><td>22:00~22:09</td><td>52</td><td>78</td><td>65</td><td>734</td><td>10.7</td></tr>
-<tr><td>09:50~09:59</td><td>52</td><td>76</td><td>67.1</td><td>574</td><td>10.5</td></tr>
-<tr><td>11:00~11:09</td><td>52</td><td>76.7</td><td>66.8</td><td>536</td><td>10.4</td></tr>
-<tr><td>08:40~08:49</td><td>51</td><td>79</td><td>66.3</td><td>692</td><td>10.9</td></tr>
-<tr><td>23:40~23:49</td><td>51</td><td>76</td><td>65.4</td><td>566</td><td>10.5</td></tr>
-<tr><td>08:20~08:29</td><td>51</td><td>79</td><td>65.1</td><td>684</td><td>10.9</td></tr>
-<tr><td>03:20~03:29</td><td>51</td><td>77.8</td><td>67.3</td><td>556</td><td>10.8</td></tr>
-<tr><td>11:30~11:39</td><td>51</td><td>77.2</td><td>66.9</td><td>538</td><td>10.6</td></tr></tbody></table></div>
-<h2>AB캐릭터 + A무기 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>08:40~08:49</td><td>51</td><td>83.9</td><td>61.9</td><td>1038</td><td>11.4</td></tr>
-<tr><td>20:50~20:59</td><td>51</td><td>83.9</td><td>59.9</td><td>1152</td><td>11.3</td></tr>
-<tr><td>23:40~23:49</td><td>51</td><td>80.5</td><td>61.8</td><td>849</td><td>10.9</td></tr>
-<tr><td>19:10~19:19</td><td>51</td><td>82.4</td><td>60</td><td>1062</td><td>11.1</td></tr>
-<tr><td>18:10~18:19</td><td>51</td><td>82.5</td><td>60.6</td><td>1044</td><td>11.2</td></tr>
-<tr><td>02:30~02:39</td><td>51</td><td>81.2</td><td>61.8</td><td>855</td><td>11</td></tr>
-<tr><td>22:20~22:29</td><td>51</td><td>82.4</td><td>60.2</td><td>1047</td><td>11.1</td></tr>
-<tr><td>09:20~09:29</td><td>51</td><td>80.5</td><td>61.7</td><td>798</td><td>10.9</td></tr>
-<tr><td>07:30~07:39</td><td>50</td><td>83.3</td><td>60.1</td><td>1125</td><td>11.3</td></tr>
-<tr><td>20:30~20:39</td><td>50</td><td>83.5</td><td>60.1</td><td>1095</td><td>11.4</td></tr></tbody></table></div>
-<h2>AB캐릭터 + AB무기 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>18:10~18:19</td><td>51</td><td>79.2</td><td>64.6</td><td>1392</td><td>10.9</td></tr>
-<tr><td>08:40~08:49</td><td>50</td><td>79.8</td><td>65</td><td>1384</td><td>11</td></tr>
-<tr><td>18:50~18:59</td><td>50</td><td>79.4</td><td>61.4</td><td>1548</td><td>10.9</td></tr>
-<tr><td>20:50~20:59</td><td>50</td><td>80.4</td><td>63.2</td><td>1536</td><td>11</td></tr>
-<tr><td>23:40~23:49</td><td>50</td><td>77.5</td><td>65.2</td><td>1132</td><td>10.7</td></tr>
-<tr><td>07:10~07:19</td><td>50</td><td>79.3</td><td>62.3</td><td>1520</td><td>10.8</td></tr>
-<tr><td>08:20~08:29</td><td>50</td><td>79.7</td><td>63.3</td><td>1368</td><td>11</td></tr>
-<tr><td>19:10~19:19</td><td>50</td><td>78.8</td><td>63.2</td><td>1416</td><td>10.8</td></tr>
-<tr><td>18:40~18:49</td><td>50</td><td>79</td><td>63.9</td><td>1500</td><td>10.8</td></tr>
-<tr><td>22:00~22:09</td><td>50</td><td>78.8</td><td>64</td><td>1468</td><td>10.8</td></tr></tbody></table></div>
-<h2>[GF2] 캐릭터1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>16:10~16:19</td><td>57</td><td>63</td><td>100</td><td>1</td><td>8</td></tr>
-<tr><td>15:50~15:59</td><td>56</td><td>61.8</td><td>83.3</td><td>6</td><td>8</td></tr>
-<tr><td>16:20~16:29</td><td>35</td><td>77.7</td><td>40</td><td>10</td><td>9.7</td></tr>
-<tr><td>16:30~16:39</td><td>16</td><td>93.7</td><td>33.3</td><td>3</td><td>11.7</td></tr></tbody></table></div>
-<h2>[GF2] 캐릭터1 + 무기1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>16:10~16:19</td><td>56</td><td>56.5</td><td>100</td><td>2</td><td>7</td></tr>
-<tr><td>16:20~16:29</td><td>41</td><td>67.5</td><td>55</td><td>20</td><td>8.3</td></tr>
-<tr><td>15:50~15:59</td><td>38</td><td>67.2</td><td>58.3</td><td>12</td><td>8.6</td></tr>
-<tr><td>16:30~16:39</td><td>23</td><td>81.5</td><td>50</td><td>6</td><td>9.8</td></tr></tbody></table></div>
-<h2>[GF2] 캐릭터2 + 무기1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>16:10~16:19</td><td>49</td><td>61</td><td>100</td><td>2</td><td>9</td></tr>
-<tr><td>16:20~16:29</td><td>42</td><td>60.2</td><td>60</td><td>20</td><td>7.2</td></tr>
-<tr><td>15:50~15:59</td><td>29</td><td>68.5</td><td>50</td><td>12</td><td>8.3</td></tr>
-<tr><td>16:30~16:39</td><td>23</td><td>72.3</td><td>50</td><td>6</td><td>9.3</td></tr></tbody></table></div>
-<h2>[GF2] 캐릭터4 + 무기1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>16:10~16:19</td><td>68</td><td>35.5</td><td>100</td><td>2</td><td>5</td></tr>
-<tr><td>16:30~16:39</td><td>33</td><td>62.2</td><td>50</td><td>6</td><td>6.8</td></tr>
-<tr><td>16:20~16:29</td><td>32</td><td>72.8</td><td>45</td><td>20</td><td>9.4</td></tr>
-<tr><td>15:50~15:59</td><td>23</td><td>78.4</td><td>41.7</td><td>12</td><td>9.7</td></tr></tbody></table></div>
-<h2>[GF2] 캐릭터4 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>16:10~16:19</td><td>81</td><td>18</td><td>100</td><td>1</td><td>2</td></tr>
-<tr><td>16:20~16:29</td><td>23</td><td>81.1</td><td>20</td><td>10</td><td>10.5</td></tr>
-<tr><td>15:50~15:59</td><td>19</td><td>89.7</td><td>33.3</td><td>6</td><td>10.5</td></tr>
-<tr><td>16:30~16:39</td><td>4</td><td>87</td><td>0</td><td>3</td><td>9</td></tr></tbody></table></div>
-<h2>[GF2] 캐릭터7 + 무기1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr><td>15:50~15:59</td><td>44</td><td>56</td><td>75</td><td>12</td><td>7</td></tr>
-<tr><td>16:10~16:19</td><td>44</td><td>62</td><td>100</td><td>2</td><td>7.5</td></tr>
-<tr><td>16:20~16:29</td><td>37</td><td>65</td><td>65</td><td>20</td><td>7.8</td></tr>
-<tr><td>16:30~16:39</td><td>30</td><td>66.5</td><td>66.7</td><td>6</td><td>8</td></tr></tbody></table></div>
+<section class="game" style="--accent:#58a6ff;--accent-soft:#58a6ff26">
+<div class="game-head"><span class="game-icon">⚡</span><h1>ZZZ</h1></div>
+<div class="section"><h2>A캐릭터 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>09:50~09:59</td><td class="score">56</td><td>83.8</td><td class="rate-mid">58.5</td><td>287</td><td>10.9</td></tr>
+<tr><td>08:20~08:29</td><td class="score">54</td><td>89.9</td><td class="rate-mid">56.4</td><td>342</td><td>11.9</td></tr>
+<tr><td>23:40~23:49</td><td class="score">52</td><td>86.7</td><td class="rate-mid">53.7</td><td>283</td><td>11.4</td></tr>
+<tr><td>16:30~16:39</td><td class="score">52</td><td>88.6</td><td class="rate-mid">54.3</td><td>300</td><td>11.4</td></tr>
+<tr><td>03:20~03:29</td><td class="score">52</td><td>90.5</td><td class="rate-mid">56.5</td><td>278</td><td>12.1</td></tr>
+<tr><td>17:10~17:19</td><td class="score">52</td><td>88.2</td><td class="rate-mid">55.2</td><td>299</td><td>11.7</td></tr>
+<tr><td>16:40~16:49</td><td class="score">51</td><td>89</td><td class="rate-mid">54.2</td><td>308</td><td>11.9</td></tr>
+<tr><td>20:00~20:09</td><td class="score">51</td><td>91.5</td><td class="rate-mid">53.7</td><td>350</td><td>12</td></tr>
+<tr><td>19:10~19:19</td><td class="score">51</td><td>89.1</td><td class="rate-mid">52.5</td><td>354</td><td>11.7</td></tr>
+<tr><td>20:10~20:19</td><td class="score">51</td><td>90.1</td><td class="rate-mid">52.2</td><td>343</td><td>11.9</td></tr></tbody></table></div></div>
+<div class="section"><h2>AB캐릭터 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>20:50~20:59</td><td class="score">52</td><td>79.2</td><td class="rate-mid">64.8</td><td>768</td><td>10.9</td></tr>
+<tr><td>19:10~19:19</td><td class="score">52</td><td>77.3</td><td class="rate-mid">64.8</td><td>708</td><td>10.6</td></tr>
+<tr><td>22:00~22:09</td><td class="score">52</td><td>78</td><td class="rate-mid">65</td><td>734</td><td>10.7</td></tr>
+<tr><td>09:50~09:59</td><td class="score">52</td><td>76</td><td class="rate-mid">67.1</td><td>574</td><td>10.5</td></tr>
+<tr><td>11:00~11:09</td><td class="score">52</td><td>76.7</td><td class="rate-mid">66.8</td><td>536</td><td>10.4</td></tr>
+<tr><td>08:40~08:49</td><td class="score">51</td><td>79</td><td class="rate-mid">66.3</td><td>692</td><td>10.9</td></tr>
+<tr><td>23:40~23:49</td><td class="score">51</td><td>76</td><td class="rate-mid">65.4</td><td>566</td><td>10.5</td></tr>
+<tr><td>08:20~08:29</td><td class="score">51</td><td>79</td><td class="rate-mid">65.1</td><td>684</td><td>10.9</td></tr>
+<tr><td>03:20~03:29</td><td class="score">51</td><td>77.8</td><td class="rate-mid">67.3</td><td>556</td><td>10.8</td></tr>
+<tr><td>11:30~11:39</td><td class="score">51</td><td>77.2</td><td class="rate-mid">66.9</td><td>538</td><td>10.6</td></tr></tbody></table></div></div>
+<div class="section"><h2>AB캐릭터 + A무기 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>08:40~08:49</td><td class="score">51</td><td>83.9</td><td class="rate-mid">61.9</td><td>1038</td><td>11.4</td></tr>
+<tr><td>20:50~20:59</td><td class="score">51</td><td>83.9</td><td class="rate-mid">59.9</td><td>1152</td><td>11.3</td></tr>
+<tr><td>23:40~23:49</td><td class="score">51</td><td>80.5</td><td class="rate-mid">61.8</td><td>849</td><td>10.9</td></tr>
+<tr><td>19:10~19:19</td><td class="score">51</td><td>82.4</td><td class="rate-mid">60</td><td>1062</td><td>11.1</td></tr>
+<tr><td>18:10~18:19</td><td class="score">51</td><td>82.5</td><td class="rate-mid">60.6</td><td>1044</td><td>11.2</td></tr>
+<tr><td>02:30~02:39</td><td class="score">51</td><td>81.2</td><td class="rate-mid">61.8</td><td>855</td><td>11</td></tr>
+<tr><td>22:20~22:29</td><td class="score">51</td><td>82.4</td><td class="rate-mid">60.2</td><td>1047</td><td>11.1</td></tr>
+<tr><td>09:20~09:29</td><td class="score">51</td><td>80.5</td><td class="rate-mid">61.7</td><td>798</td><td>10.9</td></tr>
+<tr><td>07:30~07:39</td><td class="score">50</td><td>83.3</td><td class="rate-mid">60.1</td><td>1125</td><td>11.3</td></tr>
+<tr><td>20:30~20:39</td><td class="score">50</td><td>83.5</td><td class="rate-mid">60.1</td><td>1095</td><td>11.4</td></tr></tbody></table></div></div>
+<div class="section"><h2>AB캐릭터 + AB무기 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>18:10~18:19</td><td class="score">51</td><td>79.2</td><td class="rate-mid">64.6</td><td>1392</td><td>10.9</td></tr>
+<tr><td>08:40~08:49</td><td class="score">50</td><td>79.8</td><td class="rate-mid">65</td><td>1384</td><td>11</td></tr>
+<tr><td>18:50~18:59</td><td class="score">50</td><td>79.4</td><td class="rate-mid">61.4</td><td>1548</td><td>10.9</td></tr>
+<tr><td>20:50~20:59</td><td class="score">50</td><td>80.4</td><td class="rate-mid">63.2</td><td>1536</td><td>11</td></tr>
+<tr><td>23:40~23:49</td><td class="score">50</td><td>77.5</td><td class="rate-mid">65.2</td><td>1132</td><td>10.7</td></tr>
+<tr><td>07:10~07:19</td><td class="score">50</td><td>79.3</td><td class="rate-mid">62.3</td><td>1520</td><td>10.8</td></tr>
+<tr><td>08:20~08:29</td><td class="score">50</td><td>79.7</td><td class="rate-mid">63.3</td><td>1368</td><td>11</td></tr>
+<tr><td>19:10~19:19</td><td class="score">50</td><td>78.8</td><td class="rate-mid">63.2</td><td>1416</td><td>10.8</td></tr>
+<tr><td>18:40~18:49</td><td class="score">50</td><td>79</td><td class="rate-mid">63.9</td><td>1500</td><td>10.8</td></tr>
+<tr><td>22:00~22:09</td><td class="score">50</td><td>78.8</td><td class="rate-mid">64</td><td>1468</td><td>10.8</td></tr></tbody></table></div></div>
+</section>
+<section class="game" style="--accent:#ff9f43;--accent-soft:#ff9f4326">
+<div class="game-head"><span class="game-icon">🔫</span><h1>GF2</h1></div>
+<div class="section"><h2>캐릭터1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>16:10~16:19</td><td class="score">54</td><td>63</td><td class="rate-high">100</td><td>1</td><td>8</td></tr>
+<tr><td>15:50~15:59</td><td class="score">53</td><td>61.8</td><td class="rate-high">83.3</td><td>6</td><td>8</td></tr>
+<tr><td>16:20~16:29</td><td class="score">30</td><td>77.7</td><td class="rate-low">40</td><td>10</td><td>9.7</td></tr>
+<tr><td>16:30~16:39</td><td class="score">24</td><td>85</td><td class="rate-mid">50</td><td>4</td><td>10.8</td></tr></tbody></table></div></div>
+<div class="section"><h2>캐릭터1 + 무기1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>16:10~16:19</td><td class="score">52</td><td>56.5</td><td class="rate-high">100</td><td>2</td><td>7</td></tr>
+<tr><td>16:20~16:29</td><td class="score">36</td><td>67.5</td><td class="rate-mid">55</td><td>20</td><td>8.3</td></tr>
+<tr><td>15:50~15:59</td><td class="score">33</td><td>67.2</td><td class="rate-mid">58.3</td><td>12</td><td>8.6</td></tr>
+<tr><td>16:30~16:39</td><td class="score">29</td><td>73.3</td><td class="rate-mid">62.5</td><td>8</td><td>9</td></tr></tbody></table></div></div>
+<div class="section"><h2>캐릭터2 + 무기1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>16:10~16:19</td><td class="score">51</td><td>61</td><td class="rate-high">100</td><td>2</td><td>9</td></tr>
+<tr><td>16:20~16:29</td><td class="score">45</td><td>60.2</td><td class="rate-mid">60</td><td>20</td><td>7.2</td></tr>
+<tr><td>15:50~15:59</td><td class="score">31</td><td>68.5</td><td class="rate-mid">50</td><td>12</td><td>8.3</td></tr>
+<tr><td>16:30~16:39</td><td class="score">19</td><td>76.8</td><td class="rate-low">37.5</td><td>8</td><td>10.3</td></tr></tbody></table></div></div>
+<div class="section"><h2>캐릭터4 + 무기1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>16:10~16:19</td><td class="score">68</td><td>35.5</td><td class="rate-high">100</td><td>2</td><td>5</td></tr>
+<tr><td>16:20~16:29</td><td class="score">32</td><td>72.8</td><td class="rate-low">45</td><td>20</td><td>9.4</td></tr>
+<tr><td>16:30~16:39</td><td class="score">26</td><td>67.1</td><td class="rate-low">37.5</td><td>8</td><td>7.8</td></tr>
+<tr><td>15:50~15:59</td><td class="score">23</td><td>78.4</td><td class="rate-low">41.7</td><td>12</td><td>9.7</td></tr></tbody></table></div></div>
+<div class="section"><h2>캐릭터4 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>16:10~16:19</td><td class="score">81</td><td>18</td><td class="rate-high">100</td><td>1</td><td>2</td></tr>
+<tr><td>16:20~16:29</td><td class="score">23</td><td>81.1</td><td class="rate-low">20</td><td>10</td><td>10.5</td></tr>
+<tr><td>15:50~15:59</td><td class="score">19</td><td>89.7</td><td class="rate-low">33.3</td><td>6</td><td>10.5</td></tr>
+<tr><td>16:30~16:39</td><td class="score">9</td><td>80.5</td><td class="rate-low">0</td><td>4</td><td>9</td></tr></tbody></table></div></div>
+<div class="section"><h2>캐릭터7 + 무기1 추천 시간대</h2><div class="table-wrap"><table><thead><tr><th>시간대</th><th>점수</th><th>픽업 평균 뽑기</th><th>반천장 승률</th><th>시뮬레이션 횟수</th><th>평균 A 갯수</th></tr></thead><tbody><tr class="top"><td>15:50~15:59</td><td class="score">46</td><td>56</td><td class="rate-high">75</td><td>12</td><td>7</td></tr>
+<tr><td>16:10~16:19</td><td class="score">46</td><td>62</td><td class="rate-high">100</td><td>2</td><td>7.5</td></tr>
+<tr><td>16:20~16:29</td><td class="score">39</td><td>65</td><td class="rate-mid">65</td><td>20</td><td>7.8</td></tr>
+<tr><td>16:30~16:39</td><td class="score">29</td><td>69.4</td><td class="rate-mid">62.5</td><td>8</td><td>8.6</td></tr></tbody></table></div></div>
+</section>
 </div>
 </body>
 </html>
